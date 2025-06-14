@@ -202,7 +202,7 @@ independently in custom mode.
 - 03: Rocky
 
 Five additional terrain types are available with the expansion disk _The
-Promised Lands_ and _The Final Frontier_.
+Promised Lands_ and one on _The Final Frontier_.
 
 #### Byte 6-7: Starting population
 
