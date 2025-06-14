@@ -32,6 +32,9 @@ __H0_org:
 ; A few labels _begin _mulu _divs etc were originally .begin, .mulu etc
 ; but were changed to allow vasm to reassemble, which it does successfully
 ; 
+; Populous appears to have been written in C. While Ghidra allows for C
+; decompilation, Aira Force is a better tool for Amiga games
+; 
 ; Reassemble (note: hasn't been tested):
 ; vasmm68k_mot -Fhunkexe -kick1hunks -databss -ldots -no-opt -wfail -o populous.prg populous_prg.asm
 ; ------------------------------------------------------------------------------
@@ -107,6 +110,9 @@ LAB_3E2BA:
 	BSR.S	_closeall		;3e2e8: 611a
 	UNLK	A5			;3e2ea: 4e5d
 	RTS				;3e2ec: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _rs:
 	LINK.W	A5,#0			;3e2ee: 4e550000
 	MOVEA.L	(_GfxBase,A4),A0	;3e2f2: 206c99a4
@@ -115,6 +121,9 @@ _rs:
 	ADDQ.W	#4,A7			;3e2fe: 584f
 	UNLK	A5			;3e300: 4e5d
 	RTS				;3e302: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _closeall:
 	LINK.W	A5,#0			;3e304: 4e550000
 	MOVEA.L	(_GfxBase,A4),A0	;3e308: 206c99a4
@@ -162,17 +171,24 @@ _closeall:
 	JSR	(_closelibrary,PC)	;3e3a6: 4eba015c
 	UNLK	A5			;3e3aa: 4e5d
 	RTS				;3e3ac: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _create_mouse:
 	LINK.W	A5,#0			;3e3ae: 4e550000
+; 400
 	MOVE.W	#$018f,(_mouse_limit,A4) ;3e3b2: 397c018f99a8
 	BSR.S	_setup_interrupt	;3e3b8: 6104
 	UNLK	A5			;3e3ba: 4e5d
 	RTS				;3e3bc: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _setup_interrupt:
 	LINK.W	A5,#0			;3e3be: 4e550000
 	MOVE.B	#$02,(LAB_52C40,A4)	;3e3c2: 197c00029852
 	CLR.B	(LAB_52C41,A4)		;3e3c8: 422c9853
-	LEA	(LAB_3E40E,PC),A0	;3e3cc: 41fa0040
+	LEA	(strPetersint,PC),A0	;3e3cc: 41fa0040
 	MOVE.L	A0,(LAB_52C42,A4)	;3e3d0: 29489854
 	LEA	(_mousex,A4),A0		;3e3d4: 41ec99aa
 	MOVE.L	A0,(LAB_52C46,A4)	;3e3d8: 29489858
@@ -189,12 +205,14 @@ _setup_interrupt:
 	ADDQ.W	#8,A7			;3e408: 504f
 	UNLK	A5			;3e40a: 4e5d
 	RTS				;3e40c: 4e75
-LAB_3E40E:
-	MOVEQ	#$65,D0			;3e40e: 7065
-	MOVEQ	#$65,D2			;3e410: 7465
-	MOVEQ	#$73,D1			;3e412: 7273
-	BVS.S	LAB_3E482+2		;3e414: 696e
-	MOVEQ	#0,D2			;3e416: 7400
+strPetersint:
+; Peter's interrupt - Peter Molyneux, no doubt
+	;3e40e
+	;DC.B	$70,$65,$74,$65,$72,$73,$69,$6e,$74,$00
+	DC.B	"petersint",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_mouse:
 	LINK.W	A5,#0			;3e418: 4e550000
 	MOVEA.L	(_IntuitionBase,A4),A0	;3e41c: 206c99ac
@@ -214,6 +232,9 @@ LAB_3E438:
 LAB_3E450:
 	UNLK	A5			;3e450: 4e5d
 	RTS				;3e452: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _free_inter:
 	LINK.W	A5,#0			;3e454: 4e550000
 	PEA	(_dint,A4)		;3e458: 486c984a
@@ -225,11 +246,13 @@ _free_inter:
 	ADDQ.W	#4,A7			;3e46e: 584f
 	UNLK	A5			;3e470: 4e5d
 	RTS				;3e472: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _setup_serial_interrupt:
 	LINK.W	A5,#0			;3e474: 4e550000
 	MOVE.B	#$02,(LAB_52DAA,A4)	;3e478: 197c000299bc
 	CLR.B	(LAB_52DAB,A4)		;3e47e: 422c99bd
-LAB_3E482:
 	LEA	(LAB_3E4DA,PC),A0	;3e482: 41fa0056
 	MOVE.L	A0,(LAB_52DAC,A4)	;3e486: 294899be
 	LEA	(_serial,A4),A0		;3e48a: 41ec989c
@@ -262,11 +285,17 @@ LAB_3E4E6:
 	;3e4e6
 	;DC.B	$73,$65,$72,$69,$61,$6c,$5f,$77,$72,$69,$74,$65,$00,$00
 	DC.B	"serial_write",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _free_serial_interrupt:
 	LINK.W	A5,#0			;3e4f4: 4e550000
 	MOVE.W	#$0801,INTENA		;3e4f8: 33fc080100dff09a
 	UNLK	A5			;3e500: 4e5d
 	RTS				;3e502: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _closelibrary:
 	LINK.W	A5,#0			;3e504: 4e550000
 	CLR.W	-(A7)			;3e508: 4267
@@ -280,15 +309,24 @@ _closelibrary:
 	ADDQ.W	#4,A7			;3e520: 584f
 	UNLK	A5			;3e522: 4e5d
 	RTS				;3e524: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_pri:
 	LINK.W	A5,#0			;3e526: 4e550000
 	UNLK	A5			;3e52a: 4e5d
 	RTS				;3e52c: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _debug:
 ; this empty method is in both versions
 	LINK.W	A5,#0			;3e52e: 4e550000
 	UNLK	A5			;3e532: 4e5d
 	RTS				;3e534: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _openlibrary:
 	LINK.W	A5,#0			;3e536: 4e550000
 	CLR.L	-(A7)			;3e53a: 42a7
@@ -336,20 +374,28 @@ IntuitionLibName:
 	;DC.B	$69,$6e,$74,$75,$69,$74,$69,$6f,$6e,$2e,$6c,$69,$62,$72,$61,$72
 	;DC.B	$79,$00,$00
 	DC.B	"intuition.library",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _setup_display:
 	LINK.W	A5,#-2			;3e5ce: 4e55fffe
 	CMPI.W	#$ffff,(_in_conquest,A4) ;3e5d2: 0c6cffff84ba
 	BEQ.S	LAB_3E652		;3e5d8: 6778
+; Load map variables
+; seed = level mod 8 + bytes8+9
+; added last, suggesting the 5x expansion from 100 to 495 levels of was
+; late in development
 	MOVE.W	(_in_conquest,A4),D0	;3e5da: 302c84ba
 	AND.W	#$0007,D0		;3e5de: c07c0007
-	ADD.W	(LAB_518B2,A4),D0	;3e5e2: d06c84c4
+	ADD.W	(conq_08_seed,A4),D0	;3e5e2: d06c84c4
 	MOVE.W	D0,(_seed,A4)		;3e5e6: 394099e2
 	MOVE.W	D0,(_start_seed,A4)	;3e5ea: 394099e4
 	MOVEQ	#0,D0			;3e5ee: 7000
-	MOVE.B	(LAB_518AF,A4),D0	;3e5f0: 102c84c1
+; Terrain type 0 - 3
+	MOVE.B	(conq_05_terrain,A4),D0	;3e5f0: 102c84c1
 	CMP.W	(_ground_in,A4),D0	;3e5f4: b06c99e6
 	MOVEQ	#0,D0			;3e5f8: 7000
-	MOVE.B	(LAB_518AF,A4),D0	;3e5fa: 102c84c1
+	MOVE.B	(conq_05_terrain,A4),D0	;3e5fa: 102c84c1
 	MOVE.W	D0,(_ground_in,A4)	;3e5fe: 394099e6
 	CLR.W	-(A7)			;3e602: 4267
 	MOVE.W	(_ground_in,A4),-(A7)	;3e604: 3f2c99e6
@@ -357,23 +403,27 @@ _setup_display:
 	ADDQ.W	#4,A7			;3e60c: 584f
 	JSR	(_clear_map,PC)		;3e60e: 4eba068e
 	MOVEQ	#0,D0			;3e612: 7000
+; #0 and #1 can be 0 to 10
 	MOVE.B	(_conquest,A4),D0	;3e614: 102c84bc
 	MOVE.W	D0,(LAB_516DE,A4)	;3e618: 394082f0
 	MOVEQ	#0,D0			;3e61c: 7000
-	MOVE.B	(LAB_518AB,A4),D0	;3e61e: 102c84bd
+	MOVE.B	(conq_01_speed,A4),D0	;3e61e: 102c84bd
 	MOVE.W	D0,(LAB_516E2,A4)	;3e622: 394082f4
+; 02 and #3 can be one of 25 values from 0 to 16,135
+; bitfields for which powers can be used
 	MOVEQ	#0,D0			;3e626: 7000
-	MOVE.B	(LAB_518AC,A4),D0	;3e628: 102c84be
+	MOVE.B	(conq_02_enemypow,A4),D0 ;3e628: 102c84be
 	ASL.W	#3,D0			;3e62c: e740
 	OR.W	#$0007,D0		;3e62e: 807c0007
 	MOVE.W	D0,(LAB_516E0,A4)	;3e632: 394082f2
 	MOVEQ	#0,D0			;3e636: 7000
-	MOVE.B	(LAB_518AD,A4),D0	;3e638: 102c84bf
+	MOVE.B	(conq_03_yourpow,A4),D0	;3e638: 102c84bf
 	ASL.W	#3,D0			;3e63c: e740
 	OR.W	#$0007,D0		;3e63e: 807c0007
 	MOVE.W	D0,(LAB_516B2,A4)	;3e642: 394082c4
+; #4 game mode - build on people/towns/up only/mo build, swamps, water
 	MOVEQ	#0,D0			;3e646: 7000
-	MOVE.B	(LAB_518AE,A4),D0	;3e648: 102c84c0
+	MOVE.B	(conq_04_mode,A4),D0	;3e648: 102c84c0
 	MOVE.W	D0,(_game_mode,A4)	;3e64c: 394084b8
 	BRA.S	LAB_3E6AE		;3e650: 605c
 LAB_3E652:
@@ -446,6 +496,9 @@ LAB_3E6CE:
 	ADDQ.W	#1,(_seed,A4)		;3e728: 526c99e2
 	UNLK	A5			;3e72c: 4e5d
 	RTS				;3e72e: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _animate:
 	LINK.W	A5,#-122		;3e730: 4e55ff86
 	MOVEM.L	D4/A2,-(A7)		;3e734: 48e70820
@@ -698,6 +751,7 @@ LAB_3EA16:
 LAB_3EA1C:
 	CMPI.W	#$1000,(_game_turn,A4)	;3ea1c: 0c6c1000ae6a
 	BNE.S	LAB_3EA34		;3ea22: 6610
+; game turn 4096 - place funny
 	MOVE.W	(_start_seed,A4),D0	;3ea24: 302c99e4
 	AND.W	#$0003,D0		;3ea28: c07c0003
 	MOVE.W	D0,-(A7)		;3ea2c: 3f00
@@ -706,19 +760,20 @@ LAB_3EA1C:
 LAB_3EA34:
 	JSR	(_show_the_shield,PC)	;3ea34: 4eba1604
 	JSR	(___swap_screens,A4)	;3ea38: 4eac80c8
+; Numpad inputs for scrolling the map
 	JSR	(___keyboard,A4)	;3ea3c: 4eac80f2
 	TST.B	(_inkey,A4)		;3ea40: 4a2cae6c
-	BEQ.W	LAB_3EC20		;3ea44: 670001da
+	BEQ.W	continue_3EC20		;3ea44: 670001da
 	MOVEQ	#0,D0			;3ea48: 7000
 	MOVE.B	(_inkey,A4),D0		;3ea4a: 102cae6c
-	BRA.W	LAB_3EBBE		;3ea4e: 6000016e
-LAB_3EA52:
+	BRA.W	key_3EBBE		;3ea4e: 6000016e
+scroll_w:
 	TST.W	(_xoff,A4)		;3ea52: 4a6c99f0
 	BEQ.S	LAB_3EA5C		;3ea56: 6704
 	SUBQ.W	#1,(_xoff,A4)		;3ea58: 536c99f0
 LAB_3EA5C:
-	BRA.W	LAB_3EC20		;3ea5c: 600001c2
-LAB_3EA60:
+	BRA.W	continue_3EC20		;3ea5c: 600001c2
+scroll_nw:
 	TST.W	(_xoff,A4)		;3ea60: 4a6c99f0
 	BEQ.S	LAB_3EA6A		;3ea64: 6704
 	SUBQ.W	#1,(_xoff,A4)		;3ea66: 536c99f0
@@ -727,14 +782,14 @@ LAB_3EA6A:
 	BEQ.S	LAB_3EA74		;3ea6e: 6704
 	SUBQ.W	#1,(_yoff,A4)		;3ea70: 536c99f2
 LAB_3EA74:
-	BRA.W	LAB_3EC20		;3ea74: 600001aa
-LAB_3EA78:
+	BRA.W	continue_3EC20		;3ea74: 600001aa
+scroll_n:
 	TST.W	(_yoff,A4)		;3ea78: 4a6c99f2
 	BEQ.S	LAB_3EA82		;3ea7c: 6704
 	SUBQ.W	#1,(_yoff,A4)		;3ea7e: 536c99f2
 LAB_3EA82:
-	BRA.W	LAB_3EC20		;3ea82: 6000019c
-LAB_3EA86:
+	BRA.W	continue_3EC20		;3ea82: 6000019c
+scroll_sw:
 	TST.W	(_xoff,A4)		;3ea86: 4a6c99f0
 	BEQ.S	LAB_3EA90		;3ea8a: 6704
 	SUBQ.W	#1,(_xoff,A4)		;3ea8c: 536c99f0
@@ -743,8 +798,8 @@ LAB_3EA90:
 	BGE.S	LAB_3EA9C		;3ea96: 6c04
 	ADDQ.W	#1,(_yoff,A4)		;3ea98: 526c99f2
 LAB_3EA9C:
-	BRA.W	LAB_3EC20		;3ea9c: 60000182
-LAB_3EAA0:
+	BRA.W	continue_3EC20		;3ea9c: 60000182
+scroll_ne:
 	CMPI.W	#$0038,(_xoff,A4)	;3eaa0: 0c6c003899f0
 	BGE.S	LAB_3EAAC		;3eaa6: 6c04
 	ADDQ.W	#1,(_xoff,A4)		;3eaa8: 526c99f0
@@ -753,14 +808,14 @@ LAB_3EAAC:
 	BEQ.S	LAB_3EAB6		;3eab0: 6704
 	SUBQ.W	#1,(_yoff,A4)		;3eab2: 536c99f2
 LAB_3EAB6:
-	BRA.W	LAB_3EC20		;3eab6: 60000168
-LAB_3EABA:
+	BRA.W	continue_3EC20		;3eab6: 60000168
+scroll_s:
 	CMPI.W	#$0038,(_yoff,A4)	;3eaba: 0c6c003899f2
 	BGE.S	LAB_3EAC6		;3eac0: 6c04
 	ADDQ.W	#1,(_yoff,A4)		;3eac2: 526c99f2
 LAB_3EAC6:
-	BRA.W	LAB_3EC20		;3eac6: 60000158
-LAB_3EACA:
+	BRA.W	continue_3EC20		;3eac6: 60000158
+scroll_se:
 	CMPI.W	#$0038,(_xoff,A4)	;3eaca: 0c6c003899f0
 	BGE.S	LAB_3EAD6		;3ead0: 6c04
 	ADDQ.W	#1,(_xoff,A4)		;3ead2: 526c99f0
@@ -769,14 +824,17 @@ LAB_3EAD6:
 	BGE.S	LAB_3EAE2		;3eadc: 6c04
 	ADDQ.W	#1,(_yoff,A4)		;3eade: 526c99f2
 LAB_3EAE2:
-	BRA.W	LAB_3EC20		;3eae2: 6000013c
-LAB_3EAE6:
+	BRA.W	continue_3EC20		;3eae2: 6000013c
+scroll_e:
 	CMPI.W	#$0038,(_xoff,A4)	;3eae6: 0c6c003899f0
 	BGE.S	LAB_3EAF2		;3eaec: 6c04
 	ADDQ.W	#1,(_xoff,A4)		;3eaee: 526c99f0
 LAB_3EAF2:
-	BRA.W	LAB_3EC20		;3eaf2: 6000012c
-LAB_3EAF6:
+	BRA.W	continue_3EC20		;3eaf2: 6000012c
+; ------------------------------------------------------------------------------
+; Pressing A on the keyboard automatically wins the round
+; ------------------------------------------------------------------------------
+debug_key_win:
 ; New section not in 1989
 	MOVEQ	#0,D4			;3eaf6: 7800
 	BRA.S	LAB_3EB20		;3eaf8: 6026
@@ -797,15 +855,22 @@ LAB_3EB1E:
 LAB_3EB20:
 	CMP.W	(_no_peeps,A4),D4	;3eb20: b86cae5e
 	BLT.S	LAB_3EAFA		;3eb24: 6dd4
-	BRA.W	LAB_3EC20		;3eb26: 600000f8
-LAB_3EB2A:
+	BRA.W	continue_3EC20		;3eb26: 600000f8
+return_3EB2A:
 	MOVEM.L	(A7)+,D4/A2		;3eb2a: 4cdf0410
 	UNLK	A5			;3eb2e: 4e5d
 	RTS				;3eb30: 4e75
-LAB_3EB32:
+; ------------------------------------------------------------------------------
+; Pressing F9 displays debug information
+; ------------------------------------------------------------------------------
+debug_key_stats:
 	JSR	(___display_debug,A4)	;3eb32: 4eac80e0
-	BRA.W	LAB_3EC20		;3eb36: 600000e8
-LAB_3EB3A:
+	BRA.W	continue_3EC20		;3eb36: 600000e8
+; ------------------------------------------------------------------------------
+; Pressing asterisk on the keyboard:
+; not sure what it activates
+; ------------------------------------------------------------------------------
+debug_key_asterisk:
 ; new section ends
 	CMPI.W	#$0136,(_mousex,A4)	;3eb3a: 0c6c013699aa
 	BLE.S	LAB_3EBA4		;3eb40: 6f62
@@ -813,8 +878,16 @@ LAB_3EB3A:
 	BLT.S	LAB_3EBA4		;3eb48: 6d5a
 	CMPI.W	#$0014,(_mousey,A4)	;3eb4a: 0c6c0014ae6e
 	BGT.S	LAB_3EBA4		;3eb50: 6e52
-	BTST	#0,(LAB_51645,A4)	;3eb52: 082c00008257
+	BTST	#0,(bitfield_51645,A4)	;3eb52: 082c00008257
 	BEQ.S	LAB_3EBA4		;3eb58: 674a
+; ------------------------------------------------------------------------------
+; Here, some kind of cheat appears to be activated.
+; Press keypad asterisk to activate.
+; The mouse pointer must also be at x 311-320 and y 10-20
+; (just below the top right of the screen)
+; Some flag #0 must be set
+; Unsure what it does
+; ------------------------------------------------------------------------------
 	PEA	(strCHEAT,PC)		;3eb5a: 487a013c
 	MOVE.W	#$000a,-(A7)		;3eb5e: 3f3c000a
 	CLR.W	-(A7)			;3eb62: 4267
@@ -834,7 +907,7 @@ LAB_3EB3A:
 	LEA	(LAB_516A5,A4),A0	;3eb9a: 41ec82b7
 	MOVE.B	(LAB_52DE3,A4),(0,A0,D0.L) ;3eb9e: 11ac99f50800
 LAB_3EBA4:
-	BRA.S	LAB_3EC20		;3eba4: 607a
+	BRA.S	continue_3EC20		;3eba4: 607a
 LAB_3EBA6:
 	MOVE.W	(_player,A4),D0		;3eba6: 302c99f4
 	MULS	#$002e,D0		;3ebaa: c1fc002e
@@ -843,37 +916,50 @@ LAB_3EBA6:
 	MOVE.L	D0,-(A7)		;3ebb4: 2f00
 	JSR	(___paint_the_map,A4)	;3ebb6: 4eac8098
 	ADDQ.W	#4,A7			;3ebba: 584f
-	BRA.S	LAB_3EC20		;3ebbc: 6062
-LAB_3EBBE:
-	SUB.L	#$00000045,D0		;3ebbe: 90bc00000045
-	BEQ.W	LAB_3EB3A		;3ebc4: 6700ff74
-	SUB.L	#$0000000a,D0		;3ebc8: 90bc0000000a
-	BEQ.W	LAB_3EB32		;3ebce: 6700ff62
+	BRA.S	continue_3EC20		;3ebbc: 6062
+; ------------------------------------------------------------------------------
+; handle keyboard input
+; d0 = key scancode
+; Numpad asterisk: ?
+; F9: Stats
+; Numpad directions: Scroll map
+; ------------------------------------------------------------------------------
+key_3EBBE:
 ; new
-	SUB.L	#$00000026,D0		;3ebd2: 90bc00000026
-	BEQ.W	LAB_3EB2A		;3ebd8: 6700ff50
-	SUB.L	#$0000000c,D0		;3ebdc: 90bc0000000c
-	BEQ.W	LAB_3EA78		;3ebe2: 6700fe94
+; numpad asterisk
+	SUB.L	#$00000045,D0		;3ebbe: 90bc00000045
+	BEQ.W	debug_key_asterisk	;3ebc4: 6700ff74
+; F9
+	SUB.L	#$0000000a,D0		;3ebc8: 90bc0000000a
+	BEQ.W	debug_key_stats		;3ebce: 6700ff62
 ; end new
+	SUB.L	#$00000026,D0		;3ebd2: 90bc00000026
+; esc
+	BEQ.W	return_3EB2A		;3ebd8: 6700ff50
+	SUB.L	#$0000000c,D0		;3ebdc: 90bc0000000c
+; numpad directions
+	BEQ.W	scroll_n		;3ebe2: 6700fe94
 	SUBQ.L	#2,D0			;3ebe6: 5580
-	BEQ.W	LAB_3EA60		;3ebe8: 6700fe76
+	BEQ.W	scroll_nw		;3ebe8: 6700fe76
 	SUBQ.L	#2,D0			;3ebec: 5580
-	BEQ.W	LAB_3EA52		;3ebee: 6700fe62
+	BEQ.W	scroll_w		;3ebee: 6700fe62
 	SUB.L	#$0000001c,D0		;3ebf2: 90bc0000001c
-	BEQ.W	LAB_3EAA0		;3ebf8: 6700fea6
+	BEQ.W	scroll_ne		;3ebf8: 6700fea6
 	SUBQ.L	#4,D0			;3ebfc: 5980
-	BEQ.W	LAB_3EA86		;3ebfe: 6700fe86
+	BEQ.W	scroll_sw		;3ebfe: 6700fe86
+; These may be the two new lines
+; A
 	SUB.L	#$0000001a,D0		;3ec02: 90bc0000001a
-	BEQ.W	LAB_3EAF6		;3ec08: 6700feec
+	BEQ.W	debug_key_win		;3ec08: 6700feec
+;  
 	SUBQ.L	#2,D0			;3ec0c: 5580
-	BEQ.W	LAB_3EAE6		;3ec0e: 6700fed6
+	BEQ.W	scroll_e		;3ec0e: 6700fed6
 	SUBQ.L	#2,D0			;3ec12: 5580
-	BEQ.W	LAB_3EACA		;3ec14: 6700feb4
+	BEQ.W	scroll_se		;3ec14: 6700feb4
 	SUBQ.L	#2,D0			;3ec18: 5580
-; two new lines
-	BEQ.W	LAB_3EABA		;3ec1a: 6700fe9e
+	BEQ.W	scroll_s		;3ec1a: 6700fe9e
 	BRA.S	LAB_3EBA6		;3ec1e: 6086
-LAB_3EC20:
+continue_3EC20:
 	MOVE.W	(_mode,A4),D0		;3ec20: 302c8256
 	AND.W	#$000e,D0		;3ec24: c07c000e
 	BEQ.S	LAB_3EC30		;3ec28: 6706
@@ -926,11 +1012,14 @@ LAB_3EC82:
 	ADDQ.W	#2,A7			;3ec8e: 544f
 	BRA.W	LAB_3E7E8		;3ec90: 6000fb56
 ; small optimization here
-	BRA.W	LAB_3EB2A		;3ec94: 6000fe94
+	BRA.W	return_3EB2A		;3ec94: 6000fe94
 strCHEAT:
 	;3ec98
 	;DC.B	$43,$48,$45,$41,$54,$00
 	DC.B	"CHEAT",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _clear_map:
 	LINK.W	A5,#0			;3ec9e: 4e550000
 	MOVEM.L	D4-D5,-(A7)		;3eca2: 48e70c00
@@ -1094,6 +1183,9 @@ LAB_3EE58:
 	MOVEM.L	(A7)+,D4-D5		;3ee8e: 4cdf0030
 	UNLK	A5			;3ee92: 4e5d
 	RTS				;3ee94: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_alt:
 	LINK.W	A5,#0			;3ee96: 4e550000
 	MOVE.W	#$0004,-(A7)		;3ee9a: 3f3c0004
@@ -1110,6 +1202,9 @@ _make_alt:
 	ADDQ.W	#4,A7			;3eebc: 584f
 	UNLK	A5			;3eebe: 4e5d
 	RTS				;3eec0: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_thing:
 	LINK.W	A5,#0			;3eec2: 4e550000
 	MOVEM.L	D4-D5,-(A7)		;3eec6: 48e70c00
@@ -1173,6 +1268,9 @@ LAB_3EF4A:
 	MOVEM.L	(A7)+,D4-D5		;3ef4a: 4cdf0030
 	UNLK	A5			;3ef4e: 4e5d
 	RTS				;3ef50: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _raise_point:
 	LINK.W	A5,#0			;3ef52: 4e550000
 	MOVEM.L	D4-D5/A2-A3,-(A7)	;3ef56: 48e70c30
@@ -1316,6 +1414,9 @@ LAB_3F09C:
 LAB_3F0AC:
 	MOVE.W	(A2),D0			;3f0ac: 3012
 	BRA.W	LAB_3EF78		;3f0ae: 6000fec8
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_map:
 	LINK.W	A5,#-4			;3f0b2: 4e55fffc
 	MOVEM.L	D4-D7/A2,-(A7)		;3f0b6: 48e70f20
@@ -1436,6 +1537,9 @@ LAB_3F1D0:
 	MOVEM.L	(A7)+,D4-D7/A2		;3f1d8: 4cdf04f0
 	UNLK	A5			;3f1dc: 4e5d
 	RTS				;3f1de: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_map:
 	LINK.W	A5,#-2			;3f1e0: 4e55fffe
 	MOVEM.L	D4-D5,-(A7)		;3f1e4: 48e70c00
@@ -1484,6 +1588,9 @@ LAB_3F24E:
 	MOVEM.L	(A7)+,D4-D5		;3f254: 4cdf0030
 	UNLK	A5			;3f258: 4e5d
 	RTS				;3f25a: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _mod_map:
 	LINK.W	A5,#0			;3f25c: 4e550000
 	MOVEM.L	D4-D7/A2,-(A7)		;3f260: 48e70f20
@@ -1545,6 +1652,9 @@ LAB_3F2E6:
 	MOVEM.L	(A7)+,D4-D7/A2		;3f2ee: 4cdf04f0
 	UNLK	A5			;3f2f2: 4e5d
 	RTS				;3f2f4: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _zoom_map:
 	LINK.W	A5,#-14			;3f2f6: 4e55fff2
 	MOVE.W	(_mousex,A4),D0		;3f2fa: 302c99aa
@@ -1819,6 +1929,7 @@ LAB_3F666:
 	MOVE.W	(-2,A5),D0		;3f666: 302dfffe
 	EXT.L	D0			;3f66a: 48c0
 	BRA.W	LAB_3FCA4		;3f66c: 60000636
+LAB_3F670:
 	TST.W	(-4,A5)			;3f670: 4a6dfffc
 	BNE.S	LAB_3F6A0		;3f674: 662a
 	MOVE.W	#$12c0,-(A7)		;3f676: 3f3c12c0
@@ -1833,6 +1944,7 @@ LAB_3F666:
 	MOVE.B	#$04,(2,A0)		;3f69a: 117c00040002
 LAB_3F6A0:
 	BRA.W	LAB_3FCB6		;3f6a0: 60000614
+LAB_3F6A4:
 	TST.W	(-4,A5)			;3f6a4: 4a6dfffc
 	BNE.S	LAB_3F6DA		;3f6a8: 6630
 	TST.W	(_paint_map,A4)		;3f6aa: 4a6c9c24
@@ -1864,6 +1976,7 @@ LAB_3F6DA:
 	MOVE.B	(LAB_52DE1,A4),(2,A0)	;3f710: 116c99f30002
 LAB_3F716:
 	BRA.W	LAB_3FCB6		;3f716: 6000059e
+LAB_3F71A:
 	TST.W	(-4,A5)			;3f71a: 4a6dfffc
 	BNE.S	LAB_3F758		;3f71e: 6638
 	MOVE.W	#$12c0,-(A7)		;3f720: 3f3c12c0
@@ -1929,6 +2042,7 @@ LAB_3F7DC:
 	MOVE.W	#$0005,(_pointer,A4)	;3f7fa: 397c000584b6
 LAB_3F800:
 	BRA.W	LAB_3FCB6		;3f800: 600004b4
+LAB_3F804:
 	CMPI.W	#$0003,(-4,A5)		;3f804: 0c6d0003fffc
 	BNE.S	LAB_3F826		;3f80a: 661a
 	MOVEA.L	(-14,A5),A0		;3f80c: 206dfff2
@@ -1939,6 +2053,7 @@ LAB_3F800:
 	CLR.B	(1,A0)			;3f822: 42280001
 LAB_3F826:
 	BRA.W	LAB_3FCB6		;3f826: 6000048e
+LAB_3F82A:
 	CMPI.W	#$0003,(-4,A5)		;3f82a: 0c6d0003fffc
 	BNE.S	LAB_3F850		;3f830: 661e
 	MOVEA.L	(-14,A5),A0		;3f832: 206dfff2
@@ -1959,6 +2074,7 @@ LAB_3F850:
 	MOVE.B	#$03,(1,A0)		;3f86e: 117c00030001
 LAB_3F874:
 	BRA.W	LAB_3FCB6		;3f874: 60000440
+LAB_3F878:
 	CMPI.W	#$0003,(-4,A5)		;3f878: 0c6d0003fffc
 	BNE.S	LAB_3F89C		;3f87e: 661c
 	MOVEA.L	(-14,A5),A0		;3f880: 206dfff2
@@ -1969,6 +2085,7 @@ LAB_3F874:
 	MOVE.B	#$02,(1,A0)		;3f896: 117c00020001
 LAB_3F89C:
 	BRA.W	LAB_3FCB6		;3f89c: 60000418
+LAB_3F8A0:
 	TST.W	(-4,A5)			;3f8a0: 4a6dfffc
 	BEQ.S	LAB_3F8AE		;3f8a4: 6708
 	CMPI.W	#$0001,(-4,A5)		;3f8a6: 0c6d0001fffc
@@ -2014,6 +2131,7 @@ LAB_3F8F0:
 	MOVE.W	D0,(_pointer,A4)	;3f91c: 394084b6
 LAB_3F920:
 	BRA.W	LAB_3FCB6		;3f920: 60000394
+LAB_3F924:
 	TST.W	(-4,A5)			;3f924: 4a6dfffc
 	BNE.W	LAB_3FA40		;3f928: 66000116
 	MOVE.W	#$12c0,-(A7)		;3f92c: 3f3c12c0
@@ -2176,6 +2294,7 @@ LAB_3FB1A:
 	BRA.W	LAB_3FA86		;3fb1e: 6000ff66
 LAB_3FB22:
 	BRA.W	LAB_3FCB6		;3fb22: 60000192
+LAB_3FB26:
 	TST.W	(-4,A5)			;3fb26: 4a6dfffc
 	BNE.W	LAB_3FC8E		;3fb2a: 66000162
 	MOVE.W	#$12c0,-(A7)		;3fb2e: 3f3c12c0
@@ -2287,8 +2406,15 @@ LAB_3FC8E:
 LAB_3FC90:
 	BRA.S	LAB_3FCB6		;3fc90: 6024
 LAB_3FC92:
-	DC.L	$f9bcf9f0,$fa66fb50,$fb76fbc4,$fbecfc70 ;3fc92
-	DC.W	$fe72			;3fca2
+	DC.W	(LAB_3F670)-(LAB_3FCB2+2) ;3fc92: f9bc
+	DC.W	(LAB_3F6A4)-(LAB_3FCB2+2) ;3fc94: f9f0
+	DC.W	(LAB_3F71A)-(LAB_3FCB2+2) ;3fc96: fa66
+	DC.W	(LAB_3F804)-(LAB_3FCB2+2) ;3fc98: fb50
+	DC.W	(LAB_3F82A)-(LAB_3FCB2+2) ;3fc9a: fb76
+	DC.W	(LAB_3F878)-(LAB_3FCB2+2) ;3fc9c: fbc4
+	DC.W	(LAB_3F8A0)-(LAB_3FCB2+2) ;3fc9e: fbec
+	DC.W	(LAB_3F924)-(LAB_3FCB2+2) ;3fca0: fc70
+	DC.W	(LAB_3FB26)-(LAB_3FCB2+2) ;3fca2: fe72
 LAB_3FCA4:
 	CMP.L	#$00000009,D0		;3fca4: b0bc00000009
 	BCC.S	LAB_3FC90		;3fcaa: 64e4
@@ -2323,6 +2449,9 @@ LAB_3FCF2:
 LAB_3FCFE:
 	UNLK	A5			;3fcfe: 4e5d
 	RTS				;3fd00: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_tend_icons:
 	LINK.W	A5,#0			;3fd02: 4e550000
 	MOVE.W	(_player,A4),D0		;3fd06: 302c99f4
@@ -2391,9 +2520,12 @@ LAB_3FDBC:
 LAB_3FDDA:
 	UNLK	A5			;3fdda: 4e5d
 	RTS				;3fddc: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_mode_icons:
 	LINK.W	A5,#0			;3fdde: 4e550000
-	BTST	#2,(LAB_51645,A4)	;3fde2: 082c00028257
+	BTST	#2,(bitfield_51645,A4)	;3fde2: 082c00028257
 	BEQ.S	LAB_3FE04		;3fde8: 671a
 	MOVE.W	#$12c0,-(A7)		;3fdea: 3f3c12c0
 	MOVE.W	#$0002,-(A7)		;3fdee: 3f3c0002
@@ -2403,7 +2535,7 @@ _set_mode_icons:
 	LEA	($A,A7),A7		;3fdfe: 4fef000a
 	BRA.S	LAB_3FE42		;3fe02: 603e
 LAB_3FE04:
-	BTST	#3,(LAB_51645,A4)	;3fe04: 082c00038257
+	BTST	#3,(bitfield_51645,A4)	;3fe04: 082c00038257
 	BEQ.S	LAB_3FE26		;3fe0a: 671a
 	MOVE.W	#$12c0,-(A7)		;3fe0c: 3f3c12c0
 	MOVE.W	#$0002,-(A7)		;3fe10: 3f3c0002
@@ -2433,6 +2565,9 @@ LAB_3FE42:
 LAB_3FE60:
 	UNLK	A5			;3fe60: 4e5d
 	RTS				;3fe62: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _lower_point:
 	LINK.W	A5,#0			;3fe64: 4e550000
 	MOVEM.L	D4-D5/A2-A3,-(A7)	;3fe68: 48e70c30
@@ -2576,6 +2711,11 @@ LAB_3FFAC:
 LAB_3FFBC:
 	MOVE.W	(A2),D0			;3ffbc: 3012
 	BRA.W	LAB_3FE8A		;3ffbe: 6000feca
+; ------------------------------------------------------------------------------
+; Function
+; Probably put the shield on someone
+; Right-click to put the shield temporarily
+; ------------------------------------------------------------------------------
 _interogate:
 	LINK.W	A5,#0			;3ffc2: 4e550000
 	MOVEM.L	D4/A2,-(A7)		;3ffc6: 48e70820
@@ -2623,6 +2763,9 @@ LAB_40032:
 	MOVEM.L	(A7)+,D4/A2		;40032: 4cdf0410
 	UNLK	A5			;40036: 4e5d
 	RTS				;40038: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _show_the_shield:
 	LINK.W	A5,#-14			;4003a: 4e55fff2
 	MOVEM.L	D4/A2,-(A7)		;4003e: 48e70820
@@ -3002,6 +3145,9 @@ LAB_4048A:
 	LEA	($E,A7),A7		;404a4: 4fef000e
 LAB_404A8:
 	BRA.W	LAB_40066		;404a8: 6000fbbc
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_temp_view:
 	LINK.W	A5,#0			;404ac: 4e550000
 	TST.W	(_view_timer,A4)	;404b0: 4a6cae60
@@ -3012,6 +3158,9 @@ LAB_404BC:
 	MOVE.W	(8,A5),(_view_who,A4)	;404c2: 396d0008ae68
 	UNLK	A5			;404c8: 4e5d
 	RTS				;404ca: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _move_mana:
 	LINK.W	A5,#0			;404cc: 4e550000
 	MOVEM.L	D4-D5,-(A7)		;404d0: 48e70c00
@@ -3090,6 +3239,9 @@ LAB_40592:
 	MOVEM.L	(A7)+,D4-D5		;40592: 4cdf0030
 	UNLK	A5			;40596: 4e5d
 	RTS				;40598: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _move_peeps:
 	LINK.W	A5,#-146		;4059a: 4e55ff6e
 	CLR.W	(-42,A5)		;4059e: 426dffd6
@@ -4222,6 +4374,7 @@ LAB_41350:
 	MOVE.W	(_game_turn,A4),D0	;41398: 302cae6a
 	AND.W	#$0007,D0		;4139c: c07c0007
 	BNE.S	LAB_413C0		;413a0: 661e
+; cheat notification every 8 days
 	TST.W	(_cheat,A4)		;413a2: 4a6c2fb4
 	BEQ.S	LAB_413BC		;413a6: 6714
 	PEA	(strCHEAT2,PC)		;413a8: 487a001a
@@ -4239,6 +4392,9 @@ strCHEAT2:
 	;413c4
 	;DC.B	$43,$48,$45,$41,$54,$00
 	DC.B	"CHEAT",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _move_explorer:
 	LINK.W	A5,#-8			;413ca: 4e55fff8
 	MOVEA.L	(8,A5),A0		;413ce: 206d0008
@@ -4460,6 +4616,9 @@ LAB_41686:
 	MOVE.W	(-8,A5),($A,A0)		;41696: 316dfff8000a
 LAB_4169C:
 	BRA.W	LAB_41434		;4169c: 6000fd96
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _where_do_i_go:
 	LINK.W	A5,#-32			;416a0: 4e55ffe0
 	MOVEM.L	D4-D6,-(A7)		;416a4: 48e70e00
@@ -4740,6 +4899,9 @@ LAB_419C6:
 	BNE.S	LAB_419A2		;419cc: 66d4
 	MOVE.W	#$03e7,D0		;419ce: 303c03e7
 	BRA.S	LAB_41972		;419d2: 609e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _move_magnet_peeps:
 	LINK.W	A5,#-14			;419d4: 4e55fff2
 	MOVEM.L	D4/A2,-(A7)		;419d8: 48e70820
@@ -5301,6 +5463,9 @@ LAB_41FB0:
 	BRA.W	LAB_41D72		;41fe2: 6000fd8e
 LAB_41FE6:
 	BRA.W	LAB_41D72		;41fe6: 6000fd8a
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _get_heading:
 	LINK.W	A5,#-12			;41fea: 4e55fff4
 	MOVEM.L	D4/A2-A3,-(A7)		;41fee: 48e70830
@@ -5369,6 +5534,9 @@ LAB_420A4:
 	MOVEM.L	(A7)+,D4/A2-A3		;420ac: 4cdf0c10
 	UNLK	A5			;420b0: 4e5d
 	RTS				;420b2: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _join_forces:
 	LINK.W	A5,#-10			;420b4: 4e55fff6
 	MOVE.W	(8,A5),D0		;420b8: 302d0008
@@ -5471,6 +5639,9 @@ LAB_421D8:
 	MOVEA.L	(-8,A5),A0		;421e8: 206dfff8
 	CLR.W	($C,A0)			;421ec: 4268000c
 	BRA.W	LAB_4210A		;421f0: 6000ff18
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _zero_population:
 	LINK.W	A5,#-2			;421f4: 4e55fffe
 	MOVE.L	A2,-(A7)		;421f8: 2f0a
@@ -5547,6 +5718,9 @@ LAB_422CC:
 	MOVEA.L	(A7)+,A2		;422cc: 245f
 	UNLK	A5			;422ce: 4e5d
 	RTS				;422d0: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_frame:
 	LINK.W	A5,#0			;422d2: 4e550000
 	MOVEM.L	D4/A2-A3,-(A7)		;422d6: 48e70830
@@ -5685,6 +5859,9 @@ LAB_4242A:
 LAB_42436:
 	MOVEQ	#0,D0			;42436: 7000
 	BRA.W	LAB_42300		;42438: 6000fec6
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_town:
 	LINK.W	A5,#-2			;4243c: 4e55fffe
 	MOVEM.L	D4-D5/A2,-(A7)		;42440: 48e70c20
@@ -5883,6 +6060,9 @@ LAB_42682:
 	MOVEM.L	(A7)+,D4-D5/A2		;42682: 4cdf0430
 	UNLK	A5			;42686: 4e5d
 	RTS				;42688: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_battle:
 	LINK.W	A5,#-16			;4268a: 4e55fff0
 	MOVEA.L	(8,A5),A0		;4268e: 206d0008
@@ -6021,6 +6201,9 @@ LAB_4281C:
 LAB_42836:
 	UNLK	A5			;42836: 4e5d
 	RTS				;42838: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _battle_over:
 	LINK.W	A5,#-14			;4283a: 4e55fff2
 	CLR.W	(-10,A5)		;4283e: 426dfff6
@@ -6379,6 +6562,9 @@ LAB_42C9E:
 LAB_42CB6:
 	UNLK	A5			;42cb6: 4e5d
 	RTS				;42cb8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_battle:
 	LINK.W	A5,#-8			;42cba: 4e55fff8
 	MOVE.W	(8,A5),D0		;42cbe: 302d0008
@@ -6471,6 +6657,9 @@ LAB_42DC4:
 LAB_42DE8:
 	UNLK	A5			;42de8: 4e5d
 	RTS				;42dea: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _join_battle:
 	LINK.W	A5,#-8			;42dec: 4e55fff8
 	MOVE.W	(8,A5),D0		;42df0: 302d0008
@@ -6574,6 +6763,9 @@ LAB_42F28:
 	CLR.W	(4,A0)			;42f2c: 42680004
 	UNLK	A5			;42f30: 4e5d
 	RTS				;42f32: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_magnet:
 	LINK.W	A5,#0			;42f34: 4e550000
 	MOVE.W	(8,A5),D0		;42f38: 302d0008
@@ -6625,6 +6817,9 @@ LAB_42FB0:
 LAB_42FC6:
 	UNLK	A5			;42fc6: 4e5d
 	RTS				;42fc8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _rotate_all_map:
 	LINK.W	A5,#-2			;42fca: 4e55fffe
 	MOVEM.L	D4-D5,-(A7)		;42fce: 48e70c00
@@ -6725,6 +6920,9 @@ LAB_430A4:
 	MOVEM.L	(A7)+,D4-D5		;430d0: 4cdf0030
 	UNLK	A5			;430d4: 4e5d
 	RTS				;430d6: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _clear_all_map:
 	LINK.W	A5,#0			;430d8: 4e550000
 	MOVE.L	D4,-(A7)		;430dc: 2f04
@@ -6778,6 +6976,9 @@ LAB_43130:
 	MOVE.L	(A7)+,D4		;4315e: 281f
 	UNLK	A5			;43160: 4e5d
 	RTS				;43162: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _place_people:
 	LINK.W	A5,#-2			;43164: 4e55fffe
 	CMPI.W	#$00d0,(_no_peeps,A4)	;43168: 0c6c00d0ae5e
@@ -6884,6 +7085,9 @@ LAB_432BA:
 	JSR	(_set_frame,PC)		;432ca: 4ebaf006
 	ADDQ.W	#4,A7			;432ce: 584f
 	BRA.W	LAB_43170		;432d0: 6000fe9e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_lower_point:
 	LINK.W	A5,#0			;432d4: 4e550000
 	MOVE.W	($A,A5),(_xmin,A4)	;432d8: 396d000a2f8a
@@ -6970,6 +7174,9 @@ LAB_43382:
 	JSR	(___Setscreen,A4)	;433de: 4eac80c2
 	LEA	($A,A7),A7		;433e2: 4fef000a
 	BRA.W	LAB_4330C		;433e6: 6000ff24
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_raise_point:
 	LINK.W	A5,#0			;433ea: 4e550000
 	MOVE.W	(8,A5),D0		;433ee: 302d0008
@@ -7058,6 +7265,9 @@ LAB_4349E:
 	JSR	(___Setscreen,A4)	;434fa: 4eac80c2
 	LEA	($A,A7),A7		;434fe: 4fef000a
 	BRA.W	LAB_43410		;43502: 6000ff0c
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _sculpt:
 	LINK.W	A5,#-38			;43506: 4e55ffda
 	MOVEM.L	D4-D6,-(A7)		;4350a: 48e70e00
@@ -7241,7 +7451,7 @@ LAB_436F0:
 LAB_43716:
 	TST.W	(_left_button,A4)	;43716: 4a6cae62
 	BNE.W	LAB_43860		;4371a: 66000144
-	BTST	#3,(LAB_51645,A4)	;4371e: 082c00038257
+	BTST	#3,(bitfield_51645,A4)	;4371e: 082c00038257
 	BEQ.S	LAB_437A4		;43724: 677e
 	MOVE.W	(_mode,A4),D0		;43726: 302c8256
 	AND.W	#$0003,D0		;4372a: c07c0003
@@ -7266,7 +7476,7 @@ LAB_43716:
 	MULS	#$002e,D1		;4376e: c3fc002e
 	LEA	(LAB_516A6,A4),A0	;43772: 41ec82b8
 	MOVE.B	D0,(0,A0,D1.L)		;43776: 11801800
-	BCLR	#3,(LAB_51645,A4)	;4377a: 08ac00038257
+	BCLR	#3,(bitfield_51645,A4)	;4377a: 08ac00038257
 	MOVE.W	(_mode,A4),D0		;43780: 302c8256
 	SUBQ.W	#1,D0			;43784: 5340
 	MOVE.W	D0,(_pointer,A4)	;43786: 394084b6
@@ -7278,7 +7488,7 @@ LAB_43716:
 LAB_437A0:
 	BRA.W	LAB_4385E		;437a0: 600000bc
 LAB_437A4:
-	BTST	#2,(LAB_51645,A4)	;437a4: 082c00028257
+	BTST	#2,(bitfield_51645,A4)	;437a4: 082c00028257
 	BEQ.S	LAB_43828		;437aa: 677c
 	MOVE.W	(_mode,A4),D0		;437ac: 302c8256
 	AND.W	#$0003,D0		;437b0: c07c0003
@@ -7303,7 +7513,7 @@ LAB_437A4:
 	MULS	#$002e,D1		;437f4: c3fc002e
 	LEA	(LAB_516A6,A4),A0	;437f8: 41ec82b8
 	MOVE.B	D0,(0,A0,D1.L)		;437fc: 11801800
-	BCLR	#2,(LAB_51645,A4)	;43800: 08ac00028257
+	BCLR	#2,(bitfield_51645,A4)	;43800: 08ac00028257
 	MOVE.W	(_mode,A4),D0		;43806: 302c8256
 	SUBQ.W	#1,D0			;4380a: 5340
 	MOVE.W	D0,(_pointer,A4)	;4380c: 394084b6
@@ -7351,6 +7561,9 @@ LAB_43860:
 	MOVE.B	(-3,A5),(0,A0,D0.L)	;438ac: 11adfffd0800
 LAB_438B2:
 	BRA.W	LAB_4351A		;438b2: 6000fc66
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_flood:
 	LINK.W	A5,#-2			;438b6: 4e55fffe
 	TST.W	(_paint_map,A4)		;438ba: 4a6c9c24
@@ -7433,6 +7646,9 @@ LAB_4394C:
 	LEA	($A,A7),A7		;439ac: 4fef000a
 	MOVE.W	#$004a,(_effect,A4)	;439b0: 397c004a2fac
 	BRA.W	LAB_438F6		;439b6: 6000ff3e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _place_first_people:
 	LINK.W	A5,#-4			;439ba: 4e55fffc
 	CMPI.W	#$ffff,(_in_conquest,A4) ;439be: 0c6cffff84ba
@@ -7441,7 +7657,7 @@ _place_first_people:
 	BNE.S	LAB_439DA		;439cc: 660c
 LAB_439CE:
 	MOVEQ	#0,D0			;439ce: 7000
-	MOVE.B	(LAB_518B0,A4),D0	;439d0: 102c84c2
+	MOVE.B	(conq_06_yourpop,A4),D0	;439d0: 102c84c2
 	MOVE.W	D0,(-4,A5)		;439d4: 3b40fffc
 	BRA.S	LAB_439FE		;439d8: 6024
 LAB_439DA:
@@ -7543,7 +7759,7 @@ LAB_43ACA:
 	BNE.S	LAB_43AE6		;43ad8: 660c
 LAB_43ADA:
 	MOVEQ	#0,D0			;43ada: 7000
-	MOVE.B	(LAB_518B1,A4),D0	;43adc: 102c84c3
+	MOVE.B	(conq_07_enemypop,A4),D0 ;43adc: 102c84c3
 	MOVE.W	D0,(-4,A5)		;43ae0: 3b40fffc
 	BRA.S	LAB_43B0A		;43ae4: 6024
 LAB_43AE6:
@@ -7641,6 +7857,9 @@ LAB_43BD2:
 LAB_43BDC:
 	UNLK	A5			;43bdc: 4e5d
 	RTS				;43bde: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_quake:
 	LINK.W	A5,#-8			;43be0: 4e55fff8
 	TST.W	(_paint_map,A4)		;43be4: 4a6c9c24
@@ -7725,11 +7944,13 @@ LAB_43CCA:
 	SWAP	D0			;43cee: 4840
 	EXT.L	D0			;43cf0: 48c0
 	BRA.S	LAB_43D20		;43cf2: 602c
+LAB_43CF4:
 	MOVE.W	(-4,A5),-(A7)		;43cf4: 3f2dfffc
 	MOVE.W	(-2,A5),-(A7)		;43cf8: 3f2dfffe
 	JSR	(_raise_point,PC)	;43cfc: 4ebab254
 	ADDQ.W	#4,A7			;43d00: 584f
 	BRA.S	LAB_43D32		;43d02: 602e
+LAB_43D04:
 	MOVE.W	(-4,A5),-(A7)		;43d04: 3f2dfffc
 	MOVE.W	(-2,A5),-(A7)		;43d08: 3f2dfffe
 	JSR	(_lower_point,PC)	;43d0c: 4ebac156
@@ -7738,8 +7959,11 @@ LAB_43CCA:
 LAB_43D14:
 	BRA.S	LAB_43D32		;43d14: 601c
 LAB_43D16:
-	DC.L	$ffe4ffc4,$ffd4ffd4	;43d16
-	DC.W	$ffd4			;43d1e
+	DC.W	(LAB_43D14)-(LAB_43D2E+2) ;43d16: ffe4
+	DC.W	(LAB_43CF4)-(LAB_43D2E+2) ;43d18: ffc4
+	DC.W	(LAB_43D04)-(LAB_43D2E+2) ;43d1a: ffd4
+	DC.W	(LAB_43D04)-(LAB_43D2E+2) ;43d1c: ffd4
+	DC.W	(LAB_43D04)-(LAB_43D2E+2) ;43d1e: ffd4
 LAB_43D20:
 	CMP.L	#$00000005,D0		;43d20: b0bc00000005
 	BCC.S	LAB_43D14		;43d26: 64ec
@@ -7816,6 +8040,9 @@ LAB_43DA2:
 	JSR	(___kill_effect,A4)	;43e0e: 4eac8170
 	ADDQ.W	#4,A7			;43e12: 584f
 	BRA.W	LAB_43C20		;43e14: 6000fe0a
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_volcano:
 	LINK.W	A5,#-14			;43e18: 4e55fff2
 	TST.W	(_paint_map,A4)		;43e1c: 4a6c9c24
@@ -8038,6 +8265,9 @@ LAB_4405E:
 	LEA	($A,A7),A7		;440be: 4fef000a
 	MOVE.W	#$004b,(_effect,A4)	;440c2: 397c004b2fac
 	BRA.W	LAB_43E58		;440c8: 6000fd8e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_magnet_to:
 	LINK.W	A5,#0			;440cc: 4e550000
 	TST.W	(_pause,A4)		;440d0: 4a6c9c22
@@ -8059,6 +8289,9 @@ LAB_440FA:
 	MOVE.W	($A,A5),(_devil_magnet,A4) ;440fa: 396d000aae76
 LAB_44100:
 	BRA.S	LAB_440D6		;44100: 60d4
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_swamp:
 	LINK.W	A5,#-8			;44102: 4e55fff8
 	TST.W	(_paint_map,A4)		;44106: 4a6c9c24
@@ -8153,6 +8386,9 @@ LAB_44218:
 	CMPI.W	#$001e,(-6,A5)		;4421c: 0c6d001efffa
 	BNE.W	LAB_44170		;44222: 6600ff4c
 	BRA.W	LAB_44142		;44226: 6000ff1a
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_knight:
 	LINK.W	A5,#0			;4422a: 4e550000
 	MOVE.W	(8,A5),D0		;4422e: 302d0008
@@ -8161,7 +8397,7 @@ _do_knight:
 	LEA	(_magnet,A4),A0		;44236: 41ec99f6
 	TST.W	(0,A0,D0.L)		;4423a: 4a700800
 	BNE.S	LAB_44244		;4423e: 6604
-LAB_44240:
+return_44240:
 	UNLK	A5			;44240: 4e5d
 	RTS				;44242: 4e75
 LAB_44244:
@@ -8173,18 +8409,18 @@ LAB_44244:
 	LEA	(LAB_52DF0,A4),A0	;44252: 41ec9a02
 	MOVE.L	(0,A0,D0.L),D1		;44256: 22300800
 	CMP.L	(LAB_51888,A4),D1	;4425a: b2ac849a
-	BLT.S	LAB_44280		;4425e: 6d20
+	BLT.S	return_44280		;4425e: 6d20
 	TST.W	(_war,A4)		;44260: 4a6cae80
-	BNE.S	LAB_44280		;44264: 661a
+	BNE.S	return_44280		;44264: 661a
 	TST.W	(_pause,A4)		;44266: 4a6c9c22
-	BNE.S	LAB_44280		;4426a: 6614
+	BNE.S	return_44280		;4426a: 6614
 	MOVE.W	(8,A5),D0		;4426c: 302d0008
 	MULS	#$002e,D0		;44270: c1fc002e
 	LEA	(LAB_516B2,A4),A0	;44274: 41ec82c4
 	BTST	#5,(1,A0,D0.L)		;44278: 083000050801
 	BNE.S	LAB_44282		;4427e: 6602
-LAB_44280:
-	BRA.S	LAB_44240		;44280: 60be
+return_44280:
+	BRA.S	return_44240		;44280: 60be
 LAB_44282:
 	MOVE.W	(8,A5),D0		;44282: 302d0008
 	EXT.L	D0			;44286: 48c0
@@ -8239,7 +8475,10 @@ LAB_442A8:
 	LEA	(_magnet,A4),A0		;4431c: 41ec99f6
 	CLR.W	(0,A0,D0.L)		;44320: 42700800
 	MOVE.W	#$0045,(_effect,A4)	;44324: 397c00452fac
-	BRA.W	LAB_44240		;4432a: 6000ff14
+	BRA.W	return_44240		;4432a: 6000ff14
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_war:
 	LINK.W	A5,#-2			;4432e: 4e55fffe
 	TST.W	(_paint_map,A4)		;44332: 4a6c9c24
@@ -8290,6 +8529,9 @@ LAB_443AC:
 	MOVE.W	#$0049,(_effect,A4)	;443b6: 397c00492fac
 	MOVE.W	#$0001,(_war,A4)	;443bc: 397c0001ae80
 	BRA.S	LAB_44368		;443c2: 60a4
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_woods_rocks:
 	LINK.W	A5,#-14			;443c4: 4e55fff2
 	CLR.W	(-10,A5)		;443c8: 426dfff6
@@ -8382,6 +8624,9 @@ LAB_444CC:
 	BNE.W	LAB_443CC		;444e4: 6600fee6
 	UNLK	A5			;444e8: 4e5d
 	RTS				;444ea: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_funny:
 	LINK.W	A5,#-12			;444ec: 4e55fff4
 	LEA	(LAB_5420A,A4),A0	;444f0: 41ecae1c
@@ -8611,6 +8856,9 @@ LAB_447D8:
 	BLT.W	LAB_444FE		;447ea: 6d00fd12
 	UNLK	A5			;447ee: 4e5d
 	RTS				;447f0: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_place_funny:
 	LINK.W	A5,#-18			;447f2: 4e55ffee
 	CMPI.W	#$0002,(8,A5)		;447f6: 0c6d00020008
@@ -8763,6 +9011,9 @@ LAB_449BC:
 	BLT.W	LAB_4484A		;449c2: 6d00fe86
 LAB_449C6:
 	BRA.W	LAB_447FE		;449c6: 6000fe36
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_level:
 	LINK.W	A5,#-14			;449ca: 4e55fff2
 	MOVEM.L	D4-D6,-(A7)		;449ce: 48e70e00
@@ -8891,6 +9142,9 @@ LAB_44B68:
 	BLT.W	LAB_44A32		;44b6e: 6d00fec2
 	MOVEQ	#1,D0			;44b72: 7001
 	BRA.W	LAB_449F8		;44b74: 6000fe82
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _one_block_flat:
 	LINK.W	A5,#-12			;44b78: 4e55fff4
 	MOVEM.L	D4-D5,-(A7)		;44b7c: 48e70c00
@@ -9040,6 +9294,9 @@ LAB_44D4A:
 	CMP.W	D0,D4			;44d50: b840
 	BLE.W	LAB_44C98		;44d52: 6f00ff44
 	BRA.W	LAB_44BDA		;44d56: 6000fe82
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _devil_effect:
 	LINK.W	A5,#-6			;44d5a: 4e55fffa
 	MOVE.L	A2,-(A7)		;44d5e: 2f0a
@@ -9263,6 +9520,9 @@ LAB_4500E:
 	ADDQ.W	#1,($12,A2)		;45022: 526a0012
 LAB_45026:
 	BRA.W	LAB_44D76		;45026: 6000fd4e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_computer_effect:
 	LINK.W	A5,#-4			;4502a: 4e55fffc
 	MOVE.W	(8,A5),D0		;4502e: 302d0008
@@ -9335,6 +9595,9 @@ LAB_450F6:
 	MOVEA.L	($A,A5),A0		;45100: 206d000a
 	MOVE.B	(-3,A5),(2,A0)		;45104: 116dfffd0002
 	BRA.S	LAB_450B4		;4510a: 60a8
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_devil_magnet:
 	LINK.W	A5,#0			;4510c: 4e550000
 	MOVEM.L	D4/A2-A3,-(A7)		;45110: 48e70830
@@ -9632,6 +9895,9 @@ LAB_4545A:
 	MOVE.W	#$0001,(8,A2)		;4547a: 357c00010008
 LAB_45480:
 	BRA.W	LAB_4518E		;45480: 6000fd0c
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _requester:
 	LINK.W	A5,#-6			;45484: 4e55fffa
 	MOVEM.L	D4-D7,-(A7)		;45488: 48e70f00
@@ -10002,6 +10268,9 @@ LAB_4580E:
 	MOVEM.L	(A7)+,D4-D7		;45870: 4cdf00f0
 	UNLK	A5			;45874: 4e5d
 	RTS				;45876: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _toggle_button:
 	LINK.W	A5,#0			;45878: 4e550000
 	MOVEA.L	($C,A5),A0		;4587c: 206d000c
@@ -10032,6 +10301,9 @@ LAB_45896:
 	LEA	($C,A7),A7		;458c8: 4fef000c
 	UNLK	A5			;458cc: 4e5d
 	RTS				;458ce: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _get_name:
 	LINK.W	A5,#-46			;458d0: 4e55ffd2
 	MOVE.L	($C,A5),-(A7)		;458d4: 2f2d000c
@@ -10116,6 +10388,7 @@ LAB_459BE:
 	JSR	(___keyboard,A4)	;459d6: 4eac80f2
 	TST.W	D0			;459da: 4a40
 	BEQ.W	LAB_45A82		;459dc: 670000a4
+; text entry
 	CMPI.B	#$20,(_asckey,A4)	;459e0: 0c2c0020302a
 	BCS.S	LAB_45A4E		;459e6: 6566
 	CMPI.B	#$7a,(_asckey,A4)	;459e8: 0c2c007a302a
@@ -10214,6 +10487,9 @@ LAB_45AFC:
 	BGE.S	LAB_45AEC		;45b14: 6cd6
 LAB_45B16:
 	BRA.S	LAB_45AA4		;45b16: 608c
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _save_load:
 	LINK.W	A5,#-148		;45b18: 4e55ff6c
 	MOVE.L	(_w_screen,A4),(-84,A5)	;45b1c: 2b6c99e8ffac
@@ -10734,6 +11010,9 @@ str_leveldat:
 	;461c4
 	;DC.B	$6c,$65,$76,$65,$6c,$2e,$64,$61,$74,$00
 	DC.B	"level.dat",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _sort:
 	LINK.W	A5,#-42			;461ce: 4e55ffd6
 	MOVEM.L	D4-D7,-(A7)		;461d2: 48e70f00
@@ -10813,6 +11092,9 @@ LAB_4628A:
 	MOVEM.L	(A7)+,D4-D7		;4628a: 4cdf00f0
 	UNLK	A5			;4628e: 4e5d
 	RTS				;46290: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_message:
 	LINK.W	A5,#-6			;46292: 4e55fffa
 	TST.W	($C,A5)			;46296: 4a6d000c
@@ -10855,6 +11137,9 @@ LAB_462F4:
 	MOVE.W	(-6,A5),D0		;4630e: 302dfffa
 	UNLK	A5			;46312: 4e5d
 	RTS				;46314: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _get_a_message:
 	LINK.W	A5,#0			;46316: 4e550000
 	PEA	(_end_cancel,A4)	;4631a: 486c84f4
@@ -10894,6 +11179,9 @@ _get_a_message:
 	MOVE.W	#$0002,(_left_button,A4) ;46396: 397c0002ae62
 	UNLK	A5			;4639c: 4e5d
 	RTS				;4639e: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _serial_message:
 	LINK.W	A5,#-4			;463a0: 4e55fffc
 	CLR.L	-(A7)			;463a4: 42a7
@@ -10971,6 +11259,9 @@ LAB_46472:
 	MOVE.W	#$0001,(0,A0,D0.L)	;4649e: 31bc00010800
 	UNLK	A5			;464a4: 4e5d
 	RTS				;464a6: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _two_players:
 	LINK.W	A5,#-94			;464a8: 4e55ffa2
 	MOVE.W	#$03e7,(-40,A5)		;464ac: 3b7c03e7ffd8
@@ -11319,6 +11610,7 @@ LAB_46928:
 	MOVE.W	(-2,A5),D0		;46934: 302dfffe
 	EXT.L	D0			;46938: 48c0
 	BRA.W	LAB_46BF4		;4693a: 600002b8
+LAB_4693E:
 	TST.W	(_use_modem,A4)		;4693e: 4a6c3084
 	BEQ.W	LAB_469D8		;46942: 67000094
 	CLR.L	-(A7)			;46946: 42a7
@@ -11367,6 +11659,7 @@ LAB_469AE:
 	LEA	($A,A7),A7		;469d4: 4fef000a
 LAB_469D8:
 	BRA.W	LAB_46C06		;469d8: 6000022c
+LAB_469DC:
 	CLR.L	-(A7)			;469dc: 42a7
 	MOVE.L	(-48,A5),-(A7)		;469de: 2f2dffd0
 	MOVE.W	#$0006,-(A7)		;469e2: 3f3c0006
@@ -11410,6 +11703,7 @@ LAB_46A4C:
 	JSR	(_set_baud_rate,PC)	;46a5e: 4eba3d90
 LAB_46A62:
 	BRA.W	LAB_46C06		;46a62: 600001a2
+LAB_46A66:
 	TST.W	(_use_modem,A4)		;46a66: 4a6c3084
 	BNE.S	LAB_46A74		;46a6a: 6608
 	MOVE.W	#$0001,(_use_modem,A4)	;46a6c: 397c00013084
@@ -11419,6 +11713,7 @@ LAB_46A74:
 LAB_46A78:
 	MOVE.W	#$0001,(-40,A5)		;46a78: 3b7c0001ffd8
 	BRA.W	LAB_46C06		;46a7e: 60000186
+LAB_46A82:
 	TST.W	(_use_modem,A4)		;46a82: 4a6c3084
 	BEQ.S	LAB_46A9A		;46a86: 6712
 	TST.W	(_quick_io,A4)		;46a88: 4a6c3056
@@ -11429,6 +11724,7 @@ LAB_46A96:
 	CLR.W	(_quick_io,A4)		;46a96: 426c3056
 LAB_46A9A:
 	BRA.W	LAB_46C06		;46a9a: 6000016a
+LAB_46A9E:
 	TST.W	(-42,A5)		;46a9e: 4a6dffd6
 	BNE.S	LAB_46AAC		;46aa2: 6608
 	MOVE.W	#$0001,(-42,A5)		;46aa4: 3b7c0001ffd6
@@ -11437,6 +11733,7 @@ LAB_46AAC:
 	CLR.W	(-42,A5)		;46aac: 426dffd6
 LAB_46AB0:
 	BRA.W	LAB_46C06		;46ab0: 60000154
+LAB_46AB4:
 	TST.W	(-44,A5)		;46ab4: 4a6dffd4
 	BEQ.S	LAB_46AF8		;46ab8: 673e
 	CLR.W	-(A7)			;46aba: 4267
@@ -11539,7 +11836,14 @@ LAB_46BE0:
 LAB_46BE2:
 	BRA.S	LAB_46C06		;46be2: 6022
 LAB_46BE4:
-	DC.L	$ffdefd3a,$fdd8fe62,$fe7efe9a,$feb0fefe ;46be4
+	DC.W	(LAB_46BE2)-(LAB_46C02+2) ;46be4: ffde
+	DC.W	(LAB_4693E)-(LAB_46C02+2) ;46be6: fd3a
+	DC.W	(LAB_469DC)-(LAB_46C02+2) ;46be8: fdd8
+	DC.W	(LAB_46A66)-(LAB_46C02+2) ;46bea: fe62
+	DC.W	(LAB_46A82)-(LAB_46C02+2) ;46bec: fe7e
+	DC.W	(LAB_46A9E)-(LAB_46C02+2) ;46bee: fe9a
+	DC.W	(LAB_46AB4)-(LAB_46C02+2) ;46bf0: feb0
+	DC.W	(LAB_46B02)-(LAB_46C02+2) ;46bf2: fefe
 LAB_46BF4:
 	CMP.L	#$00000008,D0		;46bf4: b0bc00000008
 	BCC.S	LAB_46BE2		;46bfa: 64e6
@@ -11593,6 +11897,9 @@ LAB_46C80:
 LAB_46C89:
 	DC.B	$0d			;46c89
 	DS.W	1			;46c8a
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _try_serial:
 	LINK.W	A5,#-78			;46c8c: 4e55ffb2
 	MOVE.W	#$0001,(-76,A5)		;46c90: 3b7c0001ffb4
@@ -11793,6 +12100,9 @@ LAB_46F40:
 	;46f40
 	;DC.B	$43,$4f,$4e,$4e,$45,$43,$54,$49,$4f,$4e,$20,$4d,$41,$44,$45,$00
 	DC.B	"CONNECTION MADE",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _check_cancel:
 	LINK.W	A5,#0			;46f50: 4e550000
 	TST.W	(_left_button,A4)	;46f54: 4a6cae62
@@ -11847,6 +12157,9 @@ LAB_46FA4:
 LAB_46FEA:
 	MOVEQ	#0,D0			;46fea: 7000
 	BRA.S	LAB_46FA0		;46fec: 60b2
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _put_in_string:
 	LINK.W	A5,#0			;46fee: 4e550000
 LAB_46FF2:
@@ -11871,6 +12184,9 @@ LAB_47022:
 	CLR.B	(A0)			;47026: 4210
 	UNLK	A5			;47028: 4e5d
 	RTS				;4702a: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _show_world:
 	LINK.W	A5,#-118		;4702c: 4e55ff8a
 	CLR.W	(-22,A5)		;47030: 426dffea
@@ -11898,7 +12214,7 @@ LAB_47064:
 	MOVE.L	(_d_screen,A4),-(A7)	;4707c: 2f2c99ec
 	JSR	(_requester,PC)		;47080: 4ebae402
 	LEA	($14,A7),A7		;47084: 4fef0014
-	PEA	(LAB_51EF0,A4)		;47088: 486c8b02
+	PEA	(strWorldToConquer,A4)	;47088: 486c8b02
 	MOVE.W	(LAB_51EEC,A4),D0	;4708c: 302c8afe
 	ADD.W	#$0018,D0		;47090: d07c0018
 	MOVE.W	D0,-(A7)		;47094: 3f00
@@ -11933,10 +12249,10 @@ LAB_470AC:
 	JSR	(_get_name,PC)		;470fe: 4ebae7d0
 	LEA	($16,A7),A7		;47102: 4fef0016
 	PEA	(_blank,A4)		;47106: 486c91ba
-	MOVE.W	(LAB_51F1A,A4),D0	;4710a: 302c8b2c
+	MOVE.W	(text_y,A4),D0		;4710a: 302c8b2c
 	ADD.W	#$0018,D0		;4710e: d07c0018
 	MOVE.W	D0,-(A7)		;47112: 3f00
-	MOVE.W	(LAB_51F18,A4),D0	;47114: 302c8b2a
+	MOVE.W	(text_x,A4),D0		;47114: 302c8b2a
 	ADD.W	#$0010,D0		;47118: d07c0010
 	MOVE.W	D0,-(A7)		;4711c: 3f00
 	MOVE.L	(_d_screen,A4),-(A7)	;4711e: 2f2c99ec
@@ -11955,33 +12271,37 @@ LAB_4712A:
 	MOVE.W	D0,(_seed,A4)		;47146: 394099e2
 	CLR.B	(_message,A4)		;4714a: 422c3058
 	MOVEQ	#-1,D0			;4714e: 70ff
-LAB_47150:
+return_47150:
 	UNLK	A5			;47150: 4e5d
 	RTS				;47152: 4e75
 LAB_47154:
 	TST.B	(_message,A4)		;47154: 4a2c3058
 	BEQ.S	LAB_471AA		;47158: 6750
+; special case for code = GENESIS
 	PEA	(strGENESIS2,PC)	;4715a: 487a05a6
 	PEA	(_message,A4)		;4715e: 486c3058
 	JSR	(___strcmp,A4)		;47162: 4eac81b2
 	ADDQ.W	#8,A7			;47166: 504f
 	TST.W	D0			;47168: 4a40
 	BNE.S	LAB_47172		;4716a: 6606
+; battle number 0
 	CLR.W	(-18,A5)		;4716c: 426dffee
 	BRA.S	LAB_47180		;47170: 600e
 LAB_47172:
 	PEA	(_message,A4)		;47172: 486c3058
 	JSR	(_decode,PC)		;47176: 4eba1f5c
 	ADDQ.W	#4,A7			;4717a: 584f
+; battle number x 5
 	MOVE.W	D0,(-18,A5)		;4717c: 3b40ffee
 LAB_47180:
 	TST.W	(-18,A5)		;47180: 4a6dffee
 	BGE.S	LAB_471AA		;47184: 6c24
+; No such world
 	PEA	(strNoSuchWorld,PC)	;47186: 487a0582
-	MOVE.W	(LAB_51F1A,A4),D0	;4718a: 302c8b2c
+	MOVE.W	(text_y,A4),D0		;4718a: 302c8b2c
 	ADD.W	#$0018,D0		;4718e: d07c0018
 	MOVE.W	D0,-(A7)		;47192: 3f00
-	MOVE.W	(LAB_51F18,A4),D0	;47194: 302c8b2a
+	MOVE.W	(text_x,A4),D0		;47194: 302c8b2a
 	ADD.W	#$0010,D0		;47198: d07c0010
 	MOVE.W	D0,-(A7)		;4719c: 3f00
 	MOVE.L	(_d_screen,A4),-(A7)	;4719e: 2f2c99ec
@@ -11990,18 +12310,40 @@ LAB_47180:
 LAB_471AA:
 	TST.W	(-18,A5)		;471aa: 4a6dffee
 	BLT.W	LAB_470AC		;471ae: 6d00fefc
+; valid
 	MOVE.W	#$0001,(-22,A5)		;471b2: 3b7c0001ffea
 	MOVE.W	(-18,A5),D0		;471b8: 302dffee
 	EXT.L	D0			;471bc: 48c0
+; / 25 (level number / 5)
 	DIVS	#$0019,D0		;471be: 81fc0019
 	MOVE.W	D0,(-20,A5)		;471c2: 3b40ffec
+; ------------------------------------------------------------------------------
+; Load level data
+; level.dat is a 990 byte file containing 99 10-byte entries
+; The game has 99 * 5 = 495 levels
+; Valid numbers for each column:
+; 0 01 02 03 04 05 06 07 08 09 0a
+; 1 01 02 03 04 05 06 07 08 09 0a
+; 2 00 01 02 03 04 05 06 07 08 0a 0b 0c 0d 0f 10 12 14 20 22 24 34 38 3a 3e 3f
+; 3 00 01 02 04 08 09 0b 0f 12 19 1b 1e 1f 20 22 24 29 2d 2e 2f 30 31 32 33 34
+;   35 36 37 38 39 3a 3b 3c 3d 3e 3f
+; 4 00 01 03 04 08 0a 10 11 12
+; 5 00 01 02 03
+; 6 01 02 03 04 05 06 07 0a 0c 14 1e
+; 7 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f 14 1e
+; 8 0019 001e 002d 003c 004b 005a 0069 0082 0091 00a0 00af 00cd 00dc 00eb 00fa
+;   0118 0127 0136 0154 0163 0172 0181 0190 019f 01ae 01bd 01cc 01ea 01f9 0208
+;   0217 0226 0235 0244 0253 0260 0262 0271 0280 028f 029e 02ad 02bc 02cb 02da
+;   03e8 03f7 0401 0406 040b 041a 0429 043d 0442 0451 0a5f 0bb8 0d5f 0db6 118f
+;   5fd6 6302 6f97 75bd 7cdf 7e8e
+; ------------------------------------------------------------------------------
 	PEA	$3ED.W			;471c6: 487803ed
 	PEA	(str_level_dat,PC)	;471ca: 487a054c
 	JSR	(___Open,A4)		;471ce: 4eac81e2
 	ADDQ.W	#8,A7			;471d2: 504f
 	MOVE.L	D0,(-26,A5)		;471d4: 2b40ffe6
 	TST.L	D0			;471d8: 4a80
-	BLE.S	LAB_47222		;471da: 6f46
+	BLE.S	diskerr_47222		;471da: 6f46
 	PEA	-1.W			;471dc: 4878ffff
 	MOVE.W	(-20,A5),D0		;471e0: 302dffec
 	MULU	#$000a,D0		;471e4: c0fc000a
@@ -12014,6 +12356,7 @@ LAB_471AA:
 	CMP.L	#$ffffffff,D0		;471fa: b0bcffffffff
 	BEQ.S	LAB_47216		;47200: 6714
 	PEA	$A.W			;47202: 4878000a
+; 10 bytes read to this buffer _conquest
 	PEA	(_conquest,A4)		;47206: 486c84bc
 	MOVE.L	(-26,A5),-(A7)		;4720a: 2f2dffe6
 	JSR	(___Read,A4)		;4720e: 4eac81e8
@@ -12023,9 +12366,10 @@ LAB_47216:
 	JSR	(___Close,A4)		;4721a: 4eac81d6
 	ADDQ.W	#4,A7			;4721e: 584f
 	BRA.S	LAB_47236		;47220: 6014
-LAB_47222:
+diskerr_47222:
 	CLR.W	(-22,A5)		;47222: 426dffea
 	CLR.W	-(A7)			;47226: 4267
+; insert disk
 	MOVE.L	(LAB_51BD8,A4),-(A7)	;47228: 2f2c87ea
 	JSR	(_do_message,PC)	;4722c: 4ebaf064
 	ADDQ.W	#6,A7			;47230: 5c4f
@@ -12034,9 +12378,14 @@ LAB_47236:
 	MOVE.W	#$0002,(_left_button,A4) ;47236: 397c0002ae62
 	MOVE.W	#$0001,(-20,A5)		;4723c: 3b7c0001ffec
 LAB_47242:
+; loop 1 to 16
 	MOVE.W	(-20,A5),D0		;47242: 302dffec
 	EXT.L	D0			;47246: 48c0
 	BRA.W	LAB_4760C		;47248: 600003c2
+; ------------------------------------------------------------------------------
+; #1
+; ------------------------------------------------------------------------------
+line_1:
 	MOVE.W	(-18,A5),D0		;4724c: 302dffee
 	EXT.L	D0			;47250: 48c0
 	DIVS	#$0005,D0		;47252: 81fc0005
@@ -12051,35 +12400,43 @@ LAB_47242:
 	PEA	(-10,A5)		;47272: 486dfff6
 	MOVE.W	(-20,A5),D0		;47276: 302dffec
 	MULS	#$002e,D0		;4727a: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;4727e: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;4727e: 41ec8b02
 	ADD.L	A0,D0			;47282: d088
 	MOVE.L	D0,-(A7)		;47284: 2f00
 	JSR	(_put_in_string,PC)	;47286: 4ebafd66
 	LEA	($A,A7),A7		;4728a: 4fef000a
 	BRA.W	LAB_47620		;4728e: 60000390
+; ------------------------------------------------------------------------------
+; #2
+; ------------------------------------------------------------------------------
+line_2:
 	MOVE.W	(-20,A5),D0		;47292: 302dffec
 	MULS	#$002e,D0		;47296: c1fc002e
 	LEA	(LAB_51EEE,A4),A0	;4729a: 41ec8b00
 	MOVE.W	(0,A0,D0.L),-(A7)	;4729e: 3f300800
 	MOVEQ	#0,D0			;472a2: 7000
-	MOVE.B	(LAB_518AF,A4),D0	;472a4: 102c84c1
+	MOVE.B	(conq_05_terrain,A4),D0	;472a4: 102c84c1
 	ASL.L	#2,D0			;472a8: e580
 	LEA	(_con_text,A4),A0	;472aa: 41ec8dae
 	MOVE.L	(0,A0,D0.L),-(A7)	;472ae: 2f300800
 	MOVE.W	(-20,A5),D0		;472b2: 302dffec
 	MULS	#$002e,D0		;472b6: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;472ba: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;472ba: 41ec8b02
 	ADD.L	A0,D0			;472be: d088
 	MOVE.L	D0,-(A7)		;472c0: 2f00
 	JSR	(_put_in_string,PC)	;472c2: 4ebafd2a
 	LEA	($A,A7),A7		;472c6: 4fef000a
 	BRA.W	LAB_47620		;472ca: 60000354
+; ------------------------------------------------------------------------------
+; #3
+; ------------------------------------------------------------------------------
+line_3:
 	MOVE.W	(-20,A5),D0		;472ce: 302dffec
 	MULS	#$002e,D0		;472d2: c1fc002e
 	LEA	(LAB_51EEE,A4),A0	;472d6: 41ec8b00
 	MOVE.W	(0,A0,D0.L),-(A7)	;472da: 3f300800
 	MOVEQ	#0,D0			;472de: 7000
-	MOVE.B	(LAB_518AB,A4),D0	;472e0: 102c84bd
+	MOVE.B	(conq_01_speed,A4),D0	;472e0: 102c84bd
 	MOVEQ	#$A,D1			;472e4: 720a
 	SUB.W	D0,D1			;472e6: 9240
 	LSR.W	#1,D1			;472e8: e249
@@ -12091,12 +12448,16 @@ LAB_47242:
 	MOVE.L	(0,A0,D0.L),-(A7)	;472f6: 2f300800
 	MOVE.W	(-20,A5),D0		;472fa: 302dffec
 	MULS	#$002e,D0		;472fe: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;47302: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;47302: 41ec8b02
 	ADD.L	A0,D0			;47306: d088
 	MOVE.L	D0,-(A7)		;47308: 2f00
 	JSR	(_put_in_string,PC)	;4730a: 4ebafce2
 	LEA	($A,A7),A7		;4730e: 4fef000a
 	BRA.W	LAB_47620		;47312: 6000030c
+; ------------------------------------------------------------------------------
+; #4
+; ------------------------------------------------------------------------------
+line_4:
 	MOVE.W	(-20,A5),D0		;47316: 302dffec
 	MULS	#$002e,D0		;4731a: c1fc002e
 	LEA	(LAB_51EEE,A4),A0	;4731e: 41ec8b00
@@ -12114,23 +12475,27 @@ LAB_47242:
 	MOVE.L	(0,A0,D0.L),-(A7)	;47340: 2f300800
 	MOVE.W	(-20,A5),D0		;47344: 302dffec
 	MULS	#$002e,D0		;47348: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;4734c: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;4734c: 41ec8b02
 	ADD.L	A0,D0			;47350: d088
 	MOVE.L	D0,-(A7)		;47352: 2f00
 	JSR	(_put_in_string,PC)	;47354: 4ebafc98
 	LEA	($A,A7),A7		;47358: 4fef000a
 	BRA.W	LAB_47620		;4735c: 600002c2
-	BTST	#2,(LAB_518AE,A4)	;47360: 082c000284c0
+; ------------------------------------------------------------------------------
+; #5
+; ------------------------------------------------------------------------------
+line_5:
+	BTST	#2,(conq_04_mode,A4)	;47360: 082c000284c0
 	BEQ.S	LAB_47370		;47366: 6708
 	MOVE.L	(LAB_521D4,A4),(-14,A5)	;47368: 2b6c8de6fff2
 	BRA.S	LAB_47396		;4736e: 6026
 LAB_47370:
-	BTST	#4,(LAB_518AE,A4)	;47370: 082c000484c0
+	BTST	#4,(conq_04_mode,A4)	;47370: 082c000484c0
 	BEQ.S	LAB_47380		;47376: 6708
 	MOVE.L	(LAB_521D8,A4),(-14,A5)	;47378: 2b6c8deafff2
 	BRA.S	LAB_47396		;4737e: 6016
 LAB_47380:
-	BTST	#3,(LAB_518AE,A4)	;47380: 082c000384c0
+	BTST	#3,(conq_04_mode,A4)	;47380: 082c000384c0
 	BEQ.S	LAB_47390		;47386: 6708
 	MOVE.L	(LAB_521DC,A4),(-14,A5)	;47388: 2b6c8deefff2
 	BRA.S	LAB_47396		;4738e: 6006
@@ -12144,13 +12509,17 @@ LAB_47396:
 	MOVE.L	(-14,A5),-(A7)		;473a6: 2f2dfff2
 	MOVE.W	(-20,A5),D0		;473aa: 302dffec
 	MULS	#$002e,D0		;473ae: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;473b2: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;473b2: 41ec8b02
 	ADD.L	A0,D0			;473b6: d088
 	MOVE.L	D0,-(A7)		;473b8: 2f00
 	JSR	(_put_in_string,PC)	;473ba: 4ebafc32
 	LEA	($A,A7),A7		;473be: 4fef000a
 	BRA.W	LAB_47620		;473c2: 6000025c
-	BTST	#1,(LAB_518AE,A4)	;473c6: 082c000184c0
+; ------------------------------------------------------------------------------
+; #6
+; ------------------------------------------------------------------------------
+line_6:
+	BTST	#1,(conq_04_mode,A4)	;473c6: 082c000184c0
 	BEQ.S	LAB_473D6		;473cc: 6708
 	MOVE.L	(LAB_521E8,A4),(-14,A5)	;473ce: 2b6c8dfafff2
 	BRA.S	LAB_473DC		;473d4: 6006
@@ -12164,13 +12533,17 @@ LAB_473DC:
 	MOVE.L	(-14,A5),-(A7)		;473ec: 2f2dfff2
 	MOVE.W	(-20,A5),D0		;473f0: 302dffec
 	MULS	#$002e,D0		;473f4: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;473f8: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;473f8: 41ec8b02
 	ADD.L	A0,D0			;473fc: d088
 	MOVE.L	D0,-(A7)		;473fe: 2f00
 	JSR	(_put_in_string,PC)	;47400: 4ebafbec
 	LEA	($A,A7),A7		;47404: 4fef000a
 	BRA.W	LAB_47620		;47408: 60000216
-	BTST	#0,(LAB_518AE,A4)	;4740c: 082c000084c0
+; ------------------------------------------------------------------------------
+; #7
+; ------------------------------------------------------------------------------
+line_7:
+	BTST	#0,(conq_04_mode,A4)	;4740c: 082c000084c0
 	BEQ.S	LAB_4741C		;47412: 6708
 	MOVE.L	(LAB_521F0,A4),(-14,A5)	;47414: 2b6c8e02fff2
 	BRA.S	LAB_47422		;4741a: 6006
@@ -12184,15 +12557,23 @@ LAB_47422:
 	MOVE.L	(-14,A5),-(A7)		;47432: 2f2dfff2
 	MOVE.W	(-20,A5),D0		;47436: 302dffec
 	MULS	#$002e,D0		;4743a: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;4743e: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;4743e: 41ec8b02
 	ADD.L	A0,D0			;47442: d088
 	MOVE.L	D0,-(A7)		;47444: 2f00
 	JSR	(_put_in_string,PC)	;47446: 4ebafba6
 	LEA	($A,A7),A7		;4744a: 4fef000a
 	BRA.W	LAB_47620		;4744e: 600001d0
+; ------------------------------------------------------------------------------
+; #8
+; ------------------------------------------------------------------------------
+line_8:
 	BRA.W	LAB_47620		;47452: 600001cc
+; ------------------------------------------------------------------------------
+; #9
+; ------------------------------------------------------------------------------
+line_9:
 	MOVEQ	#0,D0			;47456: 7000
-	MOVE.B	(LAB_518B0,A4),D0	;47458: 102c84c2
+	MOVE.B	(conq_06_yourpop,A4),D0	;47458: 102c84c2
 	MOVE.W	D0,-(A7)		;4745c: 3f00
 	PEA	(-10,A5)		;4745e: 486dfff6
 	JSR	(___word_asc,A4)	;47462: 4eac818e
@@ -12218,7 +12599,7 @@ LAB_47422:
 	JSR	(___text,A4)		;474ac: 4eac813a
 	LEA	($C,A7),A7		;474b0: 4fef000c
 	MOVEQ	#0,D0			;474b4: 7000
-	MOVE.B	(LAB_518B1,A4),D0	;474b6: 102c84c3
+	MOVE.B	(conq_07_enemypop,A4),D0 ;474b6: 102c84c3
 	MOVE.W	D0,-(A7)		;474ba: 3f00
 	PEA	(-10,A5)		;474bc: 486dfff6
 	JSR	(___word_asc,A4)	;474c0: 4eac818e
@@ -12244,9 +12625,12 @@ LAB_47422:
 	JSR	(___text,A4)		;4750a: 4eac813a
 	LEA	($C,A7),A7		;4750e: 4fef000c
 	BRA.W	LAB_47620		;47512: 6000010c
-LAB_47516:
+; ------------------------------------------------------------------------------
+; #0
+; ------------------------------------------------------------------------------
+line_0:
 	MOVEQ	#0,D0			;47516: 7000
-	MOVE.B	(LAB_518AD,A4),D0	;47518: 102c84bf
+	MOVE.B	(conq_03_yourpow,A4),D0	;47518: 102c84bf
 	MOVE.W	(-20,A5),D1		;4751c: 322dffec
 	SUB.W	#$000a,D1		;47520: 927c000a
 	MOVEQ	#1,D2			;47524: 7401
@@ -12279,7 +12663,7 @@ LAB_4753A:
 	JSR	(___text,A4)		;4757e: 4eac813a
 	LEA	($C,A7),A7		;47582: 4fef000c
 	MOVEQ	#0,D0			;47586: 7000
-	MOVE.B	(LAB_518AC,A4),D0	;47588: 102c84be
+	MOVE.B	(conq_02_enemypow,A4),D0 ;47588: 102c84be
 	MOVE.W	(-20,A5),D1		;4758c: 322dffec
 	SUB.W	#$000a,D1		;47590: 927c000a
 	MOVEQ	#1,D2			;47594: 7401
@@ -12313,19 +12697,30 @@ LAB_475AA:
 	LEA	($C,A7),A7		;475f2: 4fef000c
 	BRA.S	LAB_47620		;475f6: 6028
 LAB_475F8:
-	DC.L	$fef8fc2e,$fc74fcb0,$fcf8fd42,$fda8fdee ;475f8
-	DC.L	$fe34fe38		;47608
+	DC.W	(line_0)-(LAB_4761C+2)	;475f8: fef8
+	DC.W	(line_1)-(LAB_4761C+2)	;475fa: fc2e
+	DC.W	(line_2)-(LAB_4761C+2)	;475fc: fc74
+	DC.W	(line_3)-(LAB_4761C+2)	;475fe: fcb0
+	DC.W	(line_4)-(LAB_4761C+2)	;47600: fcf8
+	DC.W	(line_5)-(LAB_4761C+2)	;47602: fd42
+	DC.W	(line_6)-(LAB_4761C+2)	;47604: fda8
+	DC.W	(line_7)-(LAB_4761C+2)	;47606: fdee
+	DC.W	(line_8)-(LAB_4761C+2)	;47608: fe34
+	DC.W	(line_9)-(LAB_4761C+2)	;4760a: fe38
 LAB_4760C:
+; level 10+ = 0
+; conquest new game screen data fields
 	CMP.L	#$0000000a,D0		;4760c: b0bc0000000a
-	BCC.W	LAB_47516		;47612: 6400ff02
+	BCC.W	line_0			;47612: 6400ff02
 	ASL.L	#1,D0			;47616: e380
 	MOVE.W	(LAB_475F8,PC,D0.W),D0	;47618: 303b00de
 LAB_4761C:
+; jump table
 	JMP	(LAB_4761C+2,PC,D0.W)	;4761c: 4efb0000
 LAB_47620:
 	MOVE.W	(-20,A5),D0		;47620: 302dffec
 	MULS	#$002e,D0		;47624: c1fc002e
-	LEA	(LAB_51EF0,A4),A0	;47628: 41ec8b02
+	LEA	(strWorldToConquer,A4),A0 ;47628: 41ec8b02
 	ADD.L	A0,D0			;4762c: d088
 	MOVE.L	D0,-(A7)		;4762e: 2f00
 	MOVE.W	(-20,A5),D0		;47630: 302dffec
@@ -12375,7 +12770,7 @@ LAB_476A2:
 	CLR.W	(_war,A4)		;476d4: 426cae80
 	MOVE.W	(-18,A5),(_level_number,A4) ;476d8: 396dffeeae7e
 	MOVE.W	(-18,A5),D0		;476de: 302dffee
-	BRA.W	LAB_47150		;476e2: 6000fa6c
+	BRA.W	return_47150		;476e2: 6000fa6c
 strStartGame:
 	;476e6
 	;DC.B	$53,$54,$41,$52,$54,$20,$47,$41,$4d,$45,$00
@@ -12400,6 +12795,9 @@ str_level_dat:
 	;47718
 	;DC.B	$6c,$65,$76,$65,$6c,$2e,$64,$61,$74,$00
 	DC.B	"level.dat",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _game_options:
 	LINK.W	A5,#-16			;47722: 4e55fff0
 	MOVE.W	#$0001,(-4,A5)		;47726: 3b7c0001fffc
@@ -12414,7 +12812,7 @@ _game_options:
 	CLR.W	(_bring_up_two,A4)	;47756: 426c3080
 	MOVE.W	(_serial_off,A4),D0	;4775a: 302c8254
 	ADD.W	#$0080,D0		;4775e: d07c0080
-	MOVE.B	D0,(LAB_51C10,A4)	;47762: 19408822
+	MOVE.B	D0,(strOnePlayer,A4)	;47762: 19408822
 	TST.W	(_serial_off,A4)	;47766: 4a6c8254
 	BNE.S	LAB_47770		;4776a: 6604
 	MOVEQ	#1,D0			;4776c: 7001
@@ -12423,7 +12821,7 @@ LAB_47770:
 	MOVEQ	#0,D0			;47770: 7000
 LAB_47772:
 	ADD.W	#$0080,D0		;47772: d07c0080
-	MOVE.B	D0,(LAB_51C3E,A4)	;47776: 19408850
+	MOVE.B	D0,(strTwoplayers,A4)	;47776: 19408850
 	TST.W	(_paint_map,A4)		;4777a: 4a6c9c24
 	BNE.S	LAB_47784		;4777e: 6604
 	MOVEQ	#1,D0			;47780: 7001
@@ -12432,10 +12830,10 @@ LAB_47784:
 	MOVEQ	#0,D0			;47784: 7000
 LAB_47786:
 	ADD.W	#$0080,D0		;47786: d07c0080
-	MOVE.B	D0,(LAB_51C6C,A4)	;4778a: 1940887e
+	MOVE.B	D0,(strPlayGame,A4)	;4778a: 1940887e
 	MOVE.W	(_paint_map,A4),D0	;4778e: 302c9c24
 	ADD.W	#$0080,D0		;47792: d07c0080
-	MOVE.B	D0,(LAB_51C9A,A4)	;47796: 194088ac
+	MOVE.B	D0,(strPaintMap,A4)	;47796: 194088ac
 	TST.W	(_player,A4)		;4779a: 4a6c99f4
 	BNE.S	LAB_477A4		;4779e: 6604
 	MOVEQ	#1,D0			;477a0: 7001
@@ -12444,10 +12842,10 @@ LAB_477A4:
 	MOVEQ	#0,D0			;477a4: 7000
 LAB_477A6:
 	ADD.W	#$0080,D0		;477a6: d07c0080
-	MOVE.B	D0,(LAB_51CC8,A4)	;477aa: 194088da
+	MOVE.B	D0,(strGood,A4)		;477aa: 194088da
 	MOVE.W	(_player,A4),D0		;477ae: 302c99f4
 	ADD.W	#$0080,D0		;477b2: d07c0080
-	MOVE.B	D0,(LAB_51CF6,A4)	;477b6: 19408908
+	MOVE.B	D0,(strEvil,A4)		;477b6: 19408908
 	MOVE.W	(_player,A4),D0		;477ba: 302c99f4
 	MULS	#$002e,D0		;477be: c1fc002e
 	LEA	(LAB_516AA,A4),A0	;477c2: 41ec82bc
@@ -12459,13 +12857,13 @@ LAB_477D0:
 	MOVEQ	#0,D0			;477d0: 7000
 LAB_477D2:
 	ADD.W	#$0080,D0		;477d2: d07c0080
-	MOVE.B	D0,(LAB_51D24,A4)	;477d6: 19408936
+	MOVE.B	D0,(strHumanVsAmiga,A4)	;477d6: 19408936
 	MOVE.W	(_player,A4),D0		;477da: 302c99f4
 	MULS	#$002e,D0		;477de: c1fc002e
 	LEA	(LAB_516AA,A4),A0	;477e2: 41ec82bc
 	MOVE.W	(0,A0,D0.L),D1		;477e6: 32300800
 	ADD.W	#$0080,D1		;477ea: d27c0080
-	MOVE.B	D1,(LAB_51D52,A4)	;477ee: 19418964
+	MOVE.B	D1,(strAmigaVsAmiga,A4)	;477ee: 19418964
 	CMPI.W	#$ffff,(_in_conquest,A4) ;477f2: 0c6cffff84ba
 	BEQ.S	LAB_477FE		;477f8: 6704
 	MOVEQ	#1,D0			;477fa: 7001
@@ -12474,7 +12872,7 @@ LAB_477FE:
 	MOVEQ	#0,D0			;477fe: 7000
 LAB_47800:
 	ADD.W	#$0080,D0		;47800: d07c0080
-	MOVE.B	D0,(LAB_51D80,A4)	;47804: 19408992
+	MOVE.B	D0,(strConquest2,A4)	;47804: 19408992
 	CMPI.W	#$ffff,(_in_conquest,A4) ;47808: 0c6cffff84ba
 	BNE.S	LAB_47814		;4780e: 6604
 	MOVEQ	#1,D0			;47810: 7001
@@ -12483,7 +12881,7 @@ LAB_47814:
 	MOVEQ	#0,D0			;47814: 7000
 LAB_47816:
 	ADD.W	#$0080,D0		;47816: d07c0080
-	MOVE.B	D0,(LAB_51DAE,A4)	;4781a: 194089c0
+	MOVE.B	D0,(strCustomGame,A4)	;4781a: 194089c0
 	CLR.W	(_saved,A4)		;4781e: 426c3054
 LAB_47822:
 	TST.W	(-4,A5)			;47822: 4a6dfffc
@@ -12503,7 +12901,7 @@ LAB_47850:
 LAB_47854:
 	MOVE.W	(-2,A5),D0		;47854: 302dfffe
 	MULS	#$002e,D0		;47858: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;4785c: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;4785c: 41ec87f4
 	ADD.L	A0,D0			;47860: d088
 	MOVE.L	D0,-(A7)		;47862: 2f00
 	MOVE.W	(-2,A5),D0		;47864: 302dfffe
@@ -12582,14 +12980,15 @@ LAB_4795E:
 	MOVE.W	(-2,A5),D0		;4795e: 302dfffe
 	EXT.L	D0			;47962: 48c0
 	BRA.W	LAB_47DB8		;47964: 60000452
+LAB_47968:
 	MOVE.W	(-2,A5),D0		;47968: 302dfffe
 	MULS	#$002e,D0		;4796c: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47970: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47970: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47974: 11bc00810800
 	MOVE.W	(-2,A5),D0		;4797a: 302dfffe
 	ADDQ.W	#1,D0			;4797e: 5240
 	MULS	#$002e,D0		;47980: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47984: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47984: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47988: 11bc00800800
 	TST.W	(_serial_off,A4)	;4798e: 4a6c8254
 	BNE.S	LAB_479C8		;47992: 6634
@@ -12601,21 +13000,22 @@ LAB_4795E:
 	MULS	#$002e,D0		;479a8: c1fc002e
 	LEA	(LAB_516AA,A4),A0	;479ac: 41ec82bc
 	MOVE.W	#$0001,(0,A0,D0.L)	;479b0: 31bc00010800
-	MOVE.B	#$81,(LAB_51D24,A4)	;479b6: 197c00818936
-	MOVE.B	#$80,(LAB_51D52,A4)	;479bc: 197c00808964
+	MOVE.B	#$81,(strHumanVsAmiga,A4) ;479b6: 197c00818936
+	MOVE.B	#$80,(strAmigaVsAmiga,A4) ;479bc: 197c00808964
 	MOVE.W	#$0001,(_serial_off,A4)	;479c2: 397c00018254
 LAB_479C8:
 	BRA.W	LAB_47DCA		;479c8: 60000400
+LAB_479CC:
 	TST.W	(_serial_off,A4)	;479cc: 4a6c8254
 	BEQ.S	LAB_47A0E		;479d0: 673c
 	MOVE.W	(-2,A5),D0		;479d2: 302dfffe
 	MULS	#$002e,D0		;479d6: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;479da: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;479da: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;479de: 11bc00810800
 	MOVE.W	(-2,A5),D0		;479e4: 302dfffe
 	SUBQ.W	#1,D0			;479e8: 5340
 	MULS	#$002e,D0		;479ea: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;479ee: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;479ee: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;479f2: 11bc00800800
 	CLR.W	-(A7)			;479f8: 4267
 	JSR	(_two_players,PC)	;479fa: 4ebaeaac
@@ -12631,36 +13031,39 @@ LAB_47A14:
 	RTS				;47a16: 4e75
 LAB_47A18:
 	BRA.W	LAB_47DCA		;47a18: 600003b0
+LAB_47A1C:
 	MOVE.W	(-2,A5),D0		;47a1c: 302dfffe
 	MULS	#$002e,D0		;47a20: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a24: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a24: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47a28: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47a2e: 302dfffe
 	ADDQ.W	#1,D0			;47a32: 5240
 	MULS	#$002e,D0		;47a34: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a38: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a38: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47a3c: 11bc00800800
 	CLR.W	(_paint_map,A4)		;47a42: 426c9c24
 	BRA.W	LAB_47DCA		;47a46: 60000382
+LAB_47A4A:
 	MOVE.W	(-2,A5),D0		;47a4a: 302dfffe
 	MULS	#$002e,D0		;47a4e: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a52: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a52: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47a56: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47a5c: 302dfffe
 	SUBQ.W	#1,D0			;47a60: 5340
 	MULS	#$002e,D0		;47a62: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a66: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a66: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47a6a: 11bc00800800
 	MOVE.W	#$0001,(_paint_map,A4)	;47a70: 397c00019c24
 	BRA.W	LAB_47DCA		;47a76: 60000352
+LAB_47A7A:
 	MOVE.W	(-2,A5),D0		;47a7a: 302dfffe
 	MULS	#$002e,D0		;47a7e: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a82: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a82: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47a86: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47a8c: 302dfffe
 	ADDQ.W	#1,D0			;47a90: 5240
 	MULS	#$002e,D0		;47a92: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47a96: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47a96: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47a9a: 11bc00800800
 	MOVE.W	#$ffff,-(A7)		;47aa0: 3f3cffff
 	MOVE.W	#$ffff,-(A7)		;47aa4: 3f3cffff
@@ -12685,7 +13088,7 @@ LAB_47A18:
 	MOVE.W	#$0001,(_pointer,A4)	;47af2: 397c000184b6
 	BRA.S	LAB_47B0C		;47af8: 6012
 LAB_47AFA:
-	BTST	#2,(LAB_51645,A4)	;47afa: 082c00028257
+	BTST	#2,(bitfield_51645,A4)	;47afa: 082c00028257
 	BEQ.S	LAB_47B0C		;47b00: 670a
 	MOVE.W	(_player,A4),D0		;47b02: 302c99f4
 	ADDQ.W	#2,D0			;47b06: 5440
@@ -12707,14 +13110,15 @@ LAB_47B1E:
 	JSR	(___set_mode_icons,A4)	;47b34: 4eac8032
 	ADDQ.W	#4,A7			;47b38: 584f
 	BRA.W	LAB_47DCA		;47b3a: 6000028e
+LAB_47B3E:
 	MOVE.W	(-2,A5),D0		;47b3e: 302dfffe
 	MULS	#$002e,D0		;47b42: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47b46: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47b46: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47b4a: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47b50: 302dfffe
 	SUBQ.W	#1,D0			;47b54: 5340
 	MULS	#$002e,D0		;47b56: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47b5a: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47b5a: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47b5e: 11bc00800800
 	MOVE.W	#$ffff,-(A7)		;47b64: 3f3cffff
 	MOVE.W	#$ffff,-(A7)		;47b68: 3f3cffff
@@ -12739,7 +13143,7 @@ LAB_47B1E:
 	MOVE.W	#$0004,(_pointer,A4)	;47bb8: 397c000484b6
 	BRA.S	LAB_47BD2		;47bbe: 6012
 LAB_47BC0:
-	BTST	#2,(LAB_51645,A4)	;47bc0: 082c00028257
+	BTST	#2,(bitfield_51645,A4)	;47bc0: 082c00028257
 	BEQ.S	LAB_47BD2		;47bc6: 670a
 	MOVE.W	(_player,A4),D0		;47bc8: 302c99f4
 	ADDQ.W	#2,D0			;47bcc: 5440
@@ -12761,14 +13165,15 @@ LAB_47BE4:
 	JSR	(___set_mode_icons,A4)	;47bfa: 4eac8032
 	ADDQ.W	#4,A7			;47bfe: 584f
 	BRA.W	LAB_47DCA		;47c00: 600001c8
+LAB_47C04:
 	MOVE.W	(-2,A5),D0		;47c04: 302dfffe
 	MULS	#$002e,D0		;47c08: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47c0c: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47c0c: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47c10: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47c16: 302dfffe
 	ADDQ.W	#1,D0			;47c1a: 5240
 	MULS	#$002e,D0		;47c1c: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47c20: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47c20: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47c24: 11bc00800800
 	MOVE.W	(_player,A4),D0		;47c2a: 302c99f4
 	MULS	#$002e,D0		;47c2e: c1fc002e
@@ -12788,14 +13193,15 @@ LAB_47C4C:
 	MOVE.W	#$0001,(0,A0,D0.L)	;47c54: 31bc00010800
 LAB_47C5A:
 	BRA.W	LAB_47DCA		;47c5a: 6000016e
+LAB_47C5E:
 	MOVE.W	(-2,A5),D0		;47c5e: 302dfffe
 	MULS	#$002e,D0		;47c62: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47c66: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47c66: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47c6a: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47c70: 302dfffe
 	SUBQ.W	#1,D0			;47c74: 5340
 	MULS	#$002e,D0		;47c76: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47c7a: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47c7a: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47c7e: 11bc00800800
 	MOVE.W	(_player,A4),D0		;47c84: 302c99f4
 	MULS	#$002e,D0		;47c88: c1fc002e
@@ -12815,16 +13221,17 @@ LAB_47CA8:
 	MOVE.W	#$0001,(0,A0,D0.L)	;47cb0: 31bc00010800
 LAB_47CB6:
 	BRA.W	LAB_47DCA		;47cb6: 60000112
+LAB_47CBA:
 	TST.W	(_serial_off,A4)	;47cba: 4a6c8254
 	BEQ.S	LAB_47CFC		;47cbe: 673c
 	MOVE.W	(-2,A5),D0		;47cc0: 302dfffe
 	MULS	#$002e,D0		;47cc4: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47cc8: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47cc8: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47ccc: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47cd2: 302dfffe
 	ADDQ.W	#1,D0			;47cd6: 5240
 	MULS	#$002e,D0		;47cd8: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47cdc: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47cdc: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47ce0: 11bc00800800
 	CLR.B	(_message,A4)		;47ce6: 422c3058
 	JSR	(_show_world,PC)	;47cea: 4ebaf340
@@ -12833,20 +13240,23 @@ LAB_47CB6:
 	BRA.W	LAB_47E4E		;47cf8: 60000154
 LAB_47CFC:
 	BRA.W	LAB_47DCA		;47cfc: 600000cc
+LAB_47D00:
 	MOVE.W	(-2,A5),D0		;47d00: 302dfffe
 	MULS	#$002e,D0		;47d04: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47d08: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47d08: 41ec87f4
 	MOVE.B	#$81,(0,A0,D0.L)	;47d0c: 11bc00810800
 	MOVE.W	(-2,A5),D0		;47d12: 302dfffe
 	SUBQ.W	#1,D0			;47d16: 5340
 	MULS	#$002e,D0		;47d18: c1fc002e
-	LEA	(LAB_51BE2,A4),A0	;47d1c: 41ec87f4
+	LEA	(strGameSetup,A4),A0	;47d1c: 41ec87f4
 	MOVE.B	#$80,(0,A0,D0.L)	;47d20: 11bc00800800
 	MOVE.W	#$ffff,(_in_conquest,A4) ;47d26: 397cffff84ba
 	BRA.W	LAB_47DCA		;47d2c: 6000009c
+LAB_47D30:
 	JSR	(_set_options,PC)	;47d30: 4eba0124
 	MOVE.W	#$0001,(-4,A5)		;47d34: 3b7c0001fffc
 	BRA.W	LAB_47DCA		;47d3a: 6000008e
+LAB_47D3E:
 	MOVE.W	#$0001,-(A7)		;47d3e: 3f3c0001
 	JSR	(_save_load,PC)		;47d42: 4ebaddd4
 	ADDQ.W	#2,A7			;47d46: 544f
@@ -12854,6 +13264,7 @@ LAB_47CFC:
 	BNE.W	LAB_47E4E		;47d4a: 66000102
 	MOVE.W	#$0001,(-4,A5)		;47d4e: 3b7c0001fffc
 	BRA.S	LAB_47DCA		;47d54: 6074
+LAB_47D56:
 	TST.W	(_serial_off,A4)	;47d56: 4a6c8254
 	BEQ.S	LAB_47D70		;47d5a: 6714
 	CLR.W	-(A7)			;47d5c: 4267
@@ -12864,20 +13275,37 @@ LAB_47CFC:
 	MOVE.W	#$0001,(-4,A5)		;47d6a: 3b7c0001fffc
 LAB_47D70:
 	BRA.S	LAB_47DCA		;47d70: 6058
+LAB_47D72:
 	MOVE.W	#$0001,(_new_map,A4)	;47d72: 397c0001309a
 	BRA.W	LAB_47E4E		;47d78: 600000d4
+LAB_47D7C:
 	MOVE.W	(_ground_in,A4),D0	;47d7c: 302c99e6
 	ADDQ.W	#2,D0			;47d80: 5440
 	MOVE.W	D0,(_new_map,A4)	;47d82: 3940309a
 	BRA.W	LAB_47E4E		;47d86: 600000c6
+LAB_47D8A:
 	MOVE.W	(_player,A4),(_surender,A4) ;47d8a: 396c99f48258
 	BRA.W	LAB_47E4E		;47d90: 600000bc
 LAB_47D94:
 	BRA.S	LAB_47DCA		;47d94: 6034
 LAB_47D96:
-	DC.L	$ffccfba0,$fc04fc54,$fc82fcb2,$fd76fe3c ;47d96
-	DC.L	$fe96fef2,$ff38ff68,$ff76ff8e,$ffaaffb4 ;47da6
-	DC.W	$ffc2			;47db6
+	DC.W	(LAB_47D94)-(LAB_47DC6+2) ;47d96: ffcc
+	DC.W	(LAB_47968)-(LAB_47DC6+2) ;47d98: fba0
+	DC.W	(LAB_479CC)-(LAB_47DC6+2) ;47d9a: fc04
+	DC.W	(LAB_47A1C)-(LAB_47DC6+2) ;47d9c: fc54
+	DC.W	(LAB_47A4A)-(LAB_47DC6+2) ;47d9e: fc82
+	DC.W	(LAB_47A7A)-(LAB_47DC6+2) ;47da0: fcb2
+	DC.W	(LAB_47B3E)-(LAB_47DC6+2) ;47da2: fd76
+	DC.W	(LAB_47C04)-(LAB_47DC6+2) ;47da4: fe3c
+	DC.W	(LAB_47C5E)-(LAB_47DC6+2) ;47da6: fe96
+	DC.W	(LAB_47CBA)-(LAB_47DC6+2) ;47da8: fef2
+	DC.W	(LAB_47D00)-(LAB_47DC6+2) ;47daa: ff38
+	DC.W	(LAB_47D30)-(LAB_47DC6+2) ;47dac: ff68
+	DC.W	(LAB_47D3E)-(LAB_47DC6+2) ;47dae: ff76
+	DC.W	(LAB_47D56)-(LAB_47DC6+2) ;47db0: ff8e
+	DC.W	(LAB_47D72)-(LAB_47DC6+2) ;47db2: ffaa
+	DC.W	(LAB_47D7C)-(LAB_47DC6+2) ;47db4: ffb4
+	DC.W	(LAB_47D8A)-(LAB_47DC6+2) ;47db6: ffc2
 LAB_47DB8:
 	CMP.L	#$00000011,D0		;47db8: b0bc00000011
 	BCC.S	LAB_47D94		;47dbe: 64d4
@@ -12928,6 +13356,9 @@ LAB_47E4A:
 LAB_47E4E:
 	JSR	(_return_to_game,PC)	;47e4e: 4eba0780
 	BRA.W	LAB_47A14		;47e52: 6000fbc0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_options:
 	LINK.W	A5,#-46			;47e56: 4e55ffd2
 	MOVE.W	(_game_mode,A4),(-46,A5) ;47e5a: 3b6c84b8ffd2
@@ -13015,6 +13446,7 @@ LAB_47EC0:
 	BLT.W	LAB_47EAC		;47f72: 6d00ff38
 ; ------------------------------------------------------------------------------
 ; new code added here
+; Debug feature: adds the landscape number to the options page
 ; ------------------------------------------------------------------------------
 	PEA	(strLandscapeNo,PC)	;47f76: 487a0202
 	PEA	(-44,A5)		;47f7a: 486dffd4
@@ -13179,6 +13611,9 @@ strLandscapeNo:
 	;4817a
 	;DC.B	$4c,$41,$4e,$44,$53,$43,$41,$50,$45,$20,$4e,$4f,$20,$00
 	DC.B	"LANDSCAPE NO ",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _options:
 	LINK.W	A5,#-56			;48188: 4e55ffc8
 	MOVE.W	#$0120,(-8,A5)		;4818c: 3b7c0120fff8
@@ -13513,6 +13948,9 @@ LAB_485CB:
 	;485cb
 	;DC.B	$45,$56,$49,$4c,$00
 	DC.B	"EVIL",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _return_to_game:
 	LINK.W	A5,#-4			;485d0: 4e55fffc
 	MOVE.L	(_d_screen,A4),-(A7)	;485d4: 2f2c99ec
@@ -13522,6 +13960,9 @@ _return_to_game:
 	MOVE.W	#$0002,(_left_button,A4) ;485e2: 397c0002ae62
 	UNLK	A5			;485e8: 4e5d
 	RTS				;485ea: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _start_game:
 	LINK.W	A5,#-2			;485ec: 4e55fffe
 	JSR	(___CloseWorkBench,A4)	;485f0: 4eac8224
@@ -13540,7 +13981,7 @@ LAB_4861C:
 	MOVE.L	(A1)+,(A0)+		;4861c: 20d9
 	DBF	D0,LAB_4861C		;4861e: 51c8fffc
 	MOVE.W	(A1)+,(A0)+		;48622: 30d9
-	LEA	(LAB_516D2,A4),A0	;48624: 41ec82e4
+	LEA	(strABC,A4),A0		;48624: 41ec82e4
 	LEA	(LAB_5172E,A4),A1	;48628: 43ec8340
 	MOVEQ	#$A,D0			;4862c: 700a
 LAB_4862E:
@@ -13572,6 +14013,9 @@ LAB_48690:
 	;48690
 	;DC.B	$67,$6d,$75,$73,$69,$63,$31,$00
 	DC.B	"gmusic1",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _end_game:
 	LINK.W	A5,#-80			;48698: 4e55ffb0
 	CLR.W	(-2,A5)			;4869c: 426dfffe
@@ -13579,6 +14023,7 @@ LAB_486A0:
 	MOVEQ	#0,D0			;486a0: 7000
 	MOVE.W	(-2,A5),D0		;486a2: 302dfffe
 	BRA.W	LAB_489DA		;486a6: 60000332
+LAB_486AA:
 	CMPI.W	#$0001,(8,A5)		;486aa: 0c6d00010008
 	BNE.S	LAB_486CE		;486b0: 661c
 	PEA	(strLost,PC)		;486b2: 487a04d8
@@ -13601,6 +14046,7 @@ LAB_486CE:
 	ADDQ.W	#8,A7			;486e6: 504f
 LAB_486E8:
 	BRA.W	LAB_489EC		;486e8: 60000302
+LAB_486EC:
 	MOVE.W	(_player,A4),D0		;486ec: 302c99f4
 	EXT.L	D0			;486f0: 48c0
 	ASL.L	#1,D0			;486f2: e380
@@ -13618,6 +14064,7 @@ LAB_486E8:
 	JSR	(___word_asc,A4)	;4871a: 4eac818e
 	ADDQ.W	#6,A7			;4871e: 5c4f
 	BRA.W	LAB_489EC		;48720: 600002ca
+LAB_48724:
 	CLR.L	(-10,A5)		;48724: 42adfff6
 	CLR.L	(-14,A5)		;48728: 42adfff2
 	CLR.W	(-4,A5)			;4872c: 426dfffc
@@ -13659,6 +14106,7 @@ LAB_4877C:
 	JSR	(___word_asc,A4)	;4879c: 4eac818e
 	ADDQ.W	#6,A7			;487a0: 5c4f
 	BRA.W	LAB_489EC		;487a2: 60000248
+LAB_487A6:
 	CLR.L	(-10,A5)		;487a6: 42adfff6
 	CLR.L	(-14,A5)		;487aa: 42adfff2
 	CLR.W	(-4,A5)			;487ae: 426dfffc
@@ -13705,6 +14153,7 @@ LAB_48814:
 	JSR	(___word_asc,A4)	;48834: 4eac818e
 	ADDQ.W	#6,A7			;48838: 5c4f
 	BRA.W	LAB_489EC		;4883a: 600001b0
+LAB_4883E:
 	CLR.L	(-10,A5)		;4883e: 42adfff6
 	CLR.L	(-14,A5)		;48842: 42adfff2
 	CLR.W	(-4,A5)			;48846: 426dfffc
@@ -13752,6 +14201,7 @@ LAB_488AC:
 	ADDQ.W	#6,A7			;488d0: 5c4f
 	MOVE.L	(-14,A5),(-10,A5)	;488d2: 2b6dfff2fff6
 	BRA.W	LAB_489EC		;488d8: 60000112
+LAB_488DC:
 	MOVE.W	(_player,A4),D0		;488dc: 302c99f4
 	EXT.L	D0			;488e0: 48c0
 	ASL.L	#1,D0			;488e2: e380
@@ -13804,7 +14254,7 @@ LAB_48976:
 	TST.W	(8,A5)			;48976: 4a6d0008
 	BNE.S	LAB_4898A		;4897a: 660e
 	MOVEQ	#$A,D1			;4897c: 720a
-; x10 points
+; x10 points for winning
 	MOVE.L	(_score,A4),D0		;4897e: 202cae72
 	JSR	(___mulu,A4)		;48982: 4eac81c4
 	MOVE.L	D0,(_score,A4)		;48986: 2940ae72
@@ -13814,7 +14264,7 @@ LAB_4898A:
 	BGE.S	LAB_4899C		;48992: 6c08
 	MOVE.L	#$000001f4,(_score,A4)	;48994: 297c000001f4ae72
 LAB_4899C:
-; maximum points 555,555
+; maximum points: if over 555,555, capped at 515,090
 	CMPI.L	#$00087a23,(_score,A4)	;4899c: 0cac00087a23ae72
 	BLE.S	LAB_489AE		;489a4: 6f08
 	MOVE.L	#$0007dc12,(_score,A4)	;489a6: 297c0007dc12ae72
@@ -13831,8 +14281,13 @@ LAB_489AE:
 LAB_489CA:
 	BRA.S	LAB_489EC		;489ca: 6020
 LAB_489CC:
-	DC.L	$fcc0ffe0,$fd02fd3a,$fdbcfe54 ;489cc
-	DC.W	$fef2			;489d8
+	DC.W	(LAB_486AA)-(LAB_489E8+2) ;489cc: fcc0
+	DC.W	(LAB_489CA)-(LAB_489E8+2) ;489ce: ffe0
+	DC.W	(LAB_486EC)-(LAB_489E8+2) ;489d0: fd02
+	DC.W	(LAB_48724)-(LAB_489E8+2) ;489d2: fd3a
+	DC.W	(LAB_487A6)-(LAB_489E8+2) ;489d4: fdbc
+	DC.W	(LAB_4883E)-(LAB_489E8+2) ;489d6: fe54
+	DC.W	(LAB_488DC)-(LAB_489E8+2) ;489d8: fef2
 LAB_489DA:
 	CMP.L	#$00000007,D0		;489da: b0bc00000007
 	BCC.S	LAB_489CA		;489e0: 64e8
@@ -13999,16 +14454,21 @@ strNew_Game:
 	;48ba2
 	;DC.B	$4e,$45,$57,$20,$47,$41,$4d,$45,$00,$00
 	DC.B	"NEW GAME",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _won_conquest:
 	LINK.W	A5,#-122		;48bac: 4e55ff86
 	CLR.W	(-122,A5)		;48bb0: 426dff86
 	MOVE.W	(_level_number,A4),(-106,A5) ;48bb4: 3b6cae7eff96
+; 5000
 	MOVE.L	#$00001388,D1		;48bba: 223c00001388
 	MOVE.L	(8,A5),D0		;48bc0: 202d0008
 	JSR	(___divs,A4)		;48bc4: 4eac81ca
 	ADDQ.L	#1,D0			;48bc8: 5280
 	ADD.W	D0,(_level_number,A4)	;48bca: d16cae7e
 	MOVE.W	(_level_number,A4),D0	;48bce: 302cae7e
+; Presumably skips 1 level per 50,000 points
 	EXT.L	D0			;48bd2: 48c0
 	DIVS	#$0005,D0		;48bd4: 81fc0005
 	SWAP	D0			;48bd8: 4840
@@ -14031,6 +14491,7 @@ LAB_48BF2:
 	MOVE.W	#$0001,(-122,A5)	;48c0a: 3b7c0001ff86
 	BRA.S	LAB_48C18		;48c10: 6006
 LAB_48C12:
+; Maximum level: WEAVUSPERT
 	MOVE.W	#$09a6,(_level_number,A4) ;48c12: 397c09a6ae7e
 LAB_48C18:
 	MOVE.W	(_level_number,A4),(_seed,A4) ;48c18: 396cae7e99e2
@@ -14052,7 +14513,7 @@ LAB_48C18:
 	BEQ.W	LAB_48F84		;48c54: 6700032e
 	JSR	(_read_mouth,PC)	;48c58: 4eba1852
 	JSR	(___free_all_sounds,A4)	;48c5c: 4eac8158
-	PEA	(LAB_48FB6,PC)		;48c60: 487a0354
+	PEA	(str_gwords,PC)		;48c60: 487a0354
 	JSR	(___load_sound,A4)	;48c64: 4eac816a
 	ADDQ.W	#4,A7			;48c68: 584f
 	MOVE.W	(-106,A5),(_seed,A4)	;48c6a: 396dff9699e2
@@ -14292,7 +14753,7 @@ LAB_48F4A:
 	JSR	(___Setscreen,A4)	;48f6c: 4eac80c2
 	LEA	($A,A7),A7		;48f70: 4fef000a
 	JSR	(___free_all_sounds,A4)	;48f74: 4eac8158
-	PEA	(LAB_48FC5,PC)		;48f78: 487a004b
+	PEA	(str_gmusic1,PC)	;48f78: 487a004b
 	JSR	(___load_sound,A4)	;48f7c: 4eac816a
 	ADDQ.W	#4,A7			;48f80: 584f
 	BRA.S	LAB_48F8E		;48f82: 600a
@@ -14313,7 +14774,7 @@ LAB_48FAA:
 	JSR	(___swap_screens,A4)	;48fae: 4eac80c8
 	UNLK	A5			;48fb2: 4e5d
 	RTS				;48fb4: 4e75
-LAB_48FB6:
+str_gwords:
 	;48fb6
 	;DC.B	$67,$77,$6f,$72,$64,$73,$00
 	DC.B	"gwords",0
@@ -14321,10 +14782,14 @@ strGENESIS:
 	;48fbd
 	;DC.B	$47,$45,$4e,$45,$53,$49,$53,$00
 	DC.B	"GENESIS",0
-LAB_48FC5:
+str_gmusic1:
 	;48fc5
 	;DC.B	$67,$6d,$75,$73,$69,$63,$31,$00,$00
 	DC.B	"gmusic1",0,0
+; ------------------------------------------------------------------------------
+; Function
+; Generate level code
+; ------------------------------------------------------------------------------
 _code:
 	LINK.W	A5,#0			;48fce: 4e550000
 	MOVEM.L	D4-D5,-(A7)		;48fd2: 48e70c00
@@ -14422,6 +14887,16 @@ LAB_490A0:
 	MOVEM.L	(A7)+,D4-D5		;490cc: 4cdf0030
 	UNLK	A5			;490d0: 4e5d
 	RTS				;490d2: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; Decode level codes
+; Each level code is made of a start, middle, and end segment.
+; A 16-bit numeric code stores the password in three groups of five bits.
+; There are 32 segments of each type, giving 32,768 possible combinations.
+; However, only 1,001 codes are valid. They are calculated with rand(n*5)
+; where n is a level number from 0 to 1,000.
+; Decode function returns negative numbers for errors.
+; ------------------------------------------------------------------------------
 _decode:
 	LINK.W	A5,#-4			;490d4: 4e55fffc
 	MOVEM.L	D4-D5,-(A7)		;490d8: 48e70c00
@@ -14430,7 +14905,7 @@ _decode:
 LAB_490E2:
 	MOVEQ	#0,D5			;490e2: 7a00
 	BRA.S	LAB_490E8		;490e4: 6002
-LAB_490E6:
+loop_490E6:
 	ADDQ.W	#1,D5			;490e6: 5245
 LAB_490E8:
 	MOVEQ	#0,D0			;490e8: 7000
@@ -14461,7 +14936,7 @@ LAB_490E8:
 	MOVE.B	(0,A0,D2.L),D1		;4912a: 12302800
 	EXT.W	D1			;4912e: 4881
 	CMP.W	D1,D0			;49130: b041
-	BEQ.S	LAB_490E6		;49132: 67b2
+	BEQ.S	loop_490E6		;49132: 67b2
 LAB_49134:
 	MOVEQ	#0,D0			;49134: 7000
 	MOVE.W	D4,D0			;49136: 3004
@@ -14483,14 +14958,14 @@ LAB_4915C:
 	CMP.W	#$0020,D4		;4915c: b87c0020
 	BNE.S	LAB_4916C		;49160: 660a
 	MOVEQ	#-1,D0			;49162: 70ff
-LAB_49164:
+return_49164:
 	MOVEM.L	(A7)+,D4-D5		;49164: 4cdf0030
 	UNLK	A5			;49168: 4e5d
 	RTS				;4916a: 4e75
 LAB_4916C:
 	MOVE.W	D4,(-2,A5)		;4916c: 3b44fffe
 	MOVEQ	#0,D4			;49170: 7800
-LAB_49172:
+loop_49172:
 	MOVEQ	#0,D5			;49172: 7a00
 	BRA.S	LAB_49178		;49174: 6002
 LAB_49176:
@@ -14541,18 +15016,18 @@ LAB_491C4:
 LAB_491E4:
 	ADDQ.W	#1,D4			;491e4: 5244
 	CMP.W	#$0020,D4		;491e6: b87c0020
-	BCS.S	LAB_49172		;491ea: 6586
+	BCS.S	loop_49172		;491ea: 6586
 LAB_491EC:
 	CMP.W	#$0020,D4		;491ec: b87c0020
 	BNE.S	LAB_491F8		;491f0: 6606
 	MOVEQ	#-2,D0			;491f2: 70fe
-	BRA.W	LAB_49164		;491f4: 6000ff6e
+	BRA.W	return_49164		;491f4: 6000ff6e
 LAB_491F8:
 	MOVE.W	D4,D0			;491f8: 3004
 	ASL.W	#5,D0			;491fa: eb40
 	OR.W	D0,(-2,A5)		;491fc: 816dfffe
 	MOVEQ	#0,D4			;49200: 7800
-LAB_49202:
+loop_49202:
 	MOVEQ	#0,D5			;49202: 7a00
 	BRA.S	LAB_49208		;49204: 6002
 LAB_49206:
@@ -14603,12 +15078,12 @@ LAB_49254:
 LAB_49274:
 	ADDQ.W	#1,D4			;49274: 5244
 	CMP.W	#$0020,D4		;49276: b87c0020
-	BCS.S	LAB_49202		;4927a: 6586
+	BCS.S	loop_49202		;4927a: 6586
 LAB_4927C:
 	CMP.W	#$0020,D4		;4927c: b87c0020
 	BNE.S	LAB_49288		;49280: 6606
 	MOVEQ	#-3,D0			;49282: 70fd
-	BRA.W	LAB_49164		;49284: 6000fede
+	BRA.W	return_49164		;49284: 6000fede
 LAB_49288:
 	MOVE.L	(8,A5),-(A7)		;49288: 2f2d0008
 	JSR	(___strlen,A4)		;4928c: 4eac81a6
@@ -14616,39 +15091,51 @@ LAB_49288:
 	CMP.W	(-4,A5),D0		;49292: b06dfffc
 	BEQ.S	LAB_4929E		;49296: 6706
 	MOVEQ	#-4,D0			;49298: 70fc
-	BRA.W	LAB_49164		;4929a: 6000fec8
+	BRA.W	return_49164		;4929a: 6000fec8
 LAB_4929E:
 	MOVE.W	D4,D0			;4929e: 3004
 	MOVEQ	#$A,D1			;492a0: 720a
 	ASL.W	D1,D0			;492a2: e360
 	OR.W	D0,(-2,A5)		;492a4: 816dfffe
+; ------------------------------------------------------------------------------
+; 1,000 valid level codes
+; Calculated by advancing the random seed each time and adding 5
+; ------------------------------------------------------------------------------
 	MOVEQ	#0,D4			;492a8: 7800
-LAB_492AA:
+loop_492AA:
 	MOVE.W	D4,(_seed,A4)		;492aa: 394499e2
 	JSR	(___newrand,A4)		;492ae: 4eac80fe
 	MOVE.W	D0,D5			;492b2: 3a00
 	CMP.W	(-2,A5),D5		;492b4: ba6dfffe
 	BNE.S	LAB_492C0		;492b8: 6606
 	MOVE.W	D4,D0			;492ba: 3004
-	BRA.W	LAB_49164		;492bc: 6000fea6
+	BRA.W	return_49164		;492bc: 6000fea6
 LAB_492C0:
 	ADDQ.W	#5,D4			;492c0: 5a44
+; 5000
 	CMP.W	#$1388,D4		;492c2: b87c1388
-	BLS.S	LAB_492AA		;492c6: 63e2
+	BLS.S	loop_492AA		;492c6: 63e2
 	MOVEQ	#-5,D0			;492c8: 70fb
-	BRA.W	LAB_49164		;492ca: 6000fe98
+	BRA.W	return_49164		;492ca: 6000fe98
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _paint_the_map:
 	LINK.W	A5,#0			;492ce: 4e550000
 	MOVE.L	A2,-(A7)		;492d2: 2f0a
 	MOVEA.L	(8,A5),A2		;492d4: 246d0008
 	TST.W	(_paint_map,A4)		;492d8: 4a6c9c24
-	BEQ.W	LAB_493E4		;492dc: 67000106
+	BEQ.W	return_493E4		;492dc: 67000106
 	MOVE.B	(LAB_5C417,A4),(1,A2)	;492e0: 156c30290001
 	MOVE.B	(LAB_5C415,A4),(2,A2)	;492e6: 156c30270002
 	MOVEQ	#0,D0			;492ec: 7000
 	MOVE.B	(_inkey,A4),D0		;492ee: 102cae6c
 	BRA.W	LAB_493AA		;492f2: 600000b6
-LAB_492F6:
+; ------------------------------------------------------------------------------
+; F1: Place man
+; Shift-F1: Place leader
+; ------------------------------------------------------------------------------
+paintF1_492F6:
 	TST.W	(_shift,A4)		;492f6: 4a6c3100
 	BEQ.S	LAB_49300		;492fa: 6704
 	MOVEQ	#9,D0			;492fc: 7009
@@ -14657,8 +15144,12 @@ LAB_49300:
 	MOVEQ	#7,D0			;49300: 7007
 LAB_49302:
 	MOVE.B	D0,(A2)			;49302: 1480
-	BRA.W	LAB_493E4		;49304: 600000de
-LAB_49308:
+	BRA.W	return_493E4		;49304: 600000de
+; ------------------------------------------------------------------------------
+; F2: Place enemy man
+; Shift-F2: Place enemy leader
+; ------------------------------------------------------------------------------
+paintF2_49308:
 	TST.W	(_shift,A4)		;49308: 4a6c3100
 	BEQ.S	LAB_49312		;4930c: 6704
 	MOVEQ	#$A,D0			;4930e: 700a
@@ -14667,43 +15158,75 @@ LAB_49312:
 	MOVEQ	#8,D0			;49312: 7008
 LAB_49314:
 	MOVE.B	D0,(A2)			;49314: 1480
-	BRA.W	LAB_493E4		;49316: 600000cc
-LAB_4931A:
+	BRA.W	return_493E4		;49316: 600000cc
+; ------------------------------------------------------------------------------
+; F3: Place tree
+; ------------------------------------------------------------------------------
+paintF3_4931A:
 	MOVE.B	#$0b,(A2)		;4931a: 14bc000b
-	BRA.W	LAB_493E4		;4931e: 600000c4
-LAB_49322:
+	BRA.W	return_493E4		;4931e: 600000c4
+; ------------------------------------------------------------------------------
+; F4: Place rock
+; ------------------------------------------------------------------------------
+paintF4_49322:
 	MOVE.B	#$0c,(A2)		;49322: 14bc000c
-	BRA.W	LAB_493E4		;49326: 600000bc
-LAB_4932A:
+	BRA.W	return_493E4		;49326: 600000bc
+; ------------------------------------------------------------------------------
+; F5: Delete object
+; ------------------------------------------------------------------------------
+paintF5_4932A:
 	MOVE.B	#$0d,(A2)		;4932a: 14bc000d
-	BRA.W	LAB_493E4		;4932e: 600000b4
-LAB_49332:
+	BRA.W	return_493E4		;4932e: 600000b4
+; ------------------------------------------------------------------------------
+; F6: Raise manna bar
+; Shift-F6: Lower manna bar
+; ------------------------------------------------------------------------------
+paintF6_49332:
 	MOVE.B	(LAB_5C4EF,A4),(1,A2)	;49332: 156c31010001
 	MOVE.B	#$0e,(A2)		;49338: 14bc000e
 	MOVE.B	#$09,(2,A2)		;4933c: 157c00090002
-	BRA.W	LAB_493E4		;49342: 600000a0
-LAB_49346:
+	BRA.W	return_493E4		;49342: 600000a0
+; ------------------------------------------------------------------------------
+; F7: Increase manna for evil, according to manual
+; Shift-F7: Lower manna bar for evil
+; ------------------------------------------------------------------------------
+paintF7_49346:
 	MOVE.B	(LAB_5C4EF,A4),(1,A2)	;49346: 156c31010001
 	MOVE.B	#$0e,(A2)		;4934c: 14bc000e
 	MOVE.B	#$0a,(2,A2)		;49350: 157c000a0002
-	BRA.W	LAB_493E4		;49356: 6000008c
-LAB_4935A:
+	BRA.W	return_493E4		;49356: 6000008c
+; ------------------------------------------------------------------------------
+; F8: Mirror the landscape
+; ------------------------------------------------------------------------------
+paintF8_4935A:
 	MOVE.B	#$0e,(A2)		;4935a: 14bc000e
 	MOVE.B	#$0b,(2,A2)		;4935e: 157c000b0002
-	BRA.S	LAB_493E4		;49364: 607e
-LAB_49366:
+	BRA.S	return_493E4		;49364: 607e
+; ------------------------------------------------------------------------------
+; DEL: Clear all land
+; ------------------------------------------------------------------------------
+paintDelete_49366:
 	MOVE.B	#$0e,(A2)		;49366: 14bc000e
 	MOVE.B	#$0c,(2,A2)		;4936a: 157c000c0002
-	BRA.S	LAB_493E4		;49370: 6072
+	BRA.S	return_493E4		;49370: 6072
 LAB_49372:
 	MOVEQ	#0,D0			;49372: 7000
 	MOVE.B	(_inkey,A4),D0		;49374: 102cae6c
 	CMP.W	#$00ed,D0		;49378: b07c00ed
-	BCS.S	LAB_493A8		;4937c: 652a
+	BCS.S	return_493A8		;4937c: 652a
 	MOVEQ	#0,D0			;4937e: 7000
 	MOVE.B	(_inkey,A4),D0		;49380: 102cae6c
+; ------------------------------------------------------------------------------
+; 1-9: Change terrain type
+; 1: Grass
+; 2: Desert
+; 3: Snow
+; 4: Volcano
+; 5-9 Custom
+; ------------------------------------------------------------------------------
+; keyboard 1
 	CMP.W	#$00fd,D0		;49384: b07c00fd
-	BHI.S	LAB_493A8		;49388: 621e
+	BHI.S	return_493A8		;49388: 621e
 	MOVEQ	#0,D0			;4938a: 7000
 	MOVE.B	(_inkey,A4),D0		;4938c: 102cae6c
 	SUB.W	#$00ed,D0		;49390: 907c00ed
@@ -14713,32 +15236,45 @@ LAB_49372:
 	MOVE.B	D1,(1,A2)		;4939a: 15410001
 	MOVE.B	#$0e,(A2)		;4939e: 14bc000e
 	MOVE.B	#$0d,(2,A2)		;493a2: 157c000d0002
-LAB_493A8:
-	BRA.S	LAB_493E4		;493a8: 603a
+return_493A8:
+	BRA.S	return_493E4		;493a8: 603a
 LAB_493AA:
+; F1-F8 and DEL for map paint
 	SUB.L	#$00000051,D0		;493aa: 90bc00000051
-	BEQ.S	LAB_4935A		;493b0: 67a8
+; Big hill with trees
+	BEQ.S	paintF8_4935A		;493b0: 67a8
 	SUBQ.L	#2,D0			;493b2: 5580
-	BEQ.S	LAB_49346		;493b4: 6790
+; Raise enemy manna bar
+	BEQ.S	paintF7_49346		;493b4: 6790
 	SUBQ.L	#2,D0			;493b6: 5580
-	BEQ.W	LAB_49332		;493b8: 6700ff78
+; Raise manna bar
+	BEQ.W	paintF6_49332		;493b8: 6700ff78
 	SUBQ.L	#2,D0			;493bc: 5580
-	BEQ.W	LAB_4932A		;493be: 6700ff6a
+; Delete object
+	BEQ.W	paintF5_4932A		;493be: 6700ff6a
 	SUBQ.L	#2,D0			;493c2: 5580
-	BEQ.W	LAB_49322		;493c4: 6700ff5c
+; Place rocks / cycle rock type
+	BEQ.W	paintF4_49322		;493c4: 6700ff5c
 	SUBQ.L	#2,D0			;493c8: 5580
-	BEQ.W	LAB_4931A		;493ca: 6700ff4e
+; Place tree / cycle tree type
+	BEQ.W	paintF3_4931A		;493ca: 6700ff4e
 	SUBQ.L	#2,D0			;493ce: 5580
-	BEQ.W	LAB_49308		;493d0: 6700ff36
+; Place enemy man
+	BEQ.W	paintF2_49308		;493d0: 6700ff36
 	SUBQ.L	#2,D0			;493d4: 5580
-	BEQ.W	LAB_492F6		;493d6: 6700ff1e
+; Place man
+	BEQ.W	paintF1_492F6		;493d6: 6700ff1e
 	SUB.L	#$00000014,D0		;493da: 90bc00000014
-	BEQ.S	LAB_49366		;493e0: 6784
+; Clear map
+	BEQ.S	paintDelete_49366	;493e0: 6784
 	BRA.S	LAB_49372		;493e2: 608e
-LAB_493E4:
+return_493E4:
 	MOVEA.L	(A7)+,A2		;493e4: 245f
 	UNLK	A5			;493e6: 4e5d
 	RTS				;493e8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _waitfor:
 ; wait for vertical blank
 	LINK.W	A5,#-4			;493ea: 4e55fffc
@@ -14753,6 +15289,7 @@ LAB_493FC:
 	UNLK	A5			;49406: 4e5d
 	RTS				;49408: 4e75
 ; ------------------------------------------------------------------------------
+; Function
 ; this whole function is new to the Hit Squad 1993 release
 ; Appears to be a screenshot tool for testers
 ; Not called anywhere
@@ -15033,6 +15570,9 @@ LAB_4979A:
 	;4979a
 	;DC.B	$42,$4f,$44,$59,$00,$00
 	DC.B	"BODY",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _save_picture_body:
 	LINK.W	A5,#-12			;497a0: 4e55fff4
 	CLR.L	(-12,A5)		;497a4: 42adfff4
@@ -15081,6 +15621,9 @@ LAB_49814:
 	MOVE.L	(-12,A5),D0		;49822: 202dfff4
 	UNLK	A5			;49826: 4e5d
 	RTS				;49828: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _pack_picture_bits:
 	LINK.W	A5,#0			;4982a: 4e550000
 	MOVEM.L	D4-D6/A2-A3,-(A7)	;4982e: 48e70e30
@@ -15188,6 +15731,7 @@ LAB_49906:
 	UNLK	A5			;49910: 4e5d
 	RTS				;49912: 4e75
 ; ------------------------------------------------------------------------------
+; Function
 ; End of new IFF routine
 ; ------------------------------------------------------------------------------
 _drw_blk:
@@ -15244,6 +15788,9 @@ LAB_49976:
 	ADDA.L	#$00000028,A0		;499a8: d1fc00000028
 	DBF	D5,LAB_49976		;499ae: 51cdffc6
 	RTS				;499b2: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_it:
 	LINK.W	A5,#0			;499b4: 4e550000
 	MOVEM.L	D0-D7/A0-A6,-(A7)	;499b8: 48e7fffe
@@ -15729,6 +16276,9 @@ LAB_49FE6:
 LAB_4A01C:
 	RTS				;4a01c: 4e75
 	DS.W	1			;4a01e
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _clr_wsc:
 	LINK.W	A5,#0			;4a020: 4e550000
 	MOVEM.L	A0-A1,-(A7)		;4a024: 48e700c0
@@ -15741,11 +16291,15 @@ LAB_4A038:
 	MOVEM.L	(A7)+,A0-A1		;4a03e: 4cdf0300
 	UNLK	A5			;4a042: 4e5d
 	RTS				;4a044: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _copy_screen:
 	LINK.W	A5,#0			;4a046: 4e550000
 	MOVEM.L	A0-A1,-(A7)		;4a04a: 48e700c0
 	MOVEA.L	(8,A5),A1		;4a04e: 226d0008
 	MOVEA.L	($C,A5),A0		;4a052: 206d000c
+; 8000
 	MOVE.W	#$1f3f,D0		;4a056: 303c1f3f
 LAB_4A05A:
 	MOVE.L	(A1)+,(A0)+		;4a05a: 20d9
@@ -15753,6 +16307,9 @@ LAB_4A05A:
 	MOVEM.L	(A7)+,A0-A1		;4a060: 4cdf0300
 	UNLK	A5			;4a064: 4e5d
 	RTS				;4a066: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _open_screen:
 	LINK.W	A5,#-6			;4a068: 4e55fffa
 	CLR.W	(-6,A5)			;4a06c: 426dfffa
@@ -15795,16 +16352,21 @@ LAB_4A070:
 	MOVE.L	(LAB_52C6A,A4),(_w_screen,A4) ;4a0ee: 296c987c99e8
 	UNLK	A5			;4a0f4: 4e5d
 	RTS				;4a0f6: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; Loads background
+; ------------------------------------------------------------------------------
 _read_back_scr:
 	LINK.W	A5,#-8			;4a0f8: 4e55fff8
 	PEA	$3ED.W			;4a0fc: 487803ed
-	PEA	(LAB_4A16E,PC)		;4a100: 487a006c
+	PEA	(strQaz,PC)		;4a100: 487a006c
 	JSR	(___Open,A4)		;4a104: 4eac81e2
 	ADDQ.W	#8,A7			;4a108: 504f
 	MOVE.L	D0,(-4,A5)		;4a10a: 2b40fffc
-	BEQ.S	LAB_4A16A		;4a10e: 675a
+	BEQ.S	return_1_4A16A		;4a10e: 675a
 ; ------------------------------------------------------------------------------
 ; lines cut: 4eba 5624 2940 304c
+; JSR and move d0 to a4,$304c
 ; ------------------------------------------------------------------------------
 	PEA	$7D00.W			;4a110: 48787d00
 	MOVE.L	(_back_scr,A4),-(A7)	;4a114: 2f2c9874
@@ -15828,16 +16390,19 @@ _read_back_scr:
 	JSR	(___Close,A4)		;4a15e: 4eac81d6
 	ADDQ.W	#4,A7			;4a162: 584f
 	MOVEQ	#0,D0			;4a164: 7000
-LAB_4A166:
+return0_4A166:
 	UNLK	A5			;4a166: 4e5d
 	RTS				;4a168: 4e75
-LAB_4A16A:
+return_1_4A16A:
 	MOVEQ	#-1,D0			;4a16a: 70ff
-	BRA.S	LAB_4A166		;4a16c: 60f8
-LAB_4A16E:
+	BRA.S	return0_4A166		;4a16c: 60f8
+strQaz:
 	;4a16e
 	;DC.B	$71,$61,$7a,$2e,$70,$69,$63,$00
 	DC.B	"qaz.pic",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _read_sprites:
 	LINK.W	A5,#-12			;4a176: 4e55fff4
 	LEA	(LAB_4A224,PC),A0	;4a17a: 41fa00a8
@@ -15897,9 +16462,12 @@ LAB_4A231:
 	;4a231
 	;DC.B	$73,$70,$72,$5f,$33,$32,$30,$2e,$64,$61,$74,$00,$00
 	DC.B	"spr_320.dat",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _load_ground:
 	LINK.W	A5,#-14			;4a23e: 4e55fff2
-	LEA	(LAB_4A446,PC),A0	;4a242: 41fa0202
+	LEA	(strLAND,PC),A0		;4a242: 41fa0202
 	MOVE.L	A0,(-14,A5)		;4a246: 2b48fff2
 	MOVE.W	(8,A5),D0		;4a24a: 302d0008
 	ADD.W	#$0030,D0		;4a24e: d07c0030
@@ -16037,7 +16605,7 @@ LAB_4A408:
 	CMPI.W	#$000b,(-6,A5)		;4a418: 0c6d000bfffa
 	BLT.S	LAB_4A3A0		;4a41e: 6d80
 	MOVEQ	#1,D0			;4a420: 7001
-LAB_4A422:
+return_4A422:
 	UNLK	A5			;4a422: 4e5d
 	RTS				;4a424: 4e75
 LAB_4A426:
@@ -16051,11 +16619,15 @@ LAB_4A426:
 	BEQ.W	LAB_4A25A		;4a43e: 6700fe1a
 LAB_4A442:
 	MOVEQ	#0,D0			;4a442: 7000
-	BRA.S	LAB_4A422		;4a444: 60dc
-LAB_4A446:
+	BRA.S	return_4A422		;4a444: 60dc
+strLAND:
 	;4a446
 	;DC.B	$4c,$41,$4e,$44,$30,$00
 	DC.B	"LAND0",0
+; ------------------------------------------------------------------------------
+; Function
+; Load win screen character
+; ------------------------------------------------------------------------------
 _read_lord:
 	LINK.W	A5,#-4			;4a44c: 4e55fffc
 	PEA	$3ED.W			;4a450: 487803ed
@@ -16089,6 +16661,10 @@ LAB_4A4A2:
 	;4a4a2
 	;DC.B	$6c,$6f,$72,$64,$2e,$70,$69,$63,$00,$00
 	DC.B	"lord.pic",0,0
+; ------------------------------------------------------------------------------
+; Function
+; Load win screen character's mouth animation
+; ------------------------------------------------------------------------------
 _read_mouth:
 	LINK.W	A5,#-4			;4a4ac: 4e55fffc
 	PEA	$3ED.W			;4a4b0: 487803ed
@@ -16113,6 +16689,9 @@ LAB_4A4E8:
 	;4a4e8
 	;DC.B	$6d,$6f,$75,$74,$68,$73,$2e,$70,$69,$63,$00,$00
 	DC.B	"mouths.pic",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _Setscreen:
 	LINK.W	A5,#-2			;4a4f4: 4e55fffe
 	CMPI.L	#$ffffffff,($C,A5)	;4a4f8: 0cadffffffff000c
@@ -16158,6 +16737,9 @@ LAB_4A56A:
 LAB_4A57A:
 	UNLK	A5			;4a57a: 4e5d
 	RTS				;4a57c: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _swap_screens:
 	LINK.W	A5,#-4			;4a57e: 4e55fffc
 	MOVE.L	(_d_screen,A4),(-4,A5)	;4a582: 2b6c99ecfffc
@@ -16170,6 +16752,9 @@ _swap_screens:
 	LEA	($A,A7),A7		;4a5a4: 4fef000a
 	UNLK	A5			;4a5a8: 4e5d
 	RTS				;4a5aa: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _a_putpixel:
 	LINK.W	A5,#0			;4a5ac: 4e550000
 	MOVE.W	($A,A5),-(A7)		;4a5b0: 3f2d000a
@@ -16192,6 +16777,9 @@ _a_putpixel:
 	LEA	($A,A7),A7		;4a5e6: 4fef000a
 	UNLK	A5			;4a5ea: 4e5d
 	RTS				;4a5ec: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _sprite_to_amiga:
 	LINK.W	A5,#-2			;4a5ee: 4e55fffe
 	CLR.W	(-2,A5)			;4a5f2: 426dfffe
@@ -16246,6 +16834,10 @@ LAB_4A5F6:
 	MOVE.L	D0,(LAB_5C4D2,A4)	;4a6a2: 294030e4
 	UNLK	A5			;4a6a6: 4e5d
 	RTS				;4a6a8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; Same game directory
+; ------------------------------------------------------------------------------
 _get_a_dir:
 	LINK.W	A5,#-12			;4a6aa: 4e55fff4
 	CLR.W	(-2,A5)			;4a6ae: 426dfffe
@@ -16357,12 +16949,18 @@ LAB_4A7EA:
 	;4a7ea
 	;DC.B	$2e,$47,$41,$4d,$00,$00
 	DC.B	".GAM",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_baud_rate:
 	LINK.W	A5,#0			;4a7f0: 4e550000
 	MOVE.W	(_baud_rate,A4),(LAB_52C90,A4) ;4a7f4: 396c83b898a2
 	JSR	(___set_serial,A4)	;4a7fa: 4eac8140
 	UNLK	A5			;4a7fe: 4e5d
 	RTS				;4a800: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _free_amiga_sprites:
 	LINK.W	A5,#-2			;4a802: 4e55fffe
 	CLR.W	(-2,A5)			;4a806: 426dfffe
@@ -16380,6 +16978,9 @@ LAB_4A80A:
 	BNE.S	LAB_4A80A		;4a82e: 66da
 	UNLK	A5			;4a830: 4e5d
 	RTS				;4a832: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _check_serial:
 	LINK.W	A5,#-2			;4a834: 4e55fffe
 	MOVE.W	(_serial,A4),D0		;4a838: 302c989c
@@ -16406,6 +17007,9 @@ LAB_4A86C:
 	MOVEQ	#0,D0			;4a86c: 7000
 	BRA.S	LAB_4A868		;4a86e: 60f8
 ; ------------------------------------------------------------------------------
+; Function
+; Displays debug info (game stats, copy protection variables, memory)
+; Activated by pressing F9
 ; This debug code is absent from the original 1989 release
 ; ------------------------------------------------------------------------------
 _display_debug:
@@ -16513,6 +17117,7 @@ strGameStats:
 	DC.B	" BATTLE[0]=%d,BATTLE[1]=%d",$A
 	DC.B	"SCORE=%ld",0
 ; ------------------------------------------------------------------------------
+; Function
 ; Save game routine. 
 ; ------------------------------------------------------------------------------
 _save_game:
@@ -16646,7 +17251,7 @@ LAB_4AAC8:
 	CMP.W	#$002e,D0		;4ac3e: b07c002e
 	BNE.W	LAB_4AE00		;4ac42: 660001bc
 	PEA	$2E.W			;4ac46: 4878002e
-	PEA	(LAB_516D2,A4)		;4ac4a: 486c82e4
+	PEA	(strABC,A4)		;4ac4a: 486c82e4
 	MOVE.L	(-4,A5),-(A7)		;4ac4e: 2f2dfffc
 	JSR	(_Write,PC)		;4ac52: 4eba652c
 	LEA	($C,A7),A7		;4ac56: 4fef000c
@@ -16778,6 +17383,9 @@ strGAM3:
 	;4ae1c
 	;DC.B	$2e,$47,$41,$4d,$00,$00
 	DC.B	".GAM",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _checksum:
 	LINK.W	A5,#-6			;4ae22: 4e55fffa
 	CLR.W	(-2,A5)			;4ae26: 426dfffe
@@ -16798,6 +17406,7 @@ LAB_4AE46:
 	UNLK	A5			;4ae54: 4e5d
 	RTS				;4ae56: 4e75
 ; ------------------------------------------------------------------------------
+; Function
 ; Load game function
 ; ------------------------------------------------------------------------------
 _load_game:
@@ -16892,7 +17501,7 @@ LAB_4AEAC:
 	JSR	(___Read,A4)		;4af96: 4eac81e8
 	LEA	($C,A7),A7		;4af9a: 4fef000c
 	PEA	$2E.W			;4af9e: 4878002e
-	PEA	(LAB_516D2,A4)		;4afa2: 486c82e4
+	PEA	(strABC,A4)		;4afa2: 486c82e4
 	MOVE.L	(-4,A5),-(A7)		;4afa6: 2f2dfffc
 	JSR	(___Read,A4)		;4afaa: 4eac81e8
 	LEA	($C,A7),A7		;4afae: 4fef000c
@@ -17030,7 +17639,7 @@ LAB_4B18C:
 	CLR.W	(-6,A5)			;4b196: 426dfffa
 LAB_4B19A:
 	MOVE.W	(-6,A5),D0		;4b19a: 302dfffa
-	LEA	(LAB_516D2,A4),A0	;4b19e: 41ec82e4
+	LEA	(strABC,A4),A0		;4b19e: 41ec82e4
 	CLR.B	(0,A0,D0.W)		;4b1a2: 42300000
 	MOVE.W	(-6,A5),D0		;4b1a6: 302dfffa
 	LEA	(_stats,A4),A0		;4b1aa: 41ec82b6
@@ -17092,6 +17701,9 @@ strGAM6:
 	;4b234
 	;DC.B	$2e,$47,$41,$4d,$00,$00
 	DC.B	".GAM",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _get_message:
 	LINK.W	A5,#-28			;4b23a: 4e55ffe4
 	MOVE.L	D4,-(A7)		;4b23e: 2f04
@@ -17360,42 +17972,49 @@ LAB_4B528:
 	MOVE.W	(-12,A5),D0		;4b568: 302dfff4
 	EXT.L	D0			;4b56c: 48c0
 	BRA.W	LAB_4B838		;4b56e: 600002c8
+LAB_4B572:
 	MOVE.W	(-16,A5),-(A7)		;4b572: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b576: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b57a: 3f04
 	JSR	(___do_magnet,A4)	;4b57c: 4eac8044
 	ADDQ.W	#6,A7			;4b580: 5c4f
 	BRA.W	LAB_4B84A		;4b582: 600002c6
+LAB_4B586:
 	MOVE.W	(-16,A5),-(A7)		;4b586: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b58a: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b58e: 3f04
 	JSR	(___do_raise_point,A4)	;4b590: 4eac8062
 	ADDQ.W	#6,A7			;4b594: 5c4f
 	BRA.W	LAB_4B84A		;4b596: 600002b2
+LAB_4B59A:
 	MOVE.W	(-16,A5),-(A7)		;4b59a: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b59e: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b5a2: 3f04
 	JSR	(___do_lower_point,A4)	;4b5a4: 4eac805c
 	ADDQ.W	#6,A7			;4b5a8: 5c4f
 	BRA.W	LAB_4B84A		;4b5aa: 6000029e
+LAB_4B5AE:
 	MOVE.W	(-16,A5),-(A7)		;4b5ae: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b5b2: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b5b6: 3f04
 	JSR	(___do_quake,A4)	;4b5b8: 4eac806e
 	ADDQ.W	#6,A7			;4b5bc: 5c4f
 	BRA.W	LAB_4B84A		;4b5be: 6000028a
+LAB_4B5C2:
 	MOVE.W	(-16,A5),-(A7)		;4b5c2: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b5c6: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b5ca: 3f04
 	JSR	(___do_swamp,A4)	;4b5cc: 4eac807a
 	ADDQ.W	#6,A7			;4b5d0: 5c4f
 	BRA.W	LAB_4B84A		;4b5d2: 60000276
+LAB_4B5D6:
 	MOVE.W	(-16,A5),-(A7)		;4b5d6: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b5da: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b5de: 3f04
 	JSR	(___do_volcano,A4)	;4b5e0: 4eac8074
 	ADDQ.W	#6,A7			;4b5e4: 5c4f
 	BRA.W	LAB_4B84A		;4b5e6: 60000262
+LAB_4B5EA:
 	CLR.W	-(A7)			;4b5ea: 4267
 	MOVE.W	(-16,A5),-(A7)		;4b5ec: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b5f0: 3f2dfff2
@@ -17403,6 +18022,7 @@ LAB_4B528:
 	JSR	(___place_people,A4)	;4b5f6: 4eac8056
 	ADDQ.W	#8,A7			;4b5fa: 504f
 	BRA.W	LAB_4B84A		;4b5fc: 6000024c
+LAB_4B600:
 	CLR.W	-(A7)			;4b600: 4267
 	MOVE.W	(-16,A5),-(A7)		;4b602: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b606: 3f2dfff2
@@ -17410,6 +18030,7 @@ LAB_4B528:
 	JSR	(___place_people,A4)	;4b60e: 4eac8056
 	ADDQ.W	#8,A7			;4b612: 504f
 	BRA.W	LAB_4B84A		;4b614: 60000234
+LAB_4B618:
 	MOVE.W	#$0001,-(A7)		;4b618: 3f3c0001
 	MOVE.W	(-16,A5),-(A7)		;4b61c: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b620: 3f2dfff2
@@ -17417,6 +18038,7 @@ LAB_4B528:
 	JSR	(___place_people,A4)	;4b626: 4eac8056
 	ADDQ.W	#8,A7			;4b62a: 504f
 	BRA.W	LAB_4B84A		;4b62c: 6000021c
+LAB_4B630:
 	MOVE.W	#$0001,-(A7)		;4b630: 3f3c0001
 	MOVE.W	(-16,A5),-(A7)		;4b634: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b638: 3f2dfff2
@@ -17424,6 +18046,7 @@ LAB_4B528:
 	JSR	(___place_people,A4)	;4b640: 4eac8056
 	ADDQ.W	#8,A7			;4b644: 504f
 	BRA.W	LAB_4B84A		;4b646: 60000202
+LAB_4B64A:
 	MOVE.W	(-16,A5),D0		;4b64a: 302dfff0
 	ASL.W	#6,D0			;4b64e: ed40
 	ADD.W	(-14,A5),D0		;4b650: d06dfff2
@@ -17460,6 +18083,7 @@ LAB_4B6A4:
 	MOVE.B	(-9,A5),(0,A0,D0.W)	;4b6b8: 11adfff70000
 LAB_4B6BE:
 	BRA.W	LAB_4B84A		;4b6be: 6000018a
+LAB_4B6C2:
 	MOVE.W	(-16,A5),D0		;4b6c2: 302dfff0
 	ASL.W	#6,D0			;4b6c6: ed40
 	ADD.W	(-14,A5),D0		;4b6c8: d06dfff2
@@ -17496,6 +18120,7 @@ LAB_4B71C:
 	MOVE.B	(-9,A5),(0,A0,D0.W)	;4b730: 11adfff70000
 LAB_4B736:
 	BRA.W	LAB_4B84A		;4b736: 60000112
+LAB_4B73A:
 	MOVE.W	(-16,A5),D0		;4b73a: 302dfff0
 	ASL.W	#6,D0			;4b73e: ed40
 	ADD.W	(-14,A5),D0		;4b740: d06dfff2
@@ -17557,6 +18182,7 @@ LAB_4B794:
 	CLR.B	(A0)			;4b7f6: 4210
 LAB_4B7F8:
 	BRA.S	LAB_4B84A		;4b7f8: 6050
+LAB_4B7FA:
 	MOVE.W	(-16,A5),-(A7)		;4b7fa: 3f2dfff0
 	MOVE.W	(-14,A5),-(A7)		;4b7fe: 3f2dfff2
 	MOVE.W	D4,-(A7)		;4b802: 3f04
@@ -17574,9 +18200,21 @@ LAB_4B816:
 LAB_4B818:
 	BRA.S	LAB_4B84A		;4b818: 6030
 LAB_4B81A:
-	DC.L	$ffd0fd3e,$fd52fd66,$fd7afd2a,$fd8efda2 ;4b81a
-	DC.L	$fdb8fdd0,$fde8fe02,$fe7afef2 ;4b82a
-	DC.W	$ffb2			;4b836
+	DC.W	(LAB_4B818)-(LAB_4B846+2) ;4b81a: ffd0
+	DC.W	(LAB_4B586)-(LAB_4B846+2) ;4b81c: fd3e
+	DC.W	(LAB_4B59A)-(LAB_4B846+2) ;4b81e: fd52
+	DC.W	(LAB_4B5AE)-(LAB_4B846+2) ;4b820: fd66
+	DC.W	(LAB_4B5C2)-(LAB_4B846+2) ;4b822: fd7a
+	DC.W	(LAB_4B572)-(LAB_4B846+2) ;4b824: fd2a
+	DC.W	(LAB_4B5D6)-(LAB_4B846+2) ;4b826: fd8e
+	DC.W	(LAB_4B5EA)-(LAB_4B846+2) ;4b828: fda2
+	DC.W	(LAB_4B600)-(LAB_4B846+2) ;4b82a: fdb8
+	DC.W	(LAB_4B618)-(LAB_4B846+2) ;4b82c: fdd0
+	DC.W	(LAB_4B630)-(LAB_4B846+2) ;4b82e: fde8
+	DC.W	(LAB_4B64A)-(LAB_4B846+2) ;4b830: fe02
+	DC.W	(LAB_4B6C2)-(LAB_4B846+2) ;4b832: fe7a
+	DC.W	(LAB_4B73A)-(LAB_4B846+2) ;4b834: fef2
+	DC.W	(LAB_4B7FA)-(LAB_4B846+2) ;4b836: ffb2
 LAB_4B838:
 	CMP.L	#$0000000f,D0		;4b838: b0bc0000000f
 	BCC.S	LAB_4B818		;4b83e: 64d8
@@ -17590,6 +18228,9 @@ LAB_4B84A:
 	BLT.W	LAB_4B4EA		;4b850: 6d00fc98
 	BSR.S	_clear_send		;4b854: 6102
 	BRA.S	LAB_4B810		;4b856: 60b8
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _clear_send:
 	LINK.W	A5,#-2			;4b858: 4e55fffe
 	CLR.W	(-2,A5)			;4b85c: 426dfffe
@@ -17611,6 +18252,9 @@ LAB_4B860:
 	BLT.S	LAB_4B860		;4b89a: 6dc4
 	UNLK	A5			;4b89c: 4e5d
 	RTS				;4b89e: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _write_full:
 	LINK.W	A5,#-8			;4b8a0: 4e55fff8
 	MOVE.B	#$67,(-7,A5)		;4b8a4: 1b7c0067fff9
@@ -17649,6 +18293,9 @@ LAB_4B8E6:
 	BRA.S	LAB_4B8AA		;4b904: 60a4
 	MOVEQ	#2,D0			;4b906: 7002
 	BRA.S	LAB_4B8D6		;4b908: 60cc
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _read_full:
 	LINK.W	A5,#-10			;4b90a: 4e55fff6
 	MOVE.B	#$7c,(-5,A5)		;4b90e: 1b7c007cfffb
@@ -17723,11 +18370,15 @@ LAB_4B9D6:
 	BRA.W	LAB_4B91A		;4b9d6: 6000ff42
 	MOVEQ	#2,D0			;4b9da: 7002
 	BRA.W	LAB_4B934		;4b9dc: 6000ff56
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _do_action:
 	LINK.W	A5,#-2			;4b9e0: 4e55fffe
 	MOVE.W	($C,A5),D0		;4b9e4: 302d000c
 	EXT.L	D0			;4b9e8: 48c0
 	BRA.W	LAB_4C18A		;4b9ea: 6000079e
+LAB_4B9EE:
 	MOVE.W	(8,A5),D0		;4b9ee: 302d0008
 	CMP.W	(_player,A4),D0		;4b9f2: b06c99f4
 	BNE.S	LAB_4BA1E		;4b9f6: 6626
@@ -17750,6 +18401,7 @@ LAB_4BA1E:
 	LEA	(LAB_52DE8,A4),A0	;4ba26: 41ec99fa
 	MOVE.W	($A,A5),(0,A0,D0.L)	;4ba2a: 31ad000a0800
 	BRA.W	LAB_4C19C		;4ba30: 6000076a
+LAB_4BA34:
 	TST.W	(_serial_off,A4)	;4ba34: 4a6c8254
 	BNE.W	LAB_4C19C		;4ba38: 66000762
 	TST.W	(8,A5)			;4ba3c: 4a6d0008
@@ -17896,42 +18548,47 @@ LAB_4BB9A:
 	BLT.W	LAB_4BB68		;4bbec: 6d00ff7a
 LAB_4BBF0:
 	TST.W	(-2,A5)			;4bbf0: 4a6dfffe
-	BEQ.S	LAB_4BC2A		;4bbf4: 6734
+	BEQ.S	enter_4BC2A		;4bbf4: 6734
 	MOVE.W	#$0002,(_left_button,A4) ;4bbf6: 397c0002ae62
-LAB_4BBFC:
+mousewait_4BBFC:
 	TST.W	(_left_button,A4)	;4bbfc: 4a6cae62
 	BEQ.S	LAB_4BC04		;4bc00: 6702
-	BRA.S	LAB_4BBFC		;4bc02: 60f8
+	BRA.S	mousewait_4BBFC		;4bc02: 60f8
 LAB_4BC04:
 	CLR.L	-(A7)			;4bc04: 42a7
 	PEA	(_end_ok,A4)		;4bc06: 486c84c6
 	JSR	(_check_cancel,PC)	;4bc0a: 4ebab344
 	ADDQ.W	#8,A7			;4bc0e: 504f
 	TST.W	D0			;4bc10: 4a40
-	BNE.S	LAB_4BC2A		;4bc12: 6616
+	BNE.S	enter_4BC2A		;4bc12: 6616
+; $77=Enter, $79=Numpad enter
 	JSR	(___keyboard,A4)	;4bc14: 4eac80f2
 	CMPI.B	#$77,(_inkey,A4)	;4bc18: 0c2c0077ae6c
-	BEQ.S	LAB_4BC2A		;4bc1e: 670a
+	BEQ.S	enter_4BC2A		;4bc1e: 670a
 	CMPI.B	#$79,(_inkey,A4)	;4bc20: 0c2c0079ae6c
-	BEQ.S	LAB_4BC2A		;4bc26: 6702
+	BEQ.S	enter_4BC2A		;4bc26: 6702
 	BRA.S	LAB_4BBF0		;4bc28: 60c6
-LAB_4BC2A:
+enter_4BC2A:
 	MOVE.W	#$0002,(_left_button,A4) ;4bc2a: 397c0002ae62
 	CLR.B	(_message,A4)		;4bc30: 422c3058
 LAB_4BC34:
 	BRA.W	LAB_4C19C		;4bc34: 60000566
+LAB_4BC38:
 	MOVE.W	(8,A5),-(A7)		;4bc38: 3f2d0008
 	JSR	(_do_war,PC)		;4bc3c: 4eba86f0
 	ADDQ.W	#2,A7			;4bc40: 544f
 	BRA.W	LAB_4C19C		;4bc42: 60000558
+LAB_4BC46:
 	MOVE.W	(8,A5),-(A7)		;4bc46: 3f2d0008
 	JSR	(___do_flood,A4)	;4bc4a: 4eac8068
 	ADDQ.W	#2,A7			;4bc4e: 544f
 	BRA.W	LAB_4C19C		;4bc50: 6000054a
+LAB_4BC54:
 	MOVE.W	(8,A5),-(A7)		;4bc54: 3f2d0008
 	JSR	(_do_knight,PC)		;4bc58: 4eba85d0
 	ADDQ.W	#2,A7			;4bc5c: 544f
 	BRA.W	LAB_4C19C		;4bc5e: 6000053c
+LAB_4BC62:
 	MOVE.W	#$17e4,-(A7)		;4bc62: 3f3c17e4
 	MOVE.W	#$0003,-(A7)		;4bc66: 3f3c0003
 	MOVE.W	#$0001,-(A7)		;4bc6a: 3f3c0001
@@ -17947,6 +18604,7 @@ LAB_4BC88:
 LAB_4BC8C:
 	CLR.W	(_toggle,A4)		;4bc8c: 426c9a1a
 	BRA.W	LAB_4C19C		;4bc90: 6000050a
+LAB_4BC94:
 	TST.W	(8,A5)			;4bc94: 4a6d0008
 	BNE.S	LAB_4BC9E		;4bc98: 6604
 	MOVEQ	#1,D0			;4bc9a: 7001
@@ -18068,6 +18726,7 @@ LAB_4BDD0:
 	MOVE.W	D0,(0,A0,D1.L)		;4be0a: 31801800
 LAB_4BE0E:
 	BRA.W	LAB_4C19C		;4be0e: 6000038c
+LAB_4BE12:
 	MOVE.W	(8,A5),D0		;4be12: 302d0008
 	CMP.W	(_player,A4),D0		;4be16: b06c99f4
 	BNE.S	LAB_4BE88		;4be1a: 666c
@@ -18281,6 +18940,7 @@ LAB_4C09A:
 	BRA.W	LAB_4BB96		;4c0b0: 6000fae4
 LAB_4C0B4:
 	BRA.W	LAB_4C19C		;4c0b4: 600000e6
+LAB_4C0B8:
 	TST.W	($A,A5)			;4c0b8: 4a6d000a
 	BEQ.S	LAB_4C0CE		;4c0bc: 6710
 	MOVEQ	#2,D1			;4c0be: 7202
@@ -18297,6 +18957,7 @@ LAB_4C0CE:
 	MOVE.L	D0,(LAB_52DF0,A4)	;4c0e4: 29409a02
 LAB_4C0E8:
 	BRA.W	LAB_4C19C		;4c0e8: 600000b2
+LAB_4C0EC:
 	TST.W	($A,A5)			;4c0ec: 4a6d000a
 	BEQ.S	LAB_4C102		;4c0f0: 6710
 	MOVEQ	#2,D1			;4c0f2: 7202
@@ -18313,10 +18974,13 @@ LAB_4C102:
 	MOVE.L	D0,(LAB_52E00,A4)	;4c118: 29409a12
 LAB_4C11C:
 	BRA.S	LAB_4C19C		;4c11c: 607e
+LAB_4C11E:
 	JSR	(___rotate_all_map,A4)	;4c11e: 4eac804a
 	BRA.S	LAB_4C19C		;4c122: 6078
+LAB_4C124:
 	JSR	(___clear_all_map,A4)	;4c124: 4eac8050
 	BRA.S	LAB_4C19C		;4c128: 6072
+LAB_4C12A:
 	MOVE.W	($A,A5),(_ground_in,A4)	;4c12a: 396d000a99e6
 	MOVE.W	#$0001,-(A7)		;4c130: 3f3c0001
 	MOVE.W	($A,A5),-(A7)		;4c134: 3f2d000a
@@ -18333,6 +18997,7 @@ LAB_4C148:
 	JSR	(___draw_map,A4)	;4c154: 4eac8026
 	ADDQ.W	#8,A7			;4c158: 504f
 	BRA.S	LAB_4C19C		;4c15a: 6040
+LAB_4C15C:
 	MOVE.W	($A,A5),D0		;4c15c: 302d000a
 	ADDQ.W	#1,D0			;4c160: 5240
 	MOVE.W	D0,(_cheat,A4)		;4c162: 39402fb4
@@ -18340,8 +19005,22 @@ LAB_4C148:
 LAB_4C168:
 	BRA.S	LAB_4C19C		;4c168: 6032
 LAB_4C16A:
-	DC.L	$ffcef854,$f89afa9e,$faacfaba,$fac8fafa ;4c16a
-	DC.L	$fc78ff1e,$ff52ff84,$ff8aff90,$ffceffc2 ;4c17a
+	DC.W	(LAB_4C168)-(LAB_4C198+2) ;4c16a: ffce
+	DC.W	(LAB_4B9EE)-(LAB_4C198+2) ;4c16c: f854
+	DC.W	(LAB_4BA34)-(LAB_4C198+2) ;4c16e: f89a
+	DC.W	(LAB_4BC38)-(LAB_4C198+2) ;4c170: fa9e
+	DC.W	(LAB_4BC46)-(LAB_4C198+2) ;4c172: faac
+	DC.W	(LAB_4BC54)-(LAB_4C198+2) ;4c174: faba
+	DC.W	(LAB_4BC62)-(LAB_4C198+2) ;4c176: fac8
+	DC.W	(LAB_4BC94)-(LAB_4C198+2) ;4c178: fafa
+	DC.W	(LAB_4BE12)-(LAB_4C198+2) ;4c17a: fc78
+	DC.W	(LAB_4C0B8)-(LAB_4C198+2) ;4c17c: ff1e
+	DC.W	(LAB_4C0EC)-(LAB_4C198+2) ;4c17e: ff52
+	DC.W	(LAB_4C11E)-(LAB_4C198+2) ;4c180: ff84
+	DC.W	(LAB_4C124)-(LAB_4C198+2) ;4c182: ff8a
+	DC.W	(LAB_4C12A)-(LAB_4C198+2) ;4c184: ff90
+	DC.W	(LAB_4C168)-(LAB_4C198+2) ;4c186: ffce
+	DC.W	(LAB_4C15C)-(LAB_4C198+2) ;4c188: ffc2
 LAB_4C18A:
 	CMP.L	#$00000010,D0		;4c18a: b0bc00000010
 	BCC.S	LAB_4C168		;4c190: 64d6
@@ -18352,27 +19031,30 @@ LAB_4C198:
 LAB_4C19C:
 	MOVEQ	#0,D0			;4c19c: 7000
 	BRA.W	LAB_4BB96		;4c19e: 6000f9f6
+; ------------------------------------------------------------------------------
+; Key reading routine
+; ------------------------------------------------------------------------------
 _keyboard:
 	MOVE.L	A0,-(A7)		;4c1a2: 2f08
 	CLR.B	_inkey			;4c1a4: 42390005425a
 	CLR.B	_asckey			;4c1aa: 42390005c418
 	CLR.W	D0			;4c1b0: 4240
 	MOVE.B	CIAA_SDR,D0		;4c1b2: 103900bfec01
-	TST.W	LAB_4C21A		;4c1b8: 4a790004c21a
+	TST.W	keyrepeat		;4c1b8: 4a790004c21a
 	BEQ.S	LAB_4C1CE		;4c1be: 670e
 	BTST	#0,D0			;4c1c0: 08000000
-	BNE.S	LAB_4C212		;4c1c4: 664c
-	CLR.W	LAB_4C21A		;4c1c6: 42790004c21a
-	BRA.S	LAB_4C212		;4c1cc: 6044
+	BNE.S	clear_4C212		;4c1c4: 664c
+	CLR.W	keyrepeat		;4c1c6: 42790004c21a
+	BRA.S	clear_4C212		;4c1cc: 6044
 LAB_4C1CE:
 	BTST	#0,D0			;4c1ce: 08000000
-	BEQ.W	LAB_4C212		;4c1d2: 6700003e
+	BEQ.W	clear_4C212		;4c1d2: 6700003e
 	MOVE.B	D0,_inkey		;4c1d6: 13c00005425a
 	NEG.B	D0			;4c1dc: 4400
 	LSR.B	#1,D0			;4c1de: e208
 	CMP.B	#$60,D0			;4c1e0: b03c0060
-	BGE.S	LAB_4C212		;4c1e4: 6c2c
-	LEA	LAB_4C220,A0		;4c1e6: 41f90004c220
+	BGE.S	clear_4C212		;4c1e4: 6c2c
+	LEA	keycodes,A0		;4c1e6: 41f90004c220
 	TST.W	_shift			;4c1ec: 4a790005c4ee
 	BEQ.S	LAB_4C1F8		;4c1f2: 6704
 	ADDI.W	#$0060,D0		;4c1f4: 06400060
@@ -18380,20 +19062,27 @@ LAB_4C1F8:
 	MOVE.B	(0,A0,D0.W),_asckey	;4c1f8: 13f000000005c418
 	CLR.L	D0			;4c200: 4280
 	MOVE.B	_asckey,D0		;4c202: 10390005c418
-	MOVE.W	#$0001,LAB_4C21A	;4c208: 33fc00010004c21a
+	MOVE.W	#$0001,keyrepeat	;4c208: 33fc00010004c21a
 	BRA.S	LAB_4C214		;4c210: 6002
-LAB_4C212:
+clear_4C212:
 	CLR.L	D0			;4c212: 4280
 LAB_4C214:
 	TST.L	D0			;4c214: 4a80
 	MOVEA.L	(A7)+,A0		;4c216: 205f
 	RTS				;4c218: 4e75
-LAB_4C21A:
+keyrepeat:
 	DS.B	1			;4c21a
 _the_prot1:
+; anti-piracy protection
 	DS.B	1			;4c21b
 	DS.L	1			;4c21c
-LAB_4C220:
+; ------------------------------------------------------------------------------
+; Keycodes $00 to $5F are Amiga keyboard codes
+; Here, entries $60 to $BF are their shifted versions
+; Cursor keys are $0c - $0f, F-keys are $01-$09, shifted +$10
+; $45 is escape, $46 is delete
+; ------------------------------------------------------------------------------
+keycodes:
 	;4c220
 	;DC.B	$27,$31,$32,$33,$34,$35,$36,$37,$38,$39,$30,$2d,$3d,$60,$00,$30
 	;DC.B	$71,$77,$65,$72,$74,$79,$75,$69,$6f,$70,$5b,$5d,$00,$31,$32,$33
@@ -18429,6 +19118,7 @@ LAB_4C220:
 	DS.L	1			;4c2da
 	DC.W	$000b			;4c2de
 _prot_num4:
+; more anti-piracy protection
 	DC.L	$acc5ec38		;4c2e0
 	DS.W	1			;4c2e4
 ; ------------------------------------------------------------------------------
@@ -18444,6 +19134,9 @@ _newrand:
 	MOVE.W	D0,_seed		;4c2f8: 33c000052dd0
 	RTS				;4c2fe: 4e75
 	DS.W	1			;4c300
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _pixel:
 	LINK.W	A5,#0			;4c302: 4e550000
 	MOVEM.L	D0-D5/A0,-(A7)		;4c306: 48e7fc80
@@ -18485,6 +19178,9 @@ LAB_4C36C:
 	UNLK	A5			;4c370: 4e5d
 	RTS				;4c372: 4e75
 	DS.W	1			;4c374
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_icon:
 	LINK.W	A5,#0			;4c376: 4e550000
 	MOVEM.L	D0-D5/A0-A1,-(A7)	;4c37a: 48e7fcc0
@@ -18511,6 +19207,9 @@ LAB_4C3A8:
 	MOVEM.L	(A7)+,D0-D5/A0-A1	;4c3c2: 4cdf033f
 	UNLK	A5			;4c3c6: 4e5d
 	RTS				;4c3c8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_bar:
 	LINK.W	A5,#0			;4c3ca: 4e550000
 	MOVEM.L	D0-D5/A0,-(A7)		;4c3ce: 48e7fc80
@@ -18578,6 +19277,9 @@ LAB_4C48E:
 	SUBA.L	#$00000028,A0		;4c48e: 91fc00000028
 	DBF	D4,LAB_4C42E		;4c494: 51ccff98
 	RTS				;4c498: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_sprite:
 	LINK.W	A5,#0			;4c49a: 4e550000
 	MOVEM.L	D0-D7/A0-A1,-(A7)	;4c49e: 48e7ffc0
@@ -18657,6 +19359,9 @@ LAB_4C582:
 	MOVEM.L	(A7)+,D0-D7/A0-A1	;4c582: 4cdf03ff
 	UNLK	A5			;4c586: 4e5d
 	RTS				;4c588: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_s_32:
 	LINK.W	A5,#0			;4c58a: 4e550000
 	MOVEM.L	D0-D7/A0-A1,-(A7)	;4c58e: 48e7ffc0
@@ -18782,6 +19487,9 @@ LAB_4C700:
 	UNLK	A5			;4c704: 4e5d
 	RTS				;4c706: 4e75
 	DS.W	1			;4c708
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _toggle_icon:
 	LINK.W	A5,#0			;4c70a: 4e550000
 	MOVEM.L	D0-D3/A0-A1,-(A7)	;4c70e: 48e7f0c0
@@ -18985,6 +19693,9 @@ LAB_4CA5E:
 _vbi_timer:
 	DS.L	1			;4ca60
 	DS.W	1			;4ca64
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _make_copper:
 	LINK.W	A5,#0			;4ca66: 4e550000
 	MOVEM.L	D0-D4/A0-A2,-(A7)	;4ca6a: 48e7f8e0
@@ -19084,6 +19795,9 @@ LAB_4CBAA:
 	ANDI.W	#$0020,D0		;4cbb0: 02400020
 	BEQ.W	LAB_4CBAA		;4cbb4: 6700fff4
 	RTS				;4cbb8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _change_palette:
 	LINK.W	A5,#0			;4cbba: 4e550000
 	MOVEM.L	A0-A1,-(A7)		;4cbbe: 48e700c0
@@ -19103,6 +19817,9 @@ LAB_4CBE0:
 	UNLK	A5			;4cbf0: 4e5d
 	RTS				;4cbf2: 4e75
 	DS.W	1			;4cbf4
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _convert_sprite:
 	LINK.W	A5,#0			;4cbf6: 4e550000
 	MOVEM.L	A0-A2,-(A7)		;4cbfa: 48e700e0
@@ -19126,6 +19843,9 @@ LAB_4CC2A:
 	MOVEM.L	(A7)+,A0-A2		;4cc44: 4cdf0700
 	UNLK	A5			;4cc48: 4e5d
 	RTS				;4cc4a: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _insert_sprite:
 	LINK.W	A5,#0			;4cc4c: 4e550000
 	MOVEM.L	A0-A2,-(A7)		;4cc50: 48e700e0
@@ -19168,6 +19888,9 @@ LAB_4CCBC:
 	UNLK	A5			;4ccc0: 4e5d
 	RTS				;4ccc2: 4e75
 	DS.W	1			;4ccc4
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _draw_mouth:
 	LINK.W	A5,#0			;4ccc6: 4e550000
 	MOVEM.L	A0-A1,-(A7)		;4ccca: 48e700c0
@@ -19199,6 +19922,9 @@ LAB_4CCFC:
 	UNLK	A5			;4cd28: 4e5d
 	RTS				;4cd2a: 4e75
 	DS.W	1			;4cd2c
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _move_pointer:
 	LINK.W	A5,#0			;4cd2e: 4e550000
 	MOVEM.L	D0-D3/A0,-(A7)		;4cd32: 48e7f080
@@ -19241,6 +19967,9 @@ LAB_4CDA0:
 	UNLK	A5			;4cdb4: 4e5d
 	RTS				;4cdb6: 4e75
 	DS.W	1			;4cdb8
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _text:
 	LINK.W	A5,#0			;4cdba: 4e550000
 	MOVEM.L	D0-D2/A0-A3,-(A7)	;4cdbe: 48e7e0f0
@@ -19296,6 +20025,9 @@ LAB_4CE4C:
 	UNLK	A5			;4ce50: 4e5d
 	RTS				;4ce52: 4e75
 	DS.W	1			;4ce54
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _set_serial:
 	LINK.W	A5,#0			;4ce56: 4e550000
 	MOVEM.L	D1/A1,-(A7)		;4ce5a: 48e74040
@@ -19342,6 +20074,9 @@ _w_ser_buff:
 	MOVE.W	#$0001,INTREQ		;4cf00: 33fc000100dff09c
 	MOVE.L	#$00000000,D0		;4cf08: 203c00000000
 	RTS				;4cf0e: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _read_serial:
 	LINK.W	A5,#0			;4cf10: 4e550000
 	MOVEM.L	D1/A0-A1,-(A7)		;4cf14: 48e740c0
@@ -19400,6 +20135,9 @@ LAB_4CFC8:
 	MOVEM.L	(A7)+,D1/A0-A1		;4cfca: 4cdf0302
 	UNLK	A5			;4cfce: 4e5d
 	RTS				;4cfd0: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _write_serial:
 	LINK.W	A5,#0			;4cfd2: 4e550000
 	MOVEM.L	D1/A0-A1,-(A7)		;4cfd6: 48e740c0
@@ -19446,6 +20184,10 @@ LAB_4D06E:
 	MOVEM.L	(A7)+,D1/A0-A1		;4d070: 4cdf0302
 	UNLK	A5			;4d074: 4e5d
 	RTS				;4d076: 4e75
+; ------------------------------------------------------------------------------
+; More anti-piracy protection.
+; It appears that it is not called in this version.
+; ------------------------------------------------------------------------------
 _PROTECT3:
 	MOVEM.L	D1/A0,-(A7)		;4d078: 48e74080
 	MOVE.W	#$0534,D1		;4d07c: 323c0534
@@ -19546,6 +20288,7 @@ LAB_4D092:
 	DC.L	$a0411528		;4d5c2
 LAB_4D5C6:
 	MOVE.W	#$0000,_p_done		;4d5c6: 33fc00000005c546
+; re-encrypts to make analysis more difficult
 	MOVE.W	#$0534,D1		;4d5ce: 323c0534
 	SUBI.W	#$0001,D1		;4d5d2: 04410001
 	LEA	LAB_4D092,A0		;4d5d6: 41f90004d092
@@ -19554,10 +20297,13 @@ LAB_4D5DC:
 	DBF	D1,LAB_4D5DC		;4d5e0: 51c9fffa
 	MOVEM.L	(A7)+,D1/A0		;4d5e4: 4cdf0102
 	RTS				;4d5e8: 4e75
-LAB_4D5EA:
+strSoundChannel:
 	;4d5ea
 	;DC.B	$53,$6f,$75,$6e,$64,$20,$43,$68,$61,$6e,$6e,$65,$6c,$00
 	DC.B	"Sound Channel",0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _PlaySound:
 	LINK.W	A5,#0			;4d5f8: 4e550000
 	MOVEM.L	A2-A3,-(A7)		;4d5fc: 48e70030
@@ -19638,6 +20384,9 @@ LAB_4D662:
 	ADDQ.W	#4,A7			;4d6c8: 584f
 LAB_4D6CA:
 	BRA.W	LAB_4D614		;4d6ca: 6000ff48
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _setsound:
 	LINK.W	A5,#0			;4d6ce: 4e550000
 	MOVEA.L	($C,A5),A0		;4d6d2: 206d000c
@@ -19672,12 +20421,15 @@ _setsound:
 	MOVE.L	D1,($22,A0)		;4d742: 21410022
 	BEQ.S	LAB_4D74C		;4d746: 6704
 	MOVEQ	#1,D0			;4d748: 7001
-	BRA.S	LAB_4D74E		;4d74a: 6002
+	BRA.S	return_4D74E		;4d74a: 6002
 LAB_4D74C:
 	MOVEQ	#0,D0			;4d74c: 7000
-LAB_4D74E:
+return_4D74E:
 	UNLK	A5			;4d74e: 4e5d
 	RTS				;4d750: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _PlayMeas:
 	LINK.W	A5,#0			;4d752: 4e550000
 	CLR.W	-(A7)			;4d756: 4267
@@ -19764,6 +20516,9 @@ LAB_4D832:
 LAB_4D850:
 	UNLK	A5			;4d850: 4e5d
 	RTS				;4d852: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _free_all_sounds:
 	LINK.W	A5,#-2			;4d854: 4e55fffe
 	CLR.W	(-2,A5)			;4d858: 426dfffe
@@ -19808,6 +20563,9 @@ LAB_4D8C2:
 	CLR.L	(_drumkit,A4)		;4d8ca: 42ac353a
 	UNLK	A5			;4d8ce: 4e5d
 	RTS				;4d8d0: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _open_channels:
 	LINK.W	A5,#-6			;4d8d2: 4e55fffa
 	CLR.W	(-2,A5)			;4d8d6: 426dfffe
@@ -19864,7 +20622,7 @@ LAB_4D8DA:
 	LEA	(_ioas,A4),A0		;4d982: 41ec3162
 	MOVE.L	(0,A0,D0.L),-(A7)	;4d986: 2f300800
 	CLR.L	-(A7)			;4d98a: 42a7
-	PEA	(LAB_4D9B8,PC)		;4d98c: 487a002a
+	PEA	(strAudioDev,PC)	;4d98c: 487a002a
 	JSR	(_OpenDevice,PC)	;4d990: 4eba39c4
 	LEA	($10,A7),A7		;4d994: 4fef0010
 	TST.W	D0			;4d998: 4a40
@@ -19882,10 +20640,13 @@ LAB_4D9A6:
 	BNE.W	LAB_4D8DA		;4d9b0: 6600ff28
 	MOVEQ	#1,D0			;4d9b4: 7001
 	BRA.S	LAB_4D9A2		;4d9b6: 60ea
-LAB_4D9B8:
+strAudioDev:
 	;4d9b8
 	;DC.B	$61,$75,$64,$69,$6f,$2e,$64,$65,$76,$69,$63,$65,$00,$00
 	DC.B	"audio.device",0,0
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _close_channels:
 	LINK.W	A5,#-2			;4d9c6: 4e55fffe
 	CLR.W	(-2,A5)			;4d9ca: 426dfffe
@@ -19945,6 +20706,9 @@ LAB_4DA68:
 	BNE.W	LAB_4D9CE		;4da72: 6600ff5a
 	UNLK	A5			;4da76: 4e5d
 	RTS				;4da78: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _load_sound:
 	LINK.W	A5,#-14			;4da7a: 4e55fff2
 	PEA	$3ED.W			;4da7e: 487803ed
@@ -20106,6 +20870,9 @@ LAB_4DC86:
 	ADDQ.W	#4,A7			;4dc8e: 584f
 	MOVEQ	#-1,D0			;4dc90: 70ff
 	BRA.W	LAB_4DA94		;4dc92: 6000fe00
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _kill_effect:
 	LINK.W	A5,#-2			;4dc96: 4e55fffe
 	MOVE.W	(8,A5),(-2,A5)		;4dc9a: 3b6d0008fffe
@@ -20125,6 +20892,9 @@ LAB_4DCBC:
 	BLT.S	LAB_4DCA2		;4dcc4: 6ddc
 	UNLK	A5			;4dcc6: 4e5d
 	RTS				;4dcc8: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _check_effect:
 	LINK.W	A5,#0			;4dcca: 4e550000
 	MOVE.W	(8,A5),D0		;4dcce: 302d0008
@@ -20136,6 +20906,9 @@ _check_effect:
 	ADDQ.W	#4,A7			;4dce2: 584f
 	UNLK	A5			;4dce4: 4e5d
 	RTS				;4dce6: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _valid_move:
 	LINK.W	A5,#0			;4dce8: 4e550000
 	MOVEM.L	D1-D4/A0,-(A7)		;4dcec: 48e77880
@@ -20179,6 +20952,9 @@ LAB_4DD4C:
 	UNLK	A5			;4dd50: 4e5d
 	TST.W	D0			;4dd52: 4a40
 	RTS				;4dd54: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _check_life:
 	LINK.W	A5,#0			;4dd56: 4e550000
 	MOVEM.L	D1-D6/A0-A2,-(A7)	;4dd5a: 48e77ee0
@@ -20264,17 +21040,26 @@ LAB_4DE4C:
 	MOVEM.L	(A7)+,D1-D6/A0-A2	;4de4e: 4cdf077e
 	UNLK	A5			;4de52: 4e5d
 	RTS				;4de54: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _long_asc:
 	LINK.W	A5,#0			;4de56: 4e550000
 	MOVEM.L	D0-D1/A0,-(A7)		;4de5a: 48e7c080
 	MOVE.L	($C,A5),D0		;4de5e: 202d000c
 	BRA.S	LAB_4DE86		;4de62: 6022
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _word_asc:
 	LINK.W	A5,#0			;4de64: 4e550000
 	MOVEM.L	D0-D1/A0,-(A7)		;4de68: 48e7c080
 	MOVE.W	($C,A5),D0		;4de6c: 302d000c
 	EXT.L	D0			;4de70: 48c0
 	BRA.S	LAB_4DE86		;4de72: 6012
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _uword_asc:
 	LINK.W	A5,#0			;4de74: 4e550000
 	MOVEM.L	D0-D1/A0,-(A7)		;4de78: 48e7c080
@@ -20314,6 +21099,9 @@ LAB_4DEC0:
 	MOVEM.L	(A7)+,D0-D1/A0		;4dec4: 4cdf0103
 	UNLK	A5			;4dec8: 4e5d
 	RTS				;4deca: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _compress:
 	LINK.W	A5,#0			;4decc: 4e550000
 	MOVEM.L	D1/A0,-(A7)		;4ded0: 48e74080
@@ -20332,6 +21120,9 @@ _compress:
 	MOVEM.L	(A7)+,D1/A0		;4defc: 4cdf0102
 	UNLK	A5			;4df00: 4e5d
 	RTS				;4df02: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _decompress:
 	LINK.W	A5,#0			;4df04: 4e550000
 	MOVEM.L	D1/A0,-(A7)		;4df08: 48e74080
@@ -20351,21 +21142,21 @@ _decompress:
 	UNLK	A5			;4df36: 4e5d
 	RTS				;4df38: 4e75
 	DS.W	1			;4df3a
-LAB_4DF3C:
+strsendMessage:
 	;4df3c
 	;DC.B	$53,$45,$4e,$44,$20,$41,$20,$4d,$45,$53,$53,$41,$47,$45,$00
 	DC.B	"SEND A MESSAGE",0
-LAB_4DF4B:
+strMessageGood:
 	;4df4b
 	;DC.B	$4d,$45,$53,$53,$41,$47,$45,$20,$46,$52,$4f,$4d,$20,$47,$4f,$4f
 	;DC.B	$44,$00
 	DC.B	"MESSAGE FROM GOOD",0
-LAB_4DF5D:
+strMessageEvil:
 	;4df5d
 	;DC.B	$4d,$45,$53,$53,$41,$47,$45,$20,$46,$52,$4f,$4d,$20,$45,$56,$49
 	;DC.B	$4c,$00
 	DC.B	"MESSAGE FROM EVIL",0
-LAB_4DF6F:
+strTwoPlayerSer:
 	;4df6f
 	;DC.B	$4f,$4e,$20,$54,$57,$4f,$20,$50,$4c,$41,$59,$45,$52,$20,$53,$45
 	;DC.B	$52,$49,$41,$4c,$20,$47,$41,$4d,$45,$0a,$53,$57,$49,$54,$43,$48
@@ -20375,7 +21166,7 @@ LAB_4DF6F:
 	DC.B	"ON TWO PLAYER SERIAL GAME",$A
 	DC.B	"SWITCHING BACK TO ONE",$A
 	DC.B	" PLAYER GAME IN PAUSE",0
-LAB_4DFB5:
+strOnePlayerSave:
 	;4dfb5
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$53,$41,$56,$45,$44,$20,$48,$49,$53,$0a,$47,$41,$4d,$45,$20
@@ -20385,55 +21176,55 @@ LAB_4DFB5:
 	DC.B	"OTHER PLAYER HAS SAVED HIS",$A
 	DC.B	"GAME DO YOU WANT TO SAVE",$A
 	DC.B	"YOUR GAME NOW AS WELL",0
-LAB_4DFFF:
+strOtherChangeOpt:
 	;4dfff
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$43,$48,$41,$4e,$47,$45,$44,$0a,$47,$41,$4d,$45,$20,$4f,$50
 	;DC.B	$54,$49,$4f,$4e,$53,$00
 	DC.B	"OTHER PLAYER HAS CHANGED",$A
 	DC.B	"GAME OPTIONS",0
-LAB_4E025:
+strOtherPaint:
 	;4e025
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$53,$45,$4c,$45,$43,$54,$45,$44,$0a,$50,$41,$49,$4e,$54,$20
 	;DC.B	$4d,$4f,$44,$45,$00
 	DC.B	"OTHER PLAYER HAS SELECTED",$A
 	DC.B	"PAINT MODE",0
-LAB_4E04A:
+strOtherSides:
 	;4e04a
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$43,$48,$41,$4e,$47,$45,$44,$0a,$53,$49,$44,$45,$53,$00
 	DC.B	"OTHER PLAYER HAS CHANGED",$A
 	DC.B	"SIDES",0
-LAB_4E069:
+strOtherChangeHisOpts:
 	;4e069
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$43,$48,$41,$4e,$47,$45,$44,$0a,$48,$49,$53,$20,$4f,$50,$54
 	;DC.B	$49,$4f,$4e,$53,$00
 	DC.B	"OTHER PLAYER HAS CHANGED",$A
 	DC.B	"HIS OPTIONS",0
-LAB_4E08E:
+strOtherChangeYourOpt:
 	;4e08e
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$43,$48,$41,$4e,$47,$45,$44,$0a,$59,$4f,$55,$52,$20,$4f,$50
 	;DC.B	$54,$49,$4f,$4e,$53,$00
 	DC.B	"OTHER PLAYER HAS CHANGED",$A
 	DC.B	"YOUR OPTIONS",0
-LAB_4E0B4:
+strOtherAssistOn:
 	;4e0b4
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$53,$45,$4c,$45,$43,$54,$45,$44,$0a,$43,$4f,$4d,$50,$55,$54
 	;DC.B	$45,$52,$20,$41,$53,$53,$49,$53,$54,$41,$4e,$43,$45,$00
 	DC.B	"OTHER PLAYER HAS SELECTED",$A
 	DC.B	"COMPUTER ASSISTANCE",0
-LAB_4E0E2:
+strOtherAssistOff:
 	;4e0e2
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$54,$55,$52,$4e,$45,$44,$20,$4f,$46,$46,$0a,$43,$4f,$4d,$50
 	;DC.B	$55,$54,$45,$52,$20,$41,$53,$53,$49,$53,$54,$41,$4e,$43,$45,$00
 	DC.B	"OTHER PLAYER HAS TURNED OFF",$A
 	DC.B	"COMPUTER ASSISTANCE",0
-LAB_4E112:
+strOtherPlanerGone:
 	;4e112
 	;DC.B	$4f,$54,$48,$45,$52,$20,$50,$4c,$41,$59,$45,$52,$20,$48,$41,$53
 	;DC.B	$20,$47,$4f,$4e,$45,$20,$4f,$46,$46,$0a,$4c,$49,$4e,$45,$2c,$20
@@ -20441,187 +21232,191 @@ LAB_4E112:
 	;DC.B	$52,$00
 	DC.B	"OTHER PLAYER HAS GONE OFF",$A
 	DC.B	"LINE, NOW IN ONE PLAYER",0
-LAB_4E144:
+strSerialIOAbort:
 	;4e144
 	;DC.B	$53,$45,$52,$49,$41,$4c,$20,$49,$4f,$20,$41,$42,$4f,$52,$54,$45
 	;DC.B	$44,$00
 	DC.B	"SERIAL IO ABORTED",0
-LAB_4E156:
+strSerialChecksumErr:
 	;4e156
 	;DC.B	$53,$45,$52,$49,$41,$4c,$20,$43,$48,$45,$43,$4b,$53,$55,$4d,$20
 	;DC.B	$45,$52,$52,$4f,$52,$00
 	DC.B	"SERIAL CHECKSUM ERROR",0
-LAB_4E16C:
+strIncompatLandscap:
 	;4e16c
 	;DC.B	$49,$4e,$43,$4f,$4d,$50,$41,$54,$41,$42,$4c,$45,$20,$4c,$41,$4e
 	;DC.B	$44,$53,$43,$41,$50,$45,$20,$45,$52,$52,$4f,$52,$00
 	DC.B	"INCOMPATABLE LANDSCAPE ERROR",0
-LAB_4E189:
+strInsertDisk:
 	;4e189
 	;DC.B	$49,$4e,$53,$45,$52,$54,$20,$54,$48,$45,$20,$4f,$52,$49,$47,$49
 	;DC.B	$4e,$41,$4c,$0a,$50,$4f,$50,$55,$4c,$4f,$55,$53,$20,$44,$49,$53
 	;DC.B	$4b,$20,$49,$4e,$20,$44,$46,$30,$3a,$00,$00
 	DC.B	"INSERT THE ORIGINAL",$A
 	DC.B	"POPULOUS DISK IN DF0:",0,0
-LAB_4E1B4:
+strGrassPlanes:
 	;4e1b4
 	;DC.B	$47,$52,$41,$53,$53,$20,$50,$4c,$41,$4e,$45,$53,$00
 	DC.B	"GRASS PLANES",0
-LAB_4E1C1:
+strDesert:
 	;4e1c1
 	;DC.B	$44,$45,$53,$45,$52,$54,$00
 	DC.B	"DESERT",0
-LAB_4E1C8:
+strSnowAndIce:
 	;4e1c8
 	;DC.B	$53,$4e,$4f,$57,$20,$41,$4e,$44,$20,$49,$43,$45,$00
 	DC.B	"SNOW AND ICE",0
-LAB_4E1D5:
+strRocky:
 	;4e1d5
 	;DC.B	$52,$4f,$43,$4b,$59,$00
 	DC.B	"ROCKY",0
-LAB_4E1DB:
+strVerySlow:
 	;4e1db
 	;DC.B	$56,$45,$52,$59,$20,$53,$4c,$4f,$57,$00
 	DC.B	"VERY SLOW",0
-LAB_4E1E5:
+strSlow:
 	;4e1e5
 	;DC.B	$53,$4c,$4f,$57,$00
 	DC.B	"SLOW",0
-LAB_4E1EA:
+strMedium:
 	;4e1ea
 	;DC.B	$4d,$45,$44,$49,$55,$4d,$00
 	DC.B	"MEDIUM",0
-LAB_4E1F1:
+strFast:
 	;4e1f1
 	;DC.B	$46,$41,$53,$54,$00
 	DC.B	"FAST",0
-LAB_4E1F6:
+strVeryFast:
 	;4e1f6
 	;DC.B	$56,$45,$52,$59,$20,$46,$41,$53,$54,$00
 	DC.B	"VERY FAST",0
-LAB_4E200:
+strVeryPoor:
 	;4e200
 	;DC.B	$56,$45,$52,$59,$20,$50,$4f,$4f,$52,$00
 	DC.B	"VERY POOR",0
-LAB_4E20A:
+strPoor:
 	;4e20a
 	;DC.B	$50,$4f,$4f,$52,$00
 	DC.B	"POOR",0
-LAB_4E20F:
+strAverage:
 	;4e20f
 	;DC.B	$41,$56,$45,$52,$41,$47,$45,$00
 	DC.B	"AVERAGE",0
-LAB_4E217:
+strGood3:
 	;4e217
 	;DC.B	$47,$4f,$4f,$44,$00
 	DC.B	"GOOD",0
-LAB_4E21C:
+strVeryGood:
 	;4e21c
 	;DC.B	$56,$45,$52,$59,$20,$47,$4f,$4f,$44,$00
 	DC.B	"VERY GOOD",0
-LAB_4E226:
+strCannotBeBuilt:
 	;4e226
 	;DC.B	$43,$41,$4e,$4e,$4f,$54,$20,$42,$45,$20,$42,$55,$49,$4c,$54,$00
 	DC.B	"CANNOT BE BUILT",0
-LAB_4E236:
+strBuiltOnTowns:
 	;4e236
 	;DC.B	$42,$55,$49,$4c,$54,$20,$4a,$55,$53,$54,$20,$4f,$4e,$20,$54,$4f
 	;DC.B	$57,$4e,$53,$00
 	DC.B	"BUILT JUST ON TOWNS",0
-LAB_4E24A:
+strOnlyBuiltUp:
 	;4e24a
 	;DC.B	$4f,$4e,$4c,$59,$20,$42,$55,$49,$4c,$54,$20,$55,$50,$00
 	DC.B	"ONLY BUILT UP",0
-LAB_4E258:
+strBuiltOnPeople:
 	;4e258
 	;DC.B	$42,$55,$49,$4c,$54,$20,$4f,$4e,$20,$50,$45,$4f,$50,$4c,$45,$00
 	DC.B	"BUILT ON PEOPLE",0
-LAB_4E268:
+strShallow:
 	;4e268
 	;DC.B	$53,$48,$41,$4c,$4c,$4f,$57,$00
 	DC.B	"SHALLOW",0
-LAB_4E270:
+strBottomless:
 	;4e270
 	;DC.B	$42,$4f,$54,$54,$4f,$4d,$4c,$45,$53,$53,$00
 	DC.B	"BOTTOMLESS",0
-LAB_4E27B:
+strHarmful:
 	;4e27b
 	;DC.B	$48,$41,$52,$4d,$46,$55,$4c,$00
 	DC.B	"HARMFUL",0
-LAB_4E283:
+strFatal:
 	;4e283
 	;DC.B	$46,$41,$54,$41,$4c,$00
 	DC.B	"FATAL",0
-LAB_4E289:
+strYes:
 	DC.B	$59			;4e289
 	DC.W	$4553			;4e28a
 	DS.B	1			;4e28c
-LAB_4E28D:
+strNo:
 	DC.B	$4e			;4e28d
 	DC.W	$4f00			;4e28e
-LAB_4E290:
+strMortal:
 	;4e290
 	;DC.B	$4d,$4f,$52,$54,$41,$4c,$00
 	DC.B	"MORTAL",0
-LAB_4E297:
+strImmortal:
 	;4e297
 	;DC.B	$49,$4d,$4d,$4f,$52,$54,$41,$4c,$00
 	DC.B	"IMMORTAL",0
-LAB_4E2A0:
+strEternal:
 	;4e2a0
 	;DC.B	$45,$54,$45,$52,$4e,$41,$4c,$00
 	DC.B	"ETERNAL",0
-LAB_4E2A8:
+strDeva:
 	;4e2a8
 	;DC.B	$44,$45,$56,$41,$00
 	DC.B	"DEVA",0
-LAB_4E2AD:
+strGreaterBeing:
 	;4e2ad
 	;DC.B	$47,$52,$45,$41,$54,$45,$52,$20,$42,$45,$49,$4e,$47,$00
 	DC.B	"GREATER BEING",0
-LAB_4E2BB:
+strDeity:
 	;4e2bb
 	;DC.B	$44,$45,$49,$54,$59,$00
 	DC.B	"DEITY",0
-LAB_4E2C1:
+strGreaterDeity:
 	;4e2c1
 	;DC.B	$47,$52,$45,$41,$54,$45,$52,$20,$44,$45,$49,$54,$59,$00
 	DC.B	"GREATER DEITY",0
-LAB_4E2CF:
+strMortalGod:
 	;4e2cf
 	;DC.B	$4d,$4f,$52,$54,$41,$4c,$20,$47,$4f,$44,$00
 	DC.B	"MORTAL GOD",0
-LAB_4E2DA:
+strGreaterGod:
 	;4e2da
 	;DC.B	$47,$52,$45,$41,$54,$45,$52,$20,$47,$4f,$44,$00
 	DC.B	"GREATER GOD",0
-LAB_4E2E6:
+strEternalGod:
 	;4e2e6
 	;DC.B	$45,$54,$45,$52,$4e,$41,$4c,$20,$47,$4f,$44,$00
 	DC.B	"ETERNAL GOD",0
-LAB_4E2F2:
+strWellDone:
 	;4e2f2
 	;DC.B	$57,$45,$4c,$4c,$20,$44,$4f,$4e,$45,$20,$00
 	DC.B	"WELL DONE ",0
-LAB_4E2FD:
+strYouConquered:
 	;4e2fd
 	;DC.B	$20,$59,$4f,$55,$20,$43,$4f,$4e,$51,$55,$45,$52,$45,$44,$20,$00
 	DC.B	" YOU CONQUERED ",0
-LAB_4E30D:
+strNowBattleAt:
 	;4e30d
 	;DC.B	$20,$4e,$4f,$57,$20,$42,$41,$54,$54,$4c,$45,$20,$41,$54,$20,$00
 	DC.B	" NOW BATTLE AT ",0
-LAB_4E31D:
+strWellDoneConq:
 	;4e31d
 	;DC.B	$57,$45,$4c,$4c,$20,$44,$4f,$4e,$45,$20,$59,$4f,$55,$20,$48,$41
 	;DC.B	$56,$45,$20,$43,$4f,$4e,$51,$55,$45,$52,$45,$44,$20,$45,$56,$49
 	;DC.B	$4c,$00
 	DC.B	"WELL DONE YOU HAVE CONQUERED EVIL",0
-LAB_4E33F:
+strBattleOverTry:
+; THE BATTLE IS OVER BUT TRY SHISODING ( = genesis)
 	;4e33f
 	;DC.B	$54,$48,$45,$20,$42,$41,$54,$54,$4c,$45,$20,$49,$53,$20,$4f,$56
 	;DC.B	$45,$52,$20,$42,$55,$54,$20,$54,$52,$59,$20,$00,$00
 	DC.B	"THE BATTLE IS OVER BUT TRY ",0,0
+; ------------------------------------------------------------------------------
+; Strings here used for map names
+; ------------------------------------------------------------------------------
 strRING:
 	;4e35c
 	;DC.B	$52,$49,$4e,$47,$00
@@ -21593,6 +22388,10 @@ LAB_50514:
 	MOVE.L	A0,D0			;5051a: 2008
 	SUBQ.L	#1,D0			;5051c: 5380
 	RTS				;5051e: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ASCII to integer
+; ------------------------------------------------------------------------------
 _atoi:
 	LINK.W	A5,#0			;50520: 4e550000
 	MOVEM.L	D4-D5/A2,-(A7)		;50524: 48e70c20
@@ -21683,7 +22482,7 @@ _int_end:
 	MOVEM.L	(A7)+,D2-D3/A4		;505d2: 4cdf100c
 	JMP	(A0)			;505d6: 4ed0
 ; ------------------------------------------------------------------------------
-; new code
+; new code for IFF routine
 ; ------------------------------------------------------------------------------
 _movmem:
 	MOVEM.L	(4,A7),A0-A1		;505d8: 4cef03000004
@@ -21702,10 +22501,10 @@ LAB_505F2:
 LAB_505F4:
 	DBF	D0,LAB_505F2		;505f4: 51c8fffc
 	RTS				;505f8: 4e75
-LAB_505FA:
+for_505FA:
 	MOVE.B	(A0)+,(A1)+		;505fa: 12d8
 LAB_505FC:
-	DBF	D0,LAB_505FA		;505fc: 51c8fffc
+	DBF	D0,for_505FA		;505fc: 51c8fffc
 	RTS				;50600: 4e75
 ; ------------------------------------------------------------------------------
 ; end new code
@@ -21737,10 +22536,12 @@ LAB_50640:
 	DC.L	$f35f4e73		;50642
 LAB_50646:
 	LEA	(DosLibName,PC),A1	;50646: 43fa0020
+; OldOpenLibrary
 	JSR	(-408,A6)		;5064a: 4eaefe68
 	MOVE.L	D0,(_DOSBase,A4)	;5064e: 29403568
 	BNE.S	LAB_50660		;50652: 660c
 	MOVE.L	#$00038007,D7		;50654: 2e3c00038007
+; guru meditation
 	JSR	(-108,A6)		;5065a: 4eaeff94
 	BRA.S	LAB_50664		;5065e: 6004
 LAB_50660:
@@ -21755,6 +22556,9 @@ DosLibName:
 _geta4:
 	LEA	_A4,A4			;50674: 49f9000593ee
 	RTS				;5067a: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 __main:
 	LINK.W	A5,#0			;5067c: 4e550000
 	MOVE.L	A2,-(A7)		;50680: 2f0a
@@ -21850,6 +22654,9 @@ LAB_50798:
 	RTS				;507b0: 4e75
 LAB_507B2:
 	MOVE.L	D0,D5			;507b2: 2a00
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 __cli_parse:
 	LINK.W	A5,#0			;507b4: 4e550000
 	MOVEM.L	D4-D5/A2-A3,-(A7)	;507b8: 48e70c30
@@ -22099,6 +22906,9 @@ _mulu:
 	ADD.L	D2,D0			;509e4: d082
 	MOVEM.L	(A7)+,D1-D3		;509e6: 4cdf000e
 	RTS				;509ea: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 __wb_parse:
 	LINK.W	A5,#0			;509ec: 4e550000
 	MOVEM.L	D4-D6/A2-A3,-(A7)	;509f0: 48e70e30
@@ -22167,6 +22977,7 @@ strWINDOW:
 strAsterisk:
 	DC.W	$2a00			;50a9e
 ; ------------------------------------------------------------------------------
+; Function
 ; new code
 ; ------------------------------------------------------------------------------
 _sprintf:
@@ -22185,6 +22996,9 @@ _sprintf:
 	MOVE.L	(A7)+,D4		;50aca: 281f
 	UNLK	A5			;50acc: 4e5d
 	RTS				;50ace: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 LAB_50AD0:
 	LINK.W	A5,#0			;50ad0: 4e550000
 	MOVEA.L	(__H1_end,A4),A0	;50ad4: 206c9846
@@ -22195,6 +23009,9 @@ LAB_50AD0:
 	AND.W	#$00ff,D0		;50ae4: c07c00ff
 	UNLK	A5			;50ae8: 4e5d
 	RTS				;50aea: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 SUB_50AEC:
 	LINK.W	A5,#0			;50aec: 4e550000
 	MOVEM.L	D4/A2,-(A7)		;50af0: 48e70820
@@ -22249,6 +23066,9 @@ LAB_50B70:
 	MOVEM.L	(A7)+,D4/A2		;50b72: 4cdf0410
 	UNLK	A5			;50b76: 4e5d
 	RTS				;50b78: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _format:
 	LINK.W	A5,#-222		;50b7a: 4e55ff22
 	MOVEM.L	D4/A2-A3,-(A7)		;50b7e: 48e70830
@@ -22652,6 +23472,9 @@ LAB_50F34:
 	DBF	D2,LAB_50F28		;50f34: 51cafff2
 	MOVEM.L	(A7)+,D2-D3		;50f38: 4cdf000c
 	RTS				;50f3c: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _exit:
 	LINK.W	A5,#0			;50f3e: 4e550000
 	TST.L	(_cls_,A4)		;50f42: 4aac358a
@@ -22664,6 +23487,9 @@ LAB_50F4E:
 	ADDQ.W	#2,A7			;50f56: 544f
 	UNLK	A5			;50f58: 4e5d
 	RTS				;50f5a: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 __exit:
 	LINK.W	A5,#-4			;50f5c: 4e55fffc
 	MOVE.L	D4,-(A7)		;50f60: 2f04
@@ -22772,6 +23598,9 @@ LAB_51068:
 	MOVE.L	(A7)+,D4		;51072: 281f
 	UNLK	A5			;51074: 4e5d
 	RTS				;51076: 4e75
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _close:
 	LINK.W	A5,#0			;51078: 4e550000
 	MOVEM.L	D4-D6/A2,-(A7)		;5107c: 48e70e20
@@ -22912,6 +23741,9 @@ __CloseLibrary:
 	MOVEA.L	(4,A7),A1		;511f8: 226f0004
 	MOVEA.L	(_SysBase,A4),A6	;511fc: 2c6c3564
 	JMP	(-414,A6)		;51200: 4eeefe62
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _CreatePort:
 	LINK.W	A5,#0			;51204: 4e550000
 	MOVEM.L	D4/A2,-(A7)		;51208: 48e70820
@@ -22962,6 +23794,9 @@ LAB_51282:
 LAB_5128C:
 	MOVE.L	A2,D0			;5128c: 200a
 	BRA.S	LAB_51222		;5128e: 6092
+; ------------------------------------------------------------------------------
+; Function
+; ------------------------------------------------------------------------------
 _DeletePort:
 	LINK.W	A5,#0			;51290: 4e550000
 	MOVE.L	A2,-(A7)		;51294: 2f0a
@@ -23284,7 +24119,7 @@ LAB_51628:
 LAB_5162A:
 	DC.W	$00c8			;5162a
 _PortName:
-	DC.L	LAB_4D5EA		;5162c: 0004d5ea
+	DC.L	strSoundChannel		;5162c: 0004d5ea
 _screen_origin:
 	DC.L	$00000a16		;51630
 _p_addr:
@@ -23303,7 +24138,7 @@ LAB_51643:
 	DC.B	$01			;51643
 _mode:
 	DS.B	1			;51644
-LAB_51645:
+bitfield_51645:
 	DC.B	$02			;51645
 _surender:
 	DC.B	$ff			;51646
@@ -23373,7 +24208,7 @@ LAB_516CA:
 	DS.L	1			;516ca
 LAB_516CE:
 	DS.L	1			;516ce
-LAB_516D2:
+strABC:
 	;516d2
 	;DC.B	$61,$62,$63,$00,$00,$00
 	DC.B	"abc",0,0,0
@@ -23477,23 +24312,39 @@ LAB_518A7:
 	DC.B	$10			;518a7
 _in_conquest:
 	DC.W	$ffff			;518a8
+; ------------------------------------------------------------------------------
+; Variables loaded from levels.dat for named maps in Conquest mode
+; Valid numbers for each column:
+; 0: 01 02 03 04 05 06 07 08 09 0a
+; 1: 01 02 03 04 05 06 07 08 09 0a
+; 2: 00 01 02 03 04 05 06 07 08 0a 0b 0c 0d 0f 10 12 14 20 22 24 34 38 3a 3e 3f
+; 3: 00 01 02 04 08 09 0b 0f 12 19 1b 1e 1f 20 22 24 29 2d 2e 2f 30 31 32 33 34 35 36 37 38 39 3a 3b 3c 3d 3e 3f
+; 4: 00 01 03 04 08 0a 10 11 12
+; 5: 00 01 02 03
+; 6: 01 02 03 04 05 06 07 0a 0c 14 1e
+; 7: 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f 14 1e
+; 8: 00 01 02 03 04 0a 0b 0d 11 5f 63 6f 75 7c 7e
+; 9: 01 02 06 08 0b 17 18 19 1a 1e 26 27 29 2d 35 36 3c 3d 42 44 4b 51 53 54 5a 5f 60 62 63 69 71 72 80 81 82 8e 8f 90 91 97 9e 9f a0 ad ae af b6 b8 bc bd cb cc cd d6 da dc df e8 ea eb f7 f9 fa
+; ------------------------------------------------------------------------------
 _conquest:
 	DC.B	$01			;518aa
-LAB_518AB:
+conq_01_speed:
 	DC.B	$01			;518ab
-LAB_518AC:
+conq_02_enemypow:
+; appears to be bitfield of enemy powers available
 	DS.B	1			;518ac
-LAB_518AD:
+conq_03_yourpow:
 	DC.B	$3f			;518ad
-LAB_518AE:
+conq_04_mode:
 	DC.B	$03			;518ae
-LAB_518AF:
+conq_05_terrain:
+; 00 Grass Planes, 01 Desert, 02 Snow and Ice, 03 Rocky
 	DS.B	1			;518af
-LAB_518B0:
+conq_06_yourpop:
 	DC.B	$0f			;518b0
-LAB_518B1:
+conq_07_enemypop:
 	DC.B	$03			;518b1
-LAB_518B2:
+conq_08_seed:
 	DS.W	1			;518b2
 _end_ok:
 	DS.L	1			;518b4
@@ -23612,41 +24463,41 @@ LAB_51922:
 _prot_num1:
 	DC.L	$ad68a917		;51b94
 _g_text:
-	DC.L	LAB_4DF3C		;51b98: 0004df3c
-	DC.L	LAB_4DF4B		;51b9c: 0004df4b
-	DC.L	LAB_4DF5D		;51ba0: 0004df5d
+	DC.L	strsendMessage		;51b98: 0004df3c
+	DC.L	strMessageGood		;51b9c: 0004df4b
+	DC.L	strMessageEvil		;51ba0: 0004df5d
 LAB_51BA4:
-	DC.L	LAB_4DF6F		;51ba4: 0004df6f
+	DC.L	strTwoPlayerSer		;51ba4: 0004df6f
 LAB_51BA8:
-	DC.L	LAB_4DFB5		;51ba8: 0004dfb5
+	DC.L	strOnePlayerSave	;51ba8: 0004dfb5
 LAB_51BAC:
-	DC.L	LAB_4DFFF		;51bac: 0004dfff
+	DC.L	strOtherChangeOpt	;51bac: 0004dfff
 LAB_51BB0:
-	DC.L	LAB_4E025		;51bb0: 0004e025
+	DC.L	strOtherPaint		;51bb0: 0004e025
 LAB_51BB4:
-	DC.L	LAB_4E04A		;51bb4: 0004e04a
-	DC.L	LAB_4E069		;51bb8: 0004e069
-	DC.L	LAB_4E08E		;51bbc: 0004e08e
+	DC.L	strOtherSides		;51bb4: 0004e04a
+	DC.L	strOtherChangeHisOpts	;51bb8: 0004e069
+	DC.L	strOtherChangeYourOpt	;51bbc: 0004e08e
 LAB_51BC0:
-	DC.L	LAB_4E0B4		;51bc0: 0004e0b4
+	DC.L	strOtherAssistOn	;51bc0: 0004e0b4
 LAB_51BC4:
-	DC.L	LAB_4E0E2		;51bc4: 0004e0e2
+	DC.L	strOtherAssistOff	;51bc4: 0004e0e2
 LAB_51BC8:
-	DC.L	LAB_4E112		;51bc8: 0004e112
+	DC.L	strOtherPlanerGone	;51bc8: 0004e112
 LAB_51BCC:
-	DC.L	LAB_4E144		;51bcc: 0004e144
-	DC.L	LAB_4E156		;51bd0: 0004e156
+	DC.L	strSerialIOAbort	;51bcc: 0004e144
+	DC.L	strSerialChecksumErr	;51bd0: 0004e156
 LAB_51BD4:
-	DC.L	LAB_4E16C		;51bd4: 0004e16c
+	DC.L	strIncompatLandscap	;51bd4: 0004e16c
 LAB_51BD8:
-	DC.L	LAB_4E189		;51bd8: 0004e189
+	DC.L	strInsertDisk		;51bd8: 0004e189
 _game_text:
 	DC.W	$0070			;51bdc
 LAB_51BDE:
 	DC.W	$0010			;51bde
 LAB_51BE0:
 	DC.W	$0048			;51be0
-LAB_51BE2:
+strGameSetup:
 	;51be2
 	;DC.B	$47,$41,$4d,$45,$20,$53,$45,$54,$55,$50,$00
 	DC.B	"GAME SETUP",0
@@ -23654,21 +24505,21 @@ LAB_51BE2:
 	DS.L	7			;51bee
 	DC.L	$00100024		;51c0a
 	DC.W	$0008			;51c0e
-LAB_51C10:
+strOnePlayer:
 	DC.W	$8020			;51c10
 	;51c12
 	;DC.B	$4f,$4e,$45,$20,$50,$4c,$41,$59,$45,$52,$00,$00
 	DC.B	"ONE PLAYER",0,0
 	DS.L	6			;51c1e
 	DC.L	$00000098,$00240008	;51c36
-LAB_51C3E:
+strTwoplayers:
 	DC.W	$8020			;51c3e
 	;51c40
 	;DC.B	$54,$57,$4f,$20,$50,$4c,$41,$59,$45,$52,$53,$00
 	DC.B	"TWO PLAYERS",0
 	DS.L	6			;51c4c
 	DC.L	$00000010,$002e0008	;51c64
-LAB_51C6C:
+strPlayGame:
 	DC.W	$8020			;51c6c
 	;51c6e
 	;DC.B	$50,$4c,$41,$59,$20,$47,$41,$4d,$45,$00
@@ -23676,7 +24527,7 @@ LAB_51C6C:
 	DS.L	7			;51c78
 	DC.L	$0098002e		;51c94
 	DC.W	$0008			;51c98
-LAB_51C9A:
+strPaintMap:
 	DC.W	$8020			;51c9a
 	;51c9c
 	;DC.B	$50,$41,$49,$4e,$54,$20,$4d,$41,$50,$00
@@ -23684,7 +24535,7 @@ LAB_51C9A:
 	DS.L	7			;51ca6
 	DC.L	$00100038		;51cc2
 	DC.W	$0008			;51cc6
-LAB_51CC8:
+strGood:
 	DC.W	$8020			;51cc8
 	;51cca
 	;DC.B	$47,$4f,$4f,$44,$00,$00
@@ -23692,7 +24543,7 @@ LAB_51CC8:
 	DS.L	8			;51cd0
 	DC.L	$00980038		;51cf0
 	DC.W	$0008			;51cf4
-LAB_51CF6:
+strEvil:
 	DC.W	$8020			;51cf6
 	;51cf8
 	;DC.B	$45,$56,$49,$4c,$00
@@ -23701,21 +24552,21 @@ LAB_51CF6:
 	DS.L	8			;51cfe
 	DC.L	$00100042		;51d1e
 	DC.W	$0008			;51d22
-LAB_51D24:
+strHumanVsAmiga:
 	DC.W	$8020			;51d24
 	;51d26
 	;DC.B	$48,$55,$4d,$41,$4e,$20,$56,$53,$20,$41,$4d,$49,$47,$41,$00,$00
 	DC.B	"HUMAN VS AMIGA",0,0
 	DS.L	5			;51d36
 	DC.L	$00000098,$00420008	;51d4a
-LAB_51D52:
+strAmigaVsAmiga:
 	DC.W	$8020			;51d52
 	;51d54
 	;DC.B	$41,$4d,$49,$47,$41,$20,$56,$53,$20,$41,$4d,$49,$47,$41,$00,$00
 	DC.B	"AMIGA VS AMIGA",0,0
 	DS.L	5			;51d64
 	DC.L	$00000010,$004c0008	;51d78
-LAB_51D80:
+strConquest2:
 	DC.W	$8020			;51d80
 	;51d82
 	;DC.B	$43,$4f,$4e,$51,$55,$45,$53,$54,$00,$00
@@ -23723,7 +24574,7 @@ LAB_51D80:
 	DS.L	7			;51d8c
 	DC.L	$0098004c		;51da8
 	DC.W	$0008			;51dac
-LAB_51DAE:
+strCustomGame:
 	DC.W	$8020			;51dae
 	;51db0
 	;DC.B	$43,$55,$53,$54,$4f,$4d,$20,$47,$41,$4d,$45,$00
@@ -23773,7 +24624,11 @@ LAB_51EEC:
 	DC.W	$000a			;51eec
 LAB_51EEE:
 	DC.W	$0010			;51eee
-LAB_51EF0:
+; ------------------------------------------------------------------------------
+; These strings appear to be 46-byte structures
+; 40 bytes with six bytes other data, total 46 ($2e)
+; ------------------------------------------------------------------------------
+strWorldToConquer:
 	;51ef0
 	;DC.B	$57,$4f,$52,$4c,$44,$20,$54,$4f,$20,$43,$4f,$4e,$51,$55,$45,$52
 	;DC.B	$00
@@ -23781,9 +24636,9 @@ LAB_51EF0:
 	DS.B	1			;51f01
 	DS.L	5			;51f02
 	DS.W	1			;51f16
-LAB_51F18:
+text_x:
 	DC.W	$0010			;51f18
-LAB_51F1A:
+text_y:
 	DC.L	$001e0011		;51f1a
 	;51f1e
 	;DC.B	$42,$41,$54,$54,$4c,$45,$20,$4e,$55,$4d,$42,$45,$52,$20,$49,$53
@@ -23869,60 +24724,60 @@ LAB_51F1A:
 	DS.B	1			;5217b
 	DS.L	8			;5217c
 _con_text:
-	DC.L	LAB_4E1B4		;5219c: 0004e1b4
-	DC.L	LAB_4E1C1		;521a0: 0004e1c1
-	DC.L	LAB_4E1C8		;521a4: 0004e1c8
-	DC.L	LAB_4E1D5		;521a8: 0004e1d5
-	DC.L	LAB_4E1DB		;521ac: 0004e1db
-	DC.L	LAB_4E1E5		;521b0: 0004e1e5
-	DC.L	LAB_4E1EA		;521b4: 0004e1ea
-	DC.L	LAB_4E1F1		;521b8: 0004e1f1
-	DC.L	LAB_4E1F6		;521bc: 0004e1f6
-	DC.L	LAB_4E200		;521c0: 0004e200
-	DC.L	LAB_4E20A		;521c4: 0004e20a
-	DC.L	LAB_4E20F		;521c8: 0004e20f
-	DC.L	LAB_4E217		;521cc: 0004e217
-	DC.L	LAB_4E21C		;521d0: 0004e21c
+	DC.L	strGrassPlanes		;5219c: 0004e1b4
+	DC.L	strDesert		;521a0: 0004e1c1
+	DC.L	strSnowAndIce		;521a4: 0004e1c8
+	DC.L	strRocky		;521a8: 0004e1d5
+	DC.L	strVerySlow		;521ac: 0004e1db
+	DC.L	strSlow			;521b0: 0004e1e5
+	DC.L	strMedium		;521b4: 0004e1ea
+	DC.L	strFast			;521b8: 0004e1f1
+	DC.L	strVeryFast		;521bc: 0004e1f6
+	DC.L	strVeryPoor		;521c0: 0004e200
+	DC.L	strPoor			;521c4: 0004e20a
+	DC.L	strAverage		;521c8: 0004e20f
+	DC.L	strGood3		;521cc: 0004e217
+	DC.L	strVeryGood		;521d0: 0004e21c
 LAB_521D4:
-	DC.L	LAB_4E226		;521d4: 0004e226
+	DC.L	strCannotBeBuilt	;521d4: 0004e226
 LAB_521D8:
-	DC.L	LAB_4E236		;521d8: 0004e236
+	DC.L	strBuiltOnTowns		;521d8: 0004e236
 LAB_521DC:
-	DC.L	LAB_4E24A		;521dc: 0004e24a
+	DC.L	strOnlyBuiltUp		;521dc: 0004e24a
 LAB_521E0:
-	DC.L	LAB_4E258		;521e0: 0004e258
+	DC.L	strBuiltOnPeople	;521e0: 0004e258
 LAB_521E4:
-	DC.L	LAB_4E268		;521e4: 0004e268
+	DC.L	strShallow		;521e4: 0004e268
 LAB_521E8:
-	DC.L	LAB_4E270		;521e8: 0004e270
+	DC.L	strBottomless		;521e8: 0004e270
 LAB_521EC:
-	DC.L	LAB_4E27B		;521ec: 0004e27b
+	DC.L	strHarmful		;521ec: 0004e27b
 LAB_521F0:
-	DC.L	LAB_4E283		;521f0: 0004e283
+	DC.L	strFatal		;521f0: 0004e283
 LAB_521F4:
-	DC.L	LAB_4E289		;521f4: 0004e289
+	DC.L	strYes			;521f4: 0004e289
 LAB_521F8:
-	DC.L	LAB_4E28D		;521f8: 0004e28d
-	DC.L	LAB_4E290		;521fc: 0004e290
-	DC.L	LAB_4E297		;52200: 0004e297
-	DC.L	LAB_4E2A0		;52204: 0004e2a0
-	DC.L	LAB_4E2A8		;52208: 0004e2a8
-	DC.L	LAB_4E2AD		;5220c: 0004e2ad
-	DC.L	LAB_4E2BB		;52210: 0004e2bb
-	DC.L	LAB_4E2C1		;52214: 0004e2c1
-	DC.L	LAB_4E2CF		;52218: 0004e2cf
-	DC.L	LAB_4E2DA		;5221c: 0004e2da
-	DC.L	LAB_4E2E6		;52220: 0004e2e6
+	DC.L	strNo			;521f8: 0004e28d
+	DC.L	strMortal		;521fc: 0004e290
+	DC.L	strImmortal		;52200: 0004e297
+	DC.L	strEternal		;52204: 0004e2a0
+	DC.L	strDeva			;52208: 0004e2a8
+	DC.L	strGreaterBeing		;5220c: 0004e2ad
+	DC.L	strDeity		;52210: 0004e2bb
+	DC.L	strGreaterDeity		;52214: 0004e2c1
+	DC.L	strMortalGod		;52218: 0004e2cf
+	DC.L	strGreaterGod		;5221c: 0004e2da
+	DC.L	strEternalGod		;52220: 0004e2e6
 LAB_52224:
-	DC.L	LAB_4E2F2		;52224: 0004e2f2
+	DC.L	strWellDone		;52224: 0004e2f2
 LAB_52228:
-	DC.L	LAB_4E2FD		;52228: 0004e2fd
+	DC.L	strYouConquered		;52228: 0004e2fd
 LAB_5222C:
-	DC.L	LAB_4E30D		;5222c: 0004e30d
+	DC.L	strNowBattleAt		;5222c: 0004e30d
 LAB_52230:
-	DC.L	LAB_4E31D		;52230: 0004e31d
+	DC.L	strWellDoneConq		;52230: 0004e31d
 LAB_52234:
-	DC.L	LAB_4E33F		;52234: 0004e33f
+	DC.L	strBattleOverTry	;52234: 0004e33f
 _go_protect:
 	DS.W	1			;52238
 _end_words:
