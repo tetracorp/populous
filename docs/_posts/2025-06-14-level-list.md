@@ -17,376 +17,376 @@ and how levels are generated.
 | 2 | 1329 | JOSAMAR | Very Poor (10) | Very Slow (10) |  | ESKVFA | Fatal | Bottomless | Near people | Grass | 3 | 3 | 6302 
 | 3 | 4a4e | TIMUSLUG | Very Poor (10) | Very Slow (10) |  | ESKVFA | Fatal | Bottomless | Near people | Grass | 3 | 3 | 6302 
 | 4 | 0173 | CALDIEHILL | Very Poor (10) | Very Slow (10) |  | ESKVFA | Fatal | Bottomless | Near people | Grass | 3 | 3 | 6302 
-| 5 | 3898 | SCOQUEMET | Very Poor (9) | Very Slow (10) | S | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
-| 6 | 6fbd | SWAUER | Very Poor (9) | Very Slow (10) | S | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
-| 7 | 26e2 | KILLPEING | Very Poor (9) | Very Slow (10) | S | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
-| 8 | 5e07 | EOAOZORD | Very Poor (9) | Very Slow (10) | S | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
-| 9 | 152c | BURWILCON | Very Poor (9) | Very Slow (10) | S | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
-| 10 | 4c51 | MORINGILL | Poor (8) | Very Slow (10) | KFA | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
-| 11 | 0376 | NIMIHILL | Poor (8) | Very Slow (10) | KFA | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
-| 12 | 3a9b | BILCEMET | Poor (8) | Very Slow (10) | KFA | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
-| 13 | 71c0 | RINGMPED | Poor (8) | Very Slow (10) | KFA | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
-| 14 | 28e5 | WEAVHIPHAM | Poor (8) | Very Slow (10) | KFA | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
-| 15 | 600a | ALPOUTOND | Poor (7) | Very Slow (9) | F | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
-| 16 | 172f | BADACON | Poor (7) | Very Slow (9) | F | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
-| 17 | 4e54 | IMMUSILL | Poor (7) | Very Slow (9) | F | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
-| 18 | 0579 | HOBDIETORY | Poor (7) | Very Slow (9) | F | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
-| 19 | 3c9e | BUGQUEEND | Poor (7) | Very Slow (9) | F | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
-| 20 | 73c3 | SHADTED | Average (5) | Very Slow (9) | E | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
-| 21 | 2ae8 | CORPEHAM | Average (5) | Very Slow (9) | E | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
-| 22 | 620d | BINOZOND | Average (5) | Very Slow (9) | E | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
-| 23 | 1932 | SADWILLOW | Average (5) | Very Slow (9) | E | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
-| 24 | 5057 | LOWINGICK | Average (5) | Very Slow (9) | E | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
-| 25 | 077c | QAZITORY | Good (4) | Very Slow (9) | KFA | KVFA | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
-| 26 | 3ea1 | VERYMEEND | Good (4) | Very Slow (9) | KFA | KVFA | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
-| 27 | 75c6 | MINMPME | Good (4) | Very Slow (9) | KFA | KVFA | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
-| 28 | 2ceb | HAMHIPOLD | Good (4) | Very Slow (9) | KFA | KVFA | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
-| 29 | 6410 | FUTOUTBOY | Good (4) | Very Slow (9) | KFA | KVFA | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
-| 30 | 1b35 | SUZALOW | Good (3) | Slow (8) | K | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
-| 31 | 525a | DOUUSICK | Good (3) | Slow (8) | K | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
-| 32 | 097f | SHIDIEHOLE | Good (3) | Slow (8) | K | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
-| 33 | 40a4 | HURTLOPLAS | Good (3) | Slow (8) | K | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
-| 34 | 77c9 | JOSTME | Good (3) | Slow (8) | K | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
-| 35 | 2eee | TIMPEOLD | Very Good (2) | Slow (8) | FA | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
-| 36 | 6613 | CALOZBOY | Very Good (2) | Slow (8) | FA | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
-| 37 | 1d38 | SCOWILDOR | Very Good (2) | Slow (8) | FA | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
-| 38 | 545d | SWAINGPAL | Very Good (2) | Slow (8) | FA | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
-| 39 | 0b82 | KILLOHOLE | Very Good (2) | Slow (8) | FA | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
-| 40 | 42a7 | EOAMELAS | Very Good (1) | Slow (8) | S | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
-| 41 | 79cc | BURMPAL | Very Good (1) | Slow (8) | S | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
-| 42 | 30f1 | MORHIPPIL | Very Good (1) | Slow (8) | S | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
-| 43 | 6816 | NIMOUTJOB | Very Good (1) | Slow (8) | S | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
-| 44 | 1f3b | BILADOR | Very Good (1) | Slow (8) | S | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
-| 45 | 5660 | RINGGBPAL | Very Poor (10) | Slow (7) | V | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 46 | 0d85 | WEAVINPERT | Very Poor (10) | Slow (7) | V | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 47 | 44aa | ALPLOPOUT | Very Poor (10) | Slow (7) | V | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 48 | 7bcf | BADTAL | Very Poor (10) | Slow (7) | V | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 49 | 32f4 | IMMPEPIL | Very Poor (10) | Slow (7) | V | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 50 | 6a19 | HOBOZJOB | Very Poor (9) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
-| 51 | 213e | BUGWILLIN | Very Poor (9) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
-| 52 | 5863 | SHADOGODON | Very Poor (9) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
-| 53 | 0f88 | COROPERT | Very Poor (9) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
-| 54 | 46ad | BINMEOUT | Very Poor (9) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
-| 55 | 7dd2 | SADMPT | Poor (8) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
-| 56 | 34f7 | LOWHIPBAR | Poor (8) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
-| 57 | 6c1c | QAZOUTER | Poor (8) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
-| 58 | 2341 | VERYELIN | Poor (8) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
-| 59 | 5a66 | MINGBDON | Poor (8) | Slow (7) | SV | EKVFA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
-| 60 | 118b | HAMINMAR | Poor (7) | Medium (6) | SV | EKVF | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
-| 61 | 48b0 | FUTLOPLUG | Poor (7) | Medium (6) | SV | EKVF | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
-| 62 | 7fd5 | SUZTT | Poor (7) | Medium (6) | SV | EKVF | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
-| 63 | 36fa | DOUPEBAR | Poor (7) | Medium (6) | SV | EKVF | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
-| 64 | 6e1f | SHIOZER | Poor (7) | Medium (6) | SV | EKVF | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
-| 65 | 2544 | HURTIKEING | Average (6) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
-| 66 | 5c69 | JOSOGOORD | Average (6) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
-| 67 | 138e | TIMOMAR | Average (6) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
-| 68 | 4ab3 | CALMELUG | Average (6) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
-| 69 | 01d8 | SCOMPHILL | Average (6) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
-| 70 | 38fd | SWAHIPMET | Average (5) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
-| 71 | 7022 | KILLQAZED | Average (5) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
-| 72 | 2747 | EOAEING | Average (5) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
-| 73 | 5e6c | BURGBORD | Average (5) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
-| 74 | 1591 | MORINCON | Average (5) | Medium (6) | EV | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
-| 75 | 4cb6 | NIMLOPILL | Good (4) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 76 | 03db | BILTHILL | Good (4) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 77 | 3b00 | RINGOXMET | Good (4) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 78 | 7225 | WEAVEAED | Good (4) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 79 | 294a | ALPIKEHAM | Good (4) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 80 | 606f | BADOGOOND | Good (3) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
-| 81 | 1794 | IMMOCON | Good (3) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
-| 82 | 4eb9 | HOBMEILL | Good (3) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
-| 83 | 05de | BUGMPTORY | Good (3) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
-| 84 | 3d03 | SHADKOPEND | Good (3) | Medium (5) | SV | EKVFA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
-| 85 | 7428 | CORQAZME | Very Good (2) | Medium (5) | SV | EKVF | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 86 | 2b4d | BINEHAM | Very Good (2) | Medium (5) | SV | EKVF | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 87 | 6272 | SADGBOND | Very Good (2) | Medium (5) | SV | EKVF | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 88 | 1997 | LOWINLOW | Very Good (2) | Medium (5) | SV | EKVF | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 89 | 50bc | QAZLOPICK | Very Good (2) | Medium (5) | SV | EKVF | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 90 | 07e1 | VERYYTORY | Very Good (1) | Fast (4) | EV | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
-| 91 | 3f06 | MINOXEND | Very Good (1) | Fast (4) | EV | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
-| 92 | 762b | HAMEAME | Very Good (1) | Fast (4) | EV | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
-| 93 | 2d50 | FUTIKEOLD | Very Good (1) | Fast (4) | EV | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
-| 94 | 6475 | SUZOGOBOY | Very Good (1) | Fast (4) | EV | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
-| 95 | 1b9a | DOUOLOW | Very Good (1) | Fast (4) | KFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
-| 96 | 52bf | SHIMEICK | Very Good (1) | Fast (4) | KFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
-| 97 | 09e4 | HURTDIHOLE | Very Good (1) | Fast (4) | KFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
-| 98 | 4109 | JOSKOPLAS | Very Good (1) | Fast (4) | KFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
-| 99 | 782e | TIMQAZAL | Very Good (1) | Fast (4) | KFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
-| 100 | 2f53 | CALEOLD | Very Good (2) | Fast (4) | KFA | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
-| 101 | 6678 | SCOGBBOY | Very Good (2) | Fast (4) | KFA | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
-| 102 | 1d9d | SWAINDOR | Very Good (2) | Fast (4) | KFA | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
-| 103 | 54c2 | KILLSODPAL | Very Good (2) | Fast (4) | KFA | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
-| 104 | 0be7 | EOAYHOLE | Very Good (2) | Fast (4) | KFA | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
-| 105 | 430c | BUROXLAS | Good (3) | Fast (3) | KF | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
-| 106 | 7a31 | MOREAAL | Good (3) | Fast (3) | KF | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
-| 107 | 3156 | NIMIKEPIL | Good (3) | Fast (3) | KF | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
-| 108 | 687b | BILOGOJOB | Good (3) | Fast (3) | KF | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
-| 109 | 1fa0 | RINGUDOR | Good (3) | Fast (3) | KF | ESKVF | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
-| 110 | 56c5 | WEAVDEPAL | Good (4) | Fast (3) | K | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
-| 111 | 0dea | ALPDIPERT | Good (4) | Fast (3) | K | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
-| 112 | 450f | BADKOPOUT | Good (4) | Fast (3) | K | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
-| 113 | 7c34 | IMMQAZT | Good (4) | Fast (3) | K | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
-| 114 | 3359 | HOBEPIL | Good (4) | Fast (3) | K | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
-| 115 | 6a7e | BUGGBJOB | Average (5) | Fast (3) | K | ESKVF | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
-| 116 | 21a3 | SHADASLIN | Average (5) | Fast (3) | K | ESKVF | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
-| 117 | 58c8 | CORSODDON | Average (5) | Fast (3) | K | ESKVF | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
-| 118 | 0fed | BINYPERT | Average (5) | Fast (3) | K | ESKVF | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
-| 119 | 4712 | SADOXOUT | Average (5) | Fast (3) | K | ESKVF | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
-| 120 | 7e37 | LOWEAT | Average (6) | Very Fast (2) | KVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
-| 121 | 355c | QAZIKEBAR | Average (6) | Very Fast (2) | KVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
-| 122 | 6c81 | VERYQUEER | Average (6) | Very Fast (2) | KVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
-| 123 | 23a6 | MINULIN | Average (6) | Very Fast (2) | KVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
-| 124 | 5acb | HAMDEDON | Average (6) | Very Fast (2) | KVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
-| 125 | 11f0 | FUTDIMAR | Poor (7) | Very Fast (2) | KVFA | ESKVF | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
-| 126 | 4915 | SUZKOPLUG | Poor (7) | Very Fast (2) | KVFA | ESKVF | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
-| 127 | 003a | DOUQAZHILL | Poor (7) | Very Fast (2) | KVFA | ESKVF | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
-| 128 | 375f | SHIEBAR | Poor (7) | Very Fast (2) | KVFA | ESKVF | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
-| 129 | 6e84 | HURTCEER | Poor (7) | Very Fast (2) | KVFA | ESKVF | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
-| 130 | 25a9 | JOSASING | Poor (8) | Very Fast (2) | KVA | ESKVF | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
-| 131 | 5cce | TIMSODORD | Poor (8) | Very Fast (2) | KVA | ESKVF | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
-| 132 | 13f3 | CALYMAR | Poor (8) | Very Fast (2) | KVA | ESKVF | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
-| 133 | 4b18 | SCOOXLUG | Poor (8) | Very Fast (2) | KVA | ESKVF | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
-| 134 | 023d | SWAEAHILL | Poor (8) | Very Fast (2) | KVA | ESKVF | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
+| 5 | 3898 | SCOQUEMET | Very Poor (9) | Very Slow (10) | F | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
+| 6 | 6fbd | SWAUER | Very Poor (9) | Very Slow (10) | F | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
+| 7 | 26e2 | KILLPEING | Very Poor (9) | Very Slow (10) | F | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
+| 8 | 5e07 | EOAOZORD | Very Poor (9) | Very Slow (10) | F | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
+| 9 | 152c | BURWILCON | Very Poor (9) | Very Slow (10) | F | ESKVFA | Harmful | Shallow | Near people | Desert | 3 | 3 | 0019 
+| 10 | 4c51 | MORINGILL | Poor (8) | Very Slow (10) | ESV | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
+| 11 | 0376 | NIMIHILL | Poor (8) | Very Slow (10) | ESV | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
+| 12 | 3a9b | BILCEMET | Poor (8) | Very Slow (10) | ESV | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
+| 13 | 71c0 | RINGMPED | Poor (8) | Very Slow (10) | ESV | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
+| 14 | 28e5 | WEAVHIPHAM | Poor (8) | Very Slow (10) | ESV | ESKVFA | Harmful | Shallow | Near people | Snow | 2 | 2 | 001e 
+| 15 | 600a | ALPOUTOND | Poor (7) | Very Slow (9) | S | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
+| 16 | 172f | BADACON | Poor (7) | Very Slow (9) | S | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
+| 17 | 4e54 | IMMUSILL | Poor (7) | Very Slow (9) | S | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
+| 18 | 0579 | HOBDIETORY | Poor (7) | Very Slow (9) | S | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
+| 19 | 3c9e | BUGQUEEND | Poor (7) | Very Slow (9) | S | ESKVFA | Harmful | Shallow | Near people | Rocky | 3 | 3 | 002d 
+| 20 | 73c3 | SHADTED | Average (5) | Very Slow (9) | A | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
+| 21 | 2ae8 | CORPEHAM | Average (5) | Very Slow (9) | A | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
+| 22 | 620d | BINOZOND | Average (5) | Very Slow (9) | A | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
+| 23 | 1932 | SADWILLOW | Average (5) | Very Slow (9) | A | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
+| 24 | 5057 | LOWINGICK | Average (5) | Very Slow (9) | A | ESKVFA | Harmful | Shallow | Near people | Snow | 6 | 3 | 003c 
+| 25 | 077c | QAZITORY | Good (4) | Very Slow (9) | ESV | ESKV | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
+| 26 | 3ea1 | VERYMEEND | Good (4) | Very Slow (9) | ESV | ESKV | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
+| 27 | 75c6 | MINMPME | Good (4) | Very Slow (9) | ESV | ESKV | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
+| 28 | 2ceb | HAMHIPOLD | Good (4) | Very Slow (9) | ESV | ESKV | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
+| 29 | 6410 | FUTOUTBOY | Good (4) | Very Slow (9) | ESV | ESKV | Fatal | Shallow | Near towns | Rocky | 3 | 3 | 004b 
+| 30 | 1b35 | SUZALOW | Good (3) | Slow (8) | V | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
+| 31 | 525a | DOUUSICK | Good (3) | Slow (8) | V | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
+| 32 | 097f | SHIDIEHOLE | Good (3) | Slow (8) | V | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
+| 33 | 40a4 | HURTLOPLAS | Good (3) | Slow (8) | V | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
+| 34 | 77c9 | JOSTME | Good (3) | Slow (8) | V | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 005a 
+| 35 | 2eee | TIMPEOLD | Very Good (2) | Slow (8) | ES | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
+| 36 | 6613 | CALOZBOY | Very Good (2) | Slow (8) | ES | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
+| 37 | 1d38 | SCOWILDOR | Very Good (2) | Slow (8) | ES | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
+| 38 | 545d | SWAINGPAL | Very Good (2) | Slow (8) | ES | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
+| 39 | 0b82 | KILLOHOLE | Very Good (2) | Slow (8) | ES | ESKVFA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0069 
+| 40 | 42a7 | EOAMELAS | Very Good (1) | Slow (8) | F | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
+| 41 | 79cc | BURMPAL | Very Good (1) | Slow (8) | F | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
+| 42 | 30f1 | MORHIPPIL | Very Good (1) | Slow (8) | F | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
+| 43 | 6816 | NIMOUTJOB | Very Good (1) | Slow (8) | F | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
+| 44 | 1f3b | BILADOR | Very Good (1) | Slow (8) | F | ESKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 7cdf 
+| 45 | 5660 | RINGGBPAL | Very Poor (10) | Slow (7) | K | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 46 | 0d85 | WEAVINPERT | Very Poor (10) | Slow (7) | K | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 47 | 44aa | ALPLOPOUT | Very Poor (10) | Slow (7) | K | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 48 | 7bcf | BADTAL | Very Poor (10) | Slow (7) | K | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 49 | 32f4 | IMMPEPIL | Very Poor (10) | Slow (7) | K | ESKVFA | Fatal | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 50 | 6a19 | HOBOZJOB | Very Poor (9) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
+| 51 | 213e | BUGWILLIN | Very Poor (9) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
+| 52 | 5863 | SHADOGODON | Very Poor (9) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
+| 53 | 0f88 | COROPERT | Very Poor (9) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
+| 54 | 46ad | BINMEOUT | Very Poor (9) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Grass | 1 | 1 | 0091 
+| 55 | 7dd2 | SADMPT | Poor (8) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
+| 56 | 34f7 | LOWHIPBAR | Poor (8) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
+| 57 | 6c1c | QAZOUTER | Poor (8) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
+| 58 | 2341 | VERYELIN | Poor (8) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
+| 59 | 5a66 | MINGBDON | Poor (8) | Slow (7) | KF | ESKVA | Fatal | Shallow | Near people | Snow | 3 | 3 | 00a0 
+| 60 | 118b | HAMINMAR | Poor (7) | Medium (6) | KF | SKVA | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
+| 61 | 48b0 | FUTLOPLUG | Poor (7) | Medium (6) | KF | SKVA | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
+| 62 | 7fd5 | SUZTT | Poor (7) | Medium (6) | KF | SKVA | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
+| 63 | 36fa | DOUPEBAR | Poor (7) | Medium (6) | KF | SKVA | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
+| 64 | 6e1f | SHIOZER | Poor (7) | Medium (6) | KF | SKVA | Fatal | Shallow | Near people | Rocky | 3 | 3 | 00af 
+| 65 | 2544 | HURTIKEING | Average (6) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
+| 66 | 5c69 | JOSOGOORD | Average (6) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
+| 67 | 138e | TIMOMAR | Average (6) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
+| 68 | 4ab3 | CALMELUG | Average (6) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
+| 69 | 01d8 | SCOMPHILL | Average (6) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 3 | 1 | 6f97 
+| 70 | 38fd | SWAHIPMET | Average (5) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
+| 71 | 7022 | KILLQAZED | Average (5) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
+| 72 | 2747 | EOAEING | Average (5) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
+| 73 | 5e6c | BURGBORD | Average (5) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
+| 74 | 1591 | MORINCON | Average (5) | Medium (6) | KA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 00cd 
+| 75 | 4cb6 | NIMLOPILL | Good (4) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 76 | 03db | BILTHILL | Good (4) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 77 | 3b00 | RINGOXMET | Good (4) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 78 | 7225 | WEAVEAED | Good (4) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 79 | 294a | ALPIKEHAM | Good (4) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 80 | 606f | BADOGOOND | Good (3) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
+| 81 | 1794 | IMMOCON | Good (3) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
+| 82 | 4eb9 | HOBMEILL | Good (3) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
+| 83 | 05de | BUGMPTORY | Good (3) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
+| 84 | 3d03 | SHADKOPEND | Good (3) | Medium (5) | KF | ESKVA | Harmful | Shallow | Near towns | Snow | 2 | 4 | 00eb 
+| 85 | 7428 | CORQAZME | Very Good (2) | Medium (5) | KF | SKVA | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 86 | 2b4d | BINEHAM | Very Good (2) | Medium (5) | KF | SKVA | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 87 | 6272 | SADGBOND | Very Good (2) | Medium (5) | KF | SKVA | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 88 | 1997 | LOWINLOW | Very Good (2) | Medium (5) | KF | SKVA | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 89 | 50bc | QAZLOPICK | Very Good (2) | Medium (5) | KF | SKVA | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 90 | 07e1 | VERYYTORY | Very Good (1) | Fast (4) | KA | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
+| 91 | 3f06 | MINOXEND | Very Good (1) | Fast (4) | KA | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
+| 92 | 762b | HAMEAME | Very Good (1) | Fast (4) | KA | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
+| 93 | 2d50 | FUTIKEOLD | Very Good (1) | Fast (4) | KA | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
+| 94 | 6475 | SUZOGOBOY | Very Good (1) | Fast (4) | KA | EKVA | Harmful | Shallow | Near towns | Desert | 30 | 30 | 75bd 
+| 95 | 1b9a | DOUOLOW | Very Good (1) | Fast (4) | ESV | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
+| 96 | 52bf | SHIMEICK | Very Good (1) | Fast (4) | ESV | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
+| 97 | 09e4 | HURTDIHOLE | Very Good (1) | Fast (4) | ESV | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
+| 98 | 4109 | JOSKOPLAS | Very Good (1) | Fast (4) | ESV | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
+| 99 | 782e | TIMQAZAL | Very Good (1) | Fast (4) | ESV | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 1 | 0118 
+| 100 | 2f53 | CALEOLD | Very Good (2) | Fast (4) | ESV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
+| 101 | 6678 | SCOGBBOY | Very Good (2) | Fast (4) | ESV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
+| 102 | 1d9d | SWAINDOR | Very Good (2) | Fast (4) | ESV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
+| 103 | 54c2 | KILLSODPAL | Very Good (2) | Fast (4) | ESV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
+| 104 | 0be7 | EOAYHOLE | Very Good (2) | Fast (4) | ESV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0127 
+| 105 | 430c | BUROXLAS | Good (3) | Fast (3) | SV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
+| 106 | 7a31 | MOREAAL | Good (3) | Fast (3) | SV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
+| 107 | 3156 | NIMIKEPIL | Good (3) | Fast (3) | SV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
+| 108 | 687b | BILOGOJOB | Good (3) | Fast (3) | SV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
+| 109 | 1fa0 | RINGUDOR | Good (3) | Fast (3) | SV | SKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 0136 
+| 110 | 56c5 | WEAVDEPAL | Good (4) | Fast (3) | V | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
+| 111 | 0dea | ALPDIPERT | Good (4) | Fast (3) | V | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
+| 112 | 450f | BADKOPOUT | Good (4) | Fast (3) | V | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
+| 113 | 7c34 | IMMQAZT | Good (4) | Fast (3) | V | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
+| 114 | 3359 | HOBEPIL | Good (4) | Fast (3) | V | ESKVFA | Harmful | Shallow | Near towns | Desert | 5 | 2 | 5fd6 
+| 115 | 6a7e | BUGGBJOB | Average (5) | Fast (3) | V | SKVFA | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
+| 116 | 21a3 | SHADASLIN | Average (5) | Fast (3) | V | SKVFA | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
+| 117 | 58c8 | CORSODDON | Average (5) | Fast (3) | V | SKVFA | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
+| 118 | 0fed | BINYPERT | Average (5) | Fast (3) | V | SKVFA | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
+| 119 | 4712 | SADOXOUT | Average (5) | Fast (3) | V | SKVFA | Harmful | Shallow | Near towns | Desert | 4 | 4 | 0154 
+| 120 | 7e37 | LOWEAT | Average (6) | Very Fast (2) | ESKV | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
+| 121 | 355c | QAZIKEBAR | Average (6) | Very Fast (2) | ESKV | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
+| 122 | 6c81 | VERYQUEER | Average (6) | Very Fast (2) | ESKV | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
+| 123 | 23a6 | MINULIN | Average (6) | Very Fast (2) | ESKV | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
+| 124 | 5acb | HAMDEDON | Average (6) | Very Fast (2) | ESKV | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0163 
+| 125 | 11f0 | FUTDIMAR | Poor (7) | Very Fast (2) | ESKV | SKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
+| 126 | 4915 | SUZKOPLUG | Poor (7) | Very Fast (2) | ESKV | SKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
+| 127 | 003a | DOUQAZHILL | Poor (7) | Very Fast (2) | ESKV | SKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
+| 128 | 375f | SHIEBAR | Poor (7) | Very Fast (2) | ESKV | SKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
+| 129 | 6e84 | HURTCEER | Poor (7) | Very Fast (2) | ESKV | SKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0172 
+| 130 | 25a9 | JOSASING | Poor (8) | Very Fast (2) | EKV | SKVFA | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
+| 131 | 5cce | TIMSODORD | Poor (8) | Very Fast (2) | EKV | SKVFA | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
+| 132 | 13f3 | CALYMAR | Poor (8) | Very Fast (2) | EKV | SKVFA | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
+| 133 | 4b18 | SCOOXLUG | Poor (8) | Very Fast (2) | EKV | SKVFA | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
+| 134 | 023d | SWAEAHILL | Poor (8) | Very Fast (2) | EKV | SKVFA | Harmful | Shallow | Near towns | Grass | 5 | 2 | 0181 
 | 135 | 3962 | KILLDIEMET | Very Poor (9) | Very Fast (1) | KV | ESKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0190 
 | 136 | 7087 | EOAQUEED | Very Poor (9) | Very Fast (1) | KV | ESKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0190 
 | 137 | 27ac | BURUING | Very Poor (9) | Very Fast (1) | KV | ESKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0190 
 | 138 | 5ed1 | MORDEORD | Very Poor (9) | Very Fast (1) | KV | ESKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0190 
 | 139 | 15f6 | NIMDICON | Very Poor (9) | Very Fast (1) | KV | ESKVFA | Harmful | Shallow | Near towns | Rocky | 5 | 2 | 0190 
-| 140 | 4d1b | BILKOPILL | Very Poor (10) | Very Fast (1) | KV | ESKVF | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
-| 141 | 0440 | RINGINGTORY | Very Poor (10) | Very Fast (1) | KV | ESKVF | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
-| 142 | 3b65 | WEAVIMET | Very Poor (10) | Very Fast (1) | KV | ESKVF | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
-| 143 | 728a | ALPCEED | Very Poor (10) | Very Fast (1) | KV | ESKVF | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
-| 144 | 29af | BADASHAM | Very Poor (10) | Very Fast (1) | KV | ESKVF | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
-| 145 | 60d4 | IMMSODOND | Average (5) | Medium (5) | F | EV | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
-| 146 | 17f9 | HOBYCON | Average (5) | Medium (5) | F | EV | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
-| 147 | 4f1e | BUGOXILL | Average (5) | Medium (5) | F | EV | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
-| 148 | 0643 | SHADUSTORY | Average (5) | Medium (5) | F | EV | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
-| 149 | 3d68 | CORDIEEND | Average (5) | Medium (5) | F | EV | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
-| 150 | 748d | BINQUEME | Good (4) | Fast (4) | S | KVFA | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
-| 151 | 2bb2 | SADUHAM | Good (4) | Fast (4) | S | KVFA | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
-| 152 | 62d7 | LOWDEOND | Good (4) | Fast (4) | S | KVFA | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
-| 153 | 19fc | QAZDILOW | Good (4) | Fast (4) | S | KVFA | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
-| 154 | 5121 | VERYWILICK | Good (4) | Fast (4) | S | KVFA | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
-| 155 | 0846 | MININGHOLE | Good (3) | Fast (3) | E | V | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
-| 156 | 3f6b | HAMIEND | Good (3) | Fast (3) | E | V | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
-| 157 | 7690 | FUTCEME | Good (3) | Fast (3) | E | V | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
-| 158 | 2db5 | SUZASOLD | Good (3) | Fast (3) | E | V | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
-| 159 | 64da | DOUSODBOY | Good (3) | Fast (3) | E | V | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
-| 160 | 1bff | SHIYLOW | Average (5) | Very Fast (1) | KVFA | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
-| 161 | 5324 | HURTAICK | Average (5) | Very Fast (1) | KVFA | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
-| 162 | 0a49 | JOSUSHOLE | Average (5) | Very Fast (1) | KVFA | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
-| 163 | 416e | TIMDIELAS | Average (5) | Very Fast (1) | KVFA | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
-| 164 | 7893 | CALQUEAL | Average (5) | Very Fast (1) | KVFA | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
+| 140 | 4d1b | BILKOPILL | Very Poor (10) | Very Fast (1) | KV | SKVFA | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
+| 141 | 0440 | RINGINGTORY | Very Poor (10) | Very Fast (1) | KV | SKVFA | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
+| 142 | 3b65 | WEAVIMET | Very Poor (10) | Very Fast (1) | KV | SKVFA | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
+| 143 | 728a | ALPCEED | Very Poor (10) | Very Fast (1) | KV | SKVFA | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
+| 144 | 29af | BADASHAM | Very Poor (10) | Very Fast (1) | KV | SKVFA | Harmful | Shallow | Near towns | Grass | 4 | 4 | 019f 
+| 145 | 60d4 | IMMSODOND | Average (5) | Medium (5) | S | KA | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
+| 146 | 17f9 | HOBYCON | Average (5) | Medium (5) | S | KA | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
+| 147 | 4f1e | BUGOXILL | Average (5) | Medium (5) | S | KA | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
+| 148 | 0643 | SHADUSTORY | Average (5) | Medium (5) | S | KA | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
+| 149 | 3d68 | CORDIEEND | Average (5) | Medium (5) | S | KA | Harmful | Bottomless | Only up | Desert | 3 | 3 | 01ae 
+| 150 | 748d | BINQUEME | Good (4) | Fast (4) | F | ESKV | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
+| 151 | 2bb2 | SADUHAM | Good (4) | Fast (4) | F | ESKV | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
+| 152 | 62d7 | LOWDEOND | Good (4) | Fast (4) | F | ESKV | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
+| 153 | 19fc | QAZDILOW | Good (4) | Fast (4) | F | ESKV | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
+| 154 | 5121 | VERYWILICK | Good (4) | Fast (4) | F | ESKV | Fatal | Shallow | Near towns | Desert | 3 | 3 | 01bd 
+| 155 | 0846 | MININGHOLE | Good (3) | Fast (3) | A | K | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
+| 156 | 3f6b | HAMIEND | Good (3) | Fast (3) | A | K | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
+| 157 | 7690 | FUTCEME | Good (3) | Fast (3) | A | K | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
+| 158 | 2db5 | SUZASOLD | Good (3) | Fast (3) | A | K | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
+| 159 | 64da | DOUSODBOY | Good (3) | Fast (3) | A | K | Harmful | Shallow | Near towns | Rocky | 5 | 3 | 01cc 
+| 160 | 1bff | SHIYLOW | Average (5) | Very Fast (1) | ESKV | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
+| 161 | 5324 | HURTAICK | Average (5) | Very Fast (1) | ESKV | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
+| 162 | 0a49 | JOSUSHOLE | Average (5) | Very Fast (1) | ESKV | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
+| 163 | 416e | TIMDIELAS | Average (5) | Very Fast (1) | ESKV | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
+| 164 | 7893 | CALQUEAL | Average (5) | Very Fast (1) | ESKV | SKVF | Harmful | Shallow | Cannot | Grass | 20 | 20 | 01ea 
 | 165 | 2fb8 | SCOUOLD | Very Poor (10) | Fast (3) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 7e8e 
 | 166 | 66dd | SWADEBOY | Very Poor (10) | Fast (3) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 7e8e 
 | 167 | 1e02 | KILLOZDOR | Very Poor (10) | Fast (3) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 7e8e 
 | 168 | 5527 | EOAWILPAL | Very Poor (10) | Fast (3) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 7e8e 
 | 169 | 0c4c | BURINGPERT | Very Poor (10) | Fast (3) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 7e8e 
-| 170 | 4371 | MORILAS | Very Poor (10) | Fast (3) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
-| 171 | 7a96 | NIMCEAL | Very Poor (10) | Fast (3) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
-| 172 | 31bb | BILASPIL | Very Poor (10) | Fast (3) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
-| 173 | 68e0 | RINGHIPJOB | Very Poor (10) | Fast (3) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
-| 174 | 2005 | WEAVOUTLIN | Very Poor (10) | Fast (3) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
-| 175 | 572a | ALPAPAL | Average (6) | Very Fast (1) | ESKVFA | E | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
-| 176 | 0e4f | BADUSPERT | Average (6) | Very Fast (1) | ESKVFA | E | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
-| 177 | 4574 | IMMDIEOUT | Average (6) | Very Fast (1) | ESKVFA | E | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
-| 178 | 7c99 | HOBQUET | Average (6) | Very Fast (1) | ESKVFA | E | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
-| 179 | 33be | BUGUPIL | Average (6) | Very Fast (1) | ESKVFA | E | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
-| 180 | 6ae3 | SHADPEJOB | Average (5) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
-| 181 | 2208 | COROZLIN | Average (5) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
-| 182 | 592d | BINWILDON | Average (5) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
-| 183 | 1052 | SADINGMAR | Average (5) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
-| 184 | 4777 | LOWIOUT | Average (5) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
-| 185 | 7e9c | QAZCET | Very Good (2) | Very Fast (2) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
-| 186 | 35c1 | VERYMPBAR | Very Good (2) | Very Fast (2) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
-| 187 | 6ce6 | MINHIPER | Very Good (2) | Very Fast (2) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
-| 188 | 240b | HAMOUTING | Very Good (2) | Very Fast (2) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
-| 189 | 5b30 | FUTADON | Very Good (2) | Very Fast (2) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
-| 190 | 1255 | SUZUSMAR | Very Good (2) | Very Fast (2) | ESKVFA | ESKVA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
-| 191 | 497a | DOUDIELUG | Very Good (2) | Very Fast (2) | ESKVFA | ESKVA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
-| 192 | 009f | SHIQUEHILL | Very Good (2) | Very Fast (2) | ESKVFA | ESKVA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
-| 193 | 37c4 | HURTTBAR | Very Good (2) | Very Fast (2) | ESKVFA | ESKVA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
-| 194 | 6ee9 | JOSPEER | Very Good (2) | Very Fast (2) | ESKVFA | ESKVA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
-| 195 | 260e | TIMOZING | Very Poor (10) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
-| 196 | 5d33 | CALWILORD | Very Poor (10) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
-| 197 | 1458 | SCOINGCON | Very Poor (10) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
-| 198 | 4b7d | SWAILUG | Very Poor (10) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
-| 199 | 02a2 | KILLMEHILL | Very Poor (10) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
-| 200 | 39c7 | EOAMPMET | Very Good (1) | Very Fast (1) | ESKVF | ESVFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
-| 201 | 70ec | BURHIPED | Very Good (1) | Very Fast (1) | ESKVF | ESVFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
-| 202 | 2811 | MOROUTHAM | Very Good (1) | Very Fast (1) | ESKVF | ESVFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
-| 203 | 5f36 | NIMAORD | Very Good (1) | Very Fast (1) | ESKVF | ESVFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
-| 204 | 165b | BILUSCON | Very Good (1) | Very Fast (1) | ESKVF | ESVFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
-| 205 | 4d80 | RINGINILL | Very Good (1) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
-| 206 | 04a5 | WEAVLOPTORY | Very Good (1) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
-| 207 | 3bca | ALPTMET | Very Good (1) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
-| 208 | 72ef | BADPEED | Very Good (1) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
-| 209 | 2a14 | IMMOZHAM | Very Good (1) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
-| 210 | 6139 | HOBWILOND | Average (5) | Very Fast (1) | ESKF | ESVA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
-| 211 | 185e | BUGINGLOW | Average (5) | Very Fast (1) | ESKF | ESVA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
-| 212 | 4f83 | SHADOILL | Average (5) | Very Fast (1) | ESKF | ESVA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
-| 213 | 06a8 | CORMETORY | Average (5) | Very Fast (1) | ESKF | ESVA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
-| 214 | 3dcd | BINMPEND | Average (5) | Very Fast (1) | ESKF | ESVA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
-| 215 | 74f2 | SADHIPME | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
-| 216 | 2c17 | LOWOUTOLD | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
-| 217 | 633c | QAZAOND | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
-| 218 | 1a61 | VERYGBLOW | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
-| 219 | 5186 | MININICK | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
-| 220 | 08ab | HAMLOPHOLE | Good (3) | Very Fast (2) | ESK | ESKFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
-| 221 | 3fd0 | FUTTEND | Good (3) | Very Fast (2) | ESK | ESKFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
-| 222 | 76f5 | SUZPEME | Good (3) | Very Fast (2) | ESK | ESKFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
-| 223 | 2e1a | DOUOZOLD | Good (3) | Very Fast (2) | ESK | ESKFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
-| 224 | 653f | SHIWILBOY | Good (3) | Very Fast (2) | ESK | ESKFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
-| 225 | 1c64 | HURTOGODOR | Good (3) | Very Fast (2) | KVFA | ESKF | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
-| 226 | 5389 | JOSOICK | Good (3) | Very Fast (2) | KVFA | ESKF | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
-| 227 | 0aae | TIMMEHOLE | Good (3) | Very Fast (2) | KVFA | ESKF | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
-| 228 | 41d3 | CALMPLAS | Good (3) | Very Fast (2) | KVFA | ESKF | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
-| 229 | 78f8 | SCOHIPAL | Good (3) | Very Fast (2) | KVFA | ESKF | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
-| 230 | 301d | SWAOUTPIL | Very Poor (9) | Fast (3) | ESKVFA | ESKA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
-| 231 | 6742 | KILLEBOY | Very Poor (9) | Fast (3) | ESKVFA | ESKA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
-| 232 | 1e67 | EOAGBDOR | Very Poor (9) | Fast (3) | ESKVFA | ESKA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
-| 233 | 558c | BURINPAL | Very Poor (9) | Fast (3) | ESKVFA | ESKA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
-| 234 | 0cb1 | MORLOPPERT | Very Poor (9) | Fast (3) | ESKVFA | ESKA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
-| 235 | 43d6 | NIMTLAS | Very Poor (9) | Very Fast (2) | ESKVFA | ESK | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
-| 236 | 7afb | BILPEAL | Very Poor (9) | Very Fast (2) | ESKVFA | ESK | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
-| 237 | 3220 | RINGEAPIL | Very Poor (9) | Very Fast (2) | ESKVFA | ESK | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
-| 238 | 6945 | WEAVIKEJOB | Very Poor (9) | Very Fast (2) | ESKVFA | ESK | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
-| 239 | 206a | ALPOGOLIN | Very Poor (9) | Very Fast (2) | ESKVFA | ESK | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
-| 240 | 578f | BADOPAL | Very Poor (10) | Very Fast (2) | KVFA | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
-| 241 | 0eb4 | IMMMEPERT | Very Poor (10) | Very Fast (2) | KVFA | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
-| 242 | 45d9 | HOBMPOUT | Very Poor (10) | Very Fast (2) | KVFA | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
-| 243 | 7cfe | BUGHIPT | Very Poor (10) | Very Fast (2) | KVFA | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
-| 244 | 3423 | SHADQAZBAR | Very Poor (10) | Very Fast (2) | KVFA | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
-| 245 | 6b48 | COREJOB | Very Poor (10) | Very Fast (2) | V | ESF | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
-| 246 | 226d | BINGBLIN | Very Poor (10) | Very Fast (2) | V | ESF | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
-| 247 | 5992 | SADINDON | Very Poor (10) | Very Fast (2) | V | ESF | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
-| 248 | 10b7 | LOWLOPMAR | Very Poor (10) | Very Fast (2) | V | ESF | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
-| 249 | 47dc | QAZTOUT | Very Poor (10) | Very Fast (2) | V | ESF | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
-| 250 | 7f01 | VERYOXT | Poor (7) | Fast (3) | VA | ESA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
-| 251 | 3626 | MINEABAR | Poor (7) | Fast (3) | VA | ESA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
-| 252 | 6d4b | HAMIKEER | Poor (7) | Fast (3) | VA | ESA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
-| 253 | 2470 | FUTOGOING | Poor (7) | Fast (3) | VA | ESA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
-| 254 | 5b95 | SUZODON | Poor (7) | Fast (3) | VA | ESA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
-| 255 | 12ba | DOUMEMAR | Very Poor (10) | Very Fast (2) | KVFA | ES | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
-| 256 | 49df | SHIMPLUG | Very Poor (10) | Very Fast (2) | KVFA | ES | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
-| 257 | 0104 | HURTKOPHILL | Very Poor (10) | Very Fast (2) | KVFA | ES | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
-| 258 | 3829 | JOSQAZMET | Very Poor (10) | Very Fast (2) | KVFA | ES | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
-| 259 | 6f4e | TIMEER | Very Poor (10) | Very Fast (2) | KVFA | ES | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
-| 260 | 2673 | CALGBING | Very Good (2) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
-| 261 | 5d98 | SCOINORD | Very Good (2) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
-| 262 | 14bd | SWALOPCON | Very Good (2) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
-| 263 | 4be2 | KILLYLUG | Very Good (2) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
-| 264 | 0307 | EOAOXHILL | Very Good (2) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
-| 265 | 3a2c | BUREAMET | Average (6) | Very Fast (1) | E | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 266 | 7151 | MORIKEED | Average (6) | Very Fast (1) | E | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 267 | 2876 | NIMOGOHAM | Average (6) | Very Fast (1) | E | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 268 | 5f9b | BILOORD | Average (6) | Very Fast (1) | E | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 269 | 16c0 | RINGDECON | Average (6) | Very Fast (1) | E | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
-| 270 | 4de5 | WEAVDIILL | Average (5) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
-| 271 | 050a | ALPKOPTORY | Average (5) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
-| 272 | 3c2f | BADQAZEND | Average (5) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
-| 273 | 7354 | IMMEED | Average (5) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
-| 274 | 2a79 | HOBGBHAM | Average (5) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
-| 275 | 619e | BUGINOND | Average (6) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
-| 276 | 18c3 | SHADSODLOW | Average (6) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
-| 277 | 4fe8 | CORYILL | Average (6) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
-| 278 | 070d | BINOXTORY | Average (6) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
-| 279 | 3e32 | SADEAEND | Average (6) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
-| 280 | 7557 | LOWIKEME | Very Poor (10) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
-| 281 | 2c7c | QAZOGOOLD | Very Poor (10) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
-| 282 | 63a1 | VERYUOND | Very Poor (10) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
-| 283 | 1ac6 | MINDELOW | Very Poor (10) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
-| 284 | 51eb | HAMDIICK | Very Poor (10) | Very Fast (1) | VF | ESKVA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
-| 285 | 0910 | FUTKOPHOLE | Average (5) | Fast (3) | A | ESK | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
-| 286 | 4035 | SUZQAZLAS | Average (5) | Fast (3) | A | ESK | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
-| 287 | 775a | DOUEME | Average (5) | Fast (3) | A | ESK | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
-| 288 | 2e7f | SHIGBOLD | Average (5) | Fast (3) | A | ESK | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
-| 289 | 65a4 | HURTASBOY | Average (5) | Fast (3) | A | ESK | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
-| 290 | 1cc9 | JOSSODDOR | Very Good (1) | Very Fast (1) | F | ESK | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
-| 291 | 53ee | TIMYICK | Very Good (1) | Very Fast (1) | F | ESK | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
-| 292 | 0b13 | CALOXHOLE | Very Good (1) | Very Fast (1) | F | ESK | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
-| 293 | 4238 | SCOEALAS | Very Good (1) | Very Fast (1) | F | ESK | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
-| 294 | 795d | SWAIKEAL | Very Good (1) | Very Fast (1) | F | ESK | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
-| 295 | 3082 | KILLQUEPIL | Average (5) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 296 | 67a7 | EOAUBOY | Average (5) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 297 | 1ecc | BURDEDOR | Average (5) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 298 | 55f1 | MORDIPAL | Average (5) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 299 | 0d16 | NIMKOPPERT | Average (5) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
-| 300 | 443b | BILQAZOUT | Very Poor (10) | Very Fast (2) | K | KA | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
-| 301 | 7b60 | RINGIAL | Very Poor (10) | Very Fast (2) | K | KA | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
-| 302 | 3285 | WEAVCEPIL | Very Poor (10) | Very Fast (2) | K | KA | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
-| 303 | 69aa | ALPASJOB | Very Poor (10) | Very Fast (2) | K | KA | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
-| 304 | 20cf | BADSODLIN | Very Poor (10) | Very Fast (2) | K | KA | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
-| 305 | 57f4 | IMMYPAL | Good (3) | Fast (3) | A | A | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 306 | 0f19 | HOBOXPERT | Good (3) | Fast (3) | A | A | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 307 | 463e | BUGEAOUT | Good (3) | Fast (3) | A | A | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 308 | 7d63 | SHADDIET | Good (3) | Fast (3) | A | A | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
-| 309 | 3488 | CORQUEBAR | Good (3) | Fast (3) | A | A | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 170 | 4371 | MORILAS | Very Poor (10) | Fast (3) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
+| 171 | 7a96 | NIMCEAL | Very Poor (10) | Fast (3) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
+| 172 | 31bb | BILASPIL | Very Poor (10) | Fast (3) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
+| 173 | 68e0 | RINGHIPJOB | Very Poor (10) | Fast (3) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
+| 174 | 2005 | WEAVOUTLIN | Very Poor (10) | Fast (3) | ESKVFA | ESKVF | Harmful | Shallow | Near towns | Snow | 3 | 3 | 01f9 
+| 175 | 572a | ALPAPAL | Average (6) | Very Fast (1) | ESKVFA | A | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
+| 176 | 0e4f | BADUSPERT | Average (6) | Very Fast (1) | ESKVFA | A | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
+| 177 | 4574 | IMMDIEOUT | Average (6) | Very Fast (1) | ESKVFA | A | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
+| 178 | 7c99 | HOBQUET | Average (6) | Very Fast (1) | ESKVFA | A | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
+| 179 | 33be | BUGUPIL | Average (6) | Very Fast (1) | ESKVFA | A | Harmful | Shallow | Near towns | Grass | 1 | 1 | 0208 
+| 180 | 6ae3 | SHADPEJOB | Average (5) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
+| 181 | 2208 | COROZLIN | Average (5) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
+| 182 | 592d | BINWILDON | Average (5) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
+| 183 | 1052 | SADINGMAR | Average (5) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
+| 184 | 4777 | LOWIOUT | Average (5) | Very Fast (2) | ESKVFA | ESKV | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0217 
+| 185 | 7e9c | QAZCET | Very Good (2) | Very Fast (2) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
+| 186 | 35c1 | VERYMPBAR | Very Good (2) | Very Fast (2) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
+| 187 | 6ce6 | MINHIPER | Very Good (2) | Very Fast (2) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
+| 188 | 240b | HAMOUTING | Very Good (2) | Very Fast (2) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
+| 189 | 5b30 | FUTADON | Very Good (2) | Very Fast (2) | ESKVFA | SKVFA | Harmful | Shallow | Near towns | Grass | 2 | 1 | 0226 
+| 190 | 1255 | SUZUSMAR | Very Good (2) | Very Fast (2) | ESKVFA | EKVFA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
+| 191 | 497a | DOUDIELUG | Very Good (2) | Very Fast (2) | ESKVFA | EKVFA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
+| 192 | 009f | SHIQUEHILL | Very Good (2) | Very Fast (2) | ESKVFA | EKVFA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
+| 193 | 37c4 | HURTTBAR | Very Good (2) | Very Fast (2) | ESKVFA | EKVFA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
+| 194 | 6ee9 | JOSPEER | Very Good (2) | Very Fast (2) | ESKVFA | EKVFA | Harmful | Shallow | Near towns | Rocky | 4 | 4 | 0235 
+| 195 | 260e | TIMOZING | Very Poor (10) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
+| 196 | 5d33 | CALWILORD | Very Poor (10) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
+| 197 | 1458 | SCOINGCON | Very Poor (10) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
+| 198 | 4b7d | SWAILUG | Very Poor (10) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
+| 199 | 02a2 | KILLMEHILL | Very Poor (10) | Very Fast (2) | ESKVFA | KVFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0244 
+| 200 | 39c7 | EOAMPMET | Very Good (1) | Very Fast (1) | SKVFA | ESKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
+| 201 | 70ec | BURHIPED | Very Good (1) | Very Fast (1) | SKVFA | ESKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
+| 202 | 2811 | MOROUTHAM | Very Good (1) | Very Fast (1) | SKVFA | ESKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
+| 203 | 5f36 | NIMAORD | Very Good (1) | Very Fast (1) | SKVFA | ESKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
+| 204 | 165b | BILUSCON | Very Good (1) | Very Fast (1) | SKVFA | ESKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03e8 
+| 205 | 4d80 | RINGINILL | Very Good (1) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
+| 206 | 04a5 | WEAVLOPTORY | Very Good (1) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
+| 207 | 3bca | ALPTMET | Very Good (1) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
+| 208 | 72ef | BADPEED | Very Good (1) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
+| 209 | 2a14 | IMMOZHAM | Very Good (1) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Snow | 30 | 5 | 03f7 
+| 210 | 6139 | HOBWILOND | Average (5) | Very Fast (1) | SVFA | EKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
+| 211 | 185e | BUGINGLOW | Average (5) | Very Fast (1) | SVFA | EKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
+| 212 | 4f83 | SHADOILL | Average (5) | Very Fast (1) | SVFA | EKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
+| 213 | 06a8 | CORMETORY | Average (5) | Very Fast (1) | SVFA | EKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
+| 214 | 3dcd | BINMPEND | Average (5) | Very Fast (1) | SVFA | EKFA | Harmful | Shallow | Near towns | Grass | 3 | 3 | 0401 
+| 215 | 74f2 | SADHIPME | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
+| 216 | 2c17 | LOWOUTOLD | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
+| 217 | 633c | QAZAOND | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
+| 218 | 1a61 | VERYGBLOW | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
+| 219 | 5186 | MININICK | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Bottomless | Near towns | Rocky | 3 | 3 | 0406 
+| 220 | 08ab | HAMLOPHOLE | Good (3) | Very Fast (2) | VFA | ESVFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
+| 221 | 3fd0 | FUTTEND | Good (3) | Very Fast (2) | VFA | ESVFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
+| 222 | 76f5 | SUZPEME | Good (3) | Very Fast (2) | VFA | ESVFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
+| 223 | 2e1a | DOUOZOLD | Good (3) | Very Fast (2) | VFA | ESVFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
+| 224 | 653f | SHIWILBOY | Good (3) | Very Fast (2) | VFA | ESVFA | Harmful | Shallow | Near towns | Rocky | 12 | 20 | 040b 
+| 225 | 1c64 | HURTOGODOR | Good (3) | Very Fast (2) | ESKV | SVFA | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
+| 226 | 5389 | JOSOICK | Good (3) | Very Fast (2) | ESKV | SVFA | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
+| 227 | 0aae | TIMMEHOLE | Good (3) | Very Fast (2) | ESKV | SVFA | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
+| 228 | 41d3 | CALMPLAS | Good (3) | Very Fast (2) | ESKV | SVFA | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
+| 229 | 78f8 | SCOHIPAL | Good (3) | Very Fast (2) | ESKV | SVFA | Harmful | Shallow | Near towns | Rocky | 2 | 3 | 041a 
+| 230 | 301d | SWAOUTPIL | Very Poor (9) | Fast (3) | ESKVFA | EVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
+| 231 | 6742 | KILLEBOY | Very Poor (9) | Fast (3) | ESKVFA | EVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
+| 232 | 1e67 | EOAGBDOR | Very Poor (9) | Fast (3) | ESKVFA | EVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
+| 233 | 558c | BURINPAL | Very Poor (9) | Fast (3) | ESKVFA | EVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
+| 234 | 0cb1 | MORLOPPERT | Very Poor (9) | Fast (3) | ESKVFA | EVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0429 
+| 235 | 43d6 | NIMTLAS | Very Poor (9) | Very Fast (2) | ESKVFA | VFA | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
+| 236 | 7afb | BILPEAL | Very Poor (9) | Very Fast (2) | ESKVFA | VFA | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
+| 237 | 3220 | RINGEAPIL | Very Poor (9) | Very Fast (2) | ESKVFA | VFA | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
+| 238 | 6945 | WEAVIKEJOB | Very Poor (9) | Very Fast (2) | ESKVFA | VFA | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
+| 239 | 206a | ALPOGOLIN | Very Poor (9) | Very Fast (2) | ESKVFA | VFA | Harmful | Shallow | Near towns | Grass | 5 | 5 | 043d 
+| 240 | 578f | BADOPAL | Very Poor (10) | Very Fast (2) | ESKV | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
+| 241 | 0eb4 | IMMMEPERT | Very Poor (10) | Very Fast (2) | ESKV | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
+| 242 | 45d9 | HOBMPOUT | Very Poor (10) | Very Fast (2) | ESKV | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
+| 243 | 7cfe | BUGHIPT | Very Poor (10) | Very Fast (2) | ESKV | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
+| 244 | 3423 | SHADQAZBAR | Very Poor (10) | Very Fast (2) | ESKV | ESFA | Harmful | Shallow | Near towns | Snow | 3 | 3 | 0442 
+| 245 | 6b48 | COREJOB | Very Poor (10) | Very Fast (2) | K | SFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
+| 246 | 226d | BINGBLIN | Very Poor (10) | Very Fast (2) | K | SFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
+| 247 | 5992 | SADINDON | Very Poor (10) | Very Fast (2) | K | SFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
+| 248 | 10b7 | LOWLOPMAR | Very Poor (10) | Very Fast (2) | K | SFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
+| 249 | 47dc | QAZTOUT | Very Poor (10) | Very Fast (2) | K | SFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 0451 
+| 250 | 7f01 | VERYOXT | Poor (7) | Fast (3) | EK | EFA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
+| 251 | 3626 | MINEABAR | Poor (7) | Fast (3) | EK | EFA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
+| 252 | 6d4b | HAMIKEER | Poor (7) | Fast (3) | EK | EFA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
+| 253 | 2470 | FUTOGOING | Poor (7) | Fast (3) | EK | EFA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
+| 254 | 5b95 | SUZODON | Poor (7) | Fast (3) | EK | EFA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0260 
+| 255 | 12ba | DOUMEMAR | Very Poor (10) | Very Fast (2) | ESKV | FA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
+| 256 | 49df | SHIMPLUG | Very Poor (10) | Very Fast (2) | ESKV | FA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
+| 257 | 0104 | HURTKOPHILL | Very Poor (10) | Very Fast (2) | ESKV | FA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
+| 258 | 3829 | JOSQAZMET | Very Poor (10) | Very Fast (2) | ESKV | FA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
+| 259 | 6f4e | TIMEER | Very Poor (10) | Very Fast (2) | ESKV | FA | Harmful | Shallow | Near towns | Grass | 10 | 5 | 0d5f 
+| 260 | 2673 | CALGBING | Very Good (2) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
+| 261 | 5d98 | SCOINORD | Very Good (2) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
+| 262 | 14bd | SWALOPCON | Very Good (2) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
+| 263 | 4be2 | KILLYLUG | Very Good (2) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
+| 264 | 0307 | EOAOXHILL | Very Good (2) | Very Fast (1) | K | K | Harmful | Shallow | Near towns | Desert | 5 | 5 | 7cdf 
+| 265 | 3a2c | BUREAMET | Average (6) | Very Fast (1) | A | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 266 | 7151 | MORIKEED | Average (6) | Very Fast (1) | A | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 267 | 2876 | NIMOGOHAM | Average (6) | Very Fast (1) | A | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 268 | 5f9b | BILOORD | Average (6) | Very Fast (1) | A | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 269 | 16c0 | RINGDECON | Average (6) | Very Fast (1) | A | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 6 | 0082 
+| 270 | 4de5 | WEAVDIILL | Average (5) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
+| 271 | 050a | ALPKOPTORY | Average (5) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
+| 272 | 3c2f | BADQAZEND | Average (5) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
+| 273 | 7354 | IMMEED | Average (5) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
+| 274 | 2a79 | HOBGBHAM | Average (5) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Snow | 1 | 1 | 0091 
+| 275 | 619e | BUGINOND | Average (6) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
+| 276 | 18c3 | SHADSODLOW | Average (6) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
+| 277 | 4fe8 | CORYILL | Average (6) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
+| 278 | 070d | BINOXTORY | Average (6) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
+| 279 | 3e32 | SADEAEND | Average (6) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Rocky | 3 | 6 | 00a0 
+| 280 | 7557 | LOWIKEME | Very Poor (10) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
+| 281 | 2c7c | QAZOGOOLD | Very Poor (10) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
+| 282 | 63a1 | VERYUOND | Very Poor (10) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
+| 283 | 1ac6 | MINDELOW | Very Poor (10) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
+| 284 | 51eb | HAMDIICK | Very Poor (10) | Very Fast (1) | SK | EKVFA | Harmful | Bottomless | Near towns | Desert | 3 | 3 | 00af 
+| 285 | 0910 | FUTKOPHOLE | Average (5) | Fast (3) | E | VFA | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
+| 286 | 4035 | SUZQAZLAS | Average (5) | Fast (3) | E | VFA | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
+| 287 | 775a | DOUEME | Average (5) | Fast (3) | E | VFA | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
+| 288 | 2e7f | SHIGBOLD | Average (5) | Fast (3) | E | VFA | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
+| 289 | 65a4 | HURTASBOY | Average (5) | Fast (3) | E | VFA | Harmful | Shallow | Near towns | Desert | 3 | 1 | 6f97 
+| 290 | 1cc9 | JOSSODDOR | Very Good (1) | Very Fast (1) | S | VFA | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
+| 291 | 53ee | TIMYICK | Very Good (1) | Very Fast (1) | S | VFA | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
+| 292 | 0b13 | CALOXHOLE | Very Good (1) | Very Fast (1) | S | VFA | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
+| 293 | 4238 | SCOEALAS | Very Good (1) | Very Fast (1) | S | VFA | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
+| 294 | 795d | SWAIKEAL | Very Good (1) | Very Fast (1) | S | VFA | Harmful | Shallow | Near towns | Snow | 7 | 9 | 00cd 
+| 295 | 3082 | KILLQUEPIL | Average (5) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 296 | 67a7 | EOAUBOY | Average (5) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 297 | 1ecc | BURDEDOR | Average (5) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 298 | 55f1 | MORDIPAL | Average (5) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 299 | 0d16 | NIMKOPPERT | Average (5) | Very Fast (1) | V | V | Harmful | Shallow | Near towns | Grass | 1 | 1 | 00dc 
+| 300 | 443b | BILQAZOUT | Very Poor (10) | Very Fast (2) | V | EV | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
+| 301 | 7b60 | RINGIAL | Very Poor (10) | Very Fast (2) | V | EV | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
+| 302 | 3285 | WEAVCEPIL | Very Poor (10) | Very Fast (2) | V | EV | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
+| 303 | 69aa | ALPASJOB | Very Poor (10) | Very Fast (2) | V | EV | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
+| 304 | 20cf | BADSODLIN | Very Poor (10) | Very Fast (2) | V | EV | Harmful | Shallow | Cannot | Grass | 12 | 12 | 0bb8 
+| 305 | 57f4 | IMMYPAL | Good (3) | Fast (3) | E | E | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 306 | 0f19 | HOBOXPERT | Good (3) | Fast (3) | E | E | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 307 | 463e | BUGEAOUT | Good (3) | Fast (3) | E | E | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 308 | 7d63 | SHADDIET | Good (3) | Fast (3) | E | E | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
+| 309 | 3488 | CORQUEBAR | Good (3) | Fast (3) | E | E | Harmful | Shallow | Near towns | Rocky | 2 | 4 | 00fa 
 | 310 | 6bad | BINUJOB | Average (5) | Very Fast (1) |  |  | Fatal | Shallow | Near towns | Desert | 1 | 5 | 75bd 
 | 311 | 22d2 | SADDELIN | Average (5) | Very Fast (1) |  |  | Fatal | Shallow | Near towns | Desert | 1 | 5 | 75bd 
 | 312 | 59f7 | LOWDIDON | Average (5) | Very Fast (1) |  |  | Fatal | Shallow | Near towns | Desert | 1 | 5 | 75bd 
 | 313 | 111c | QAZKOPMAR | Average (5) | Very Fast (1) |  |  | Fatal | Shallow | Near towns | Desert | 1 | 5 | 75bd 
 | 314 | 4841 | VERYINGLUG | Average (5) | Very Fast (1) |  |  | Fatal | Shallow | Near towns | Desert | 1 | 5 | 75bd 
-| 315 | 7f66 | MINIT | Very Good (2) | Fast (4) | KV | A | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
-| 316 | 368b | HAMCEBAR | Very Good (2) | Fast (4) | KV | A | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
-| 317 | 6db0 | FUTASER | Very Good (2) | Fast (4) | KV | A | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
-| 318 | 24d5 | SUZSODING | Very Good (2) | Fast (4) | KV | A | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
-| 319 | 5bfa | DOUYDON | Very Good (2) | Fast (4) | KV | A | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
-| 320 | 131f | SHIOXMAR | Very Good (1) | Very Fast (1) | E | E | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
-| 321 | 4a44 | HURTUSLUG | Very Good (1) | Very Fast (1) | E | E | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
-| 322 | 0169 | JOSDIEHILL | Very Good (1) | Very Fast (1) | E | E | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
-| 323 | 388e | TIMQUEMET | Very Good (1) | Very Fast (1) | E | E | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
-| 324 | 6fb3 | CALUER | Very Good (1) | Very Fast (1) | E | E | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
-| 325 | 26d8 | SCODEING | Poor (7) | Very Fast (1) | F | F | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
-| 326 | 5dfd | SWADIORD | Poor (7) | Very Fast (1) | F | F | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
-| 327 | 1522 | KILLWILCON | Poor (7) | Very Fast (1) | F | F | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
-| 328 | 4c47 | EOAINGILL | Poor (7) | Very Fast (1) | F | F | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
-| 329 | 036c | BURIHILL | Poor (7) | Very Fast (1) | F | F | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
+| 315 | 7f66 | MINIT | Very Good (2) | Fast (4) | KV | E | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
+| 316 | 368b | HAMCEBAR | Very Good (2) | Fast (4) | KV | E | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
+| 317 | 6db0 | FUTASER | Very Good (2) | Fast (4) | KV | E | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
+| 318 | 24d5 | SUZSODING | Very Good (2) | Fast (4) | KV | E | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
+| 319 | 5bfa | DOUYDON | Very Good (2) | Fast (4) | KV | E | Harmful | Shallow | Near towns | Snow | 10 | 10 | 0118 
+| 320 | 131f | SHIOXMAR | Very Good (1) | Very Fast (1) | A | A | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
+| 321 | 4a44 | HURTUSLUG | Very Good (1) | Very Fast (1) | A | A | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
+| 322 | 0169 | JOSDIEHILL | Very Good (1) | Very Fast (1) | A | A | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
+| 323 | 388e | TIMQUEMET | Very Good (1) | Very Fast (1) | A | A | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
+| 324 | 6fb3 | CALUER | Very Good (1) | Very Fast (1) | A | A | Harmful | Shallow | Near towns | Grass | 5 | 5 | 0127 
+| 325 | 26d8 | SCODEING | Poor (7) | Very Fast (1) | S | S | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
+| 326 | 5dfd | SWADIORD | Poor (7) | Very Fast (1) | S | S | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
+| 327 | 1522 | KILLWILCON | Poor (7) | Very Fast (1) | S | S | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
+| 328 | 4c47 | EOAINGILL | Poor (7) | Very Fast (1) | S | S | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
+| 329 | 036c | BURIHILL | Poor (7) | Very Fast (1) | S | S | Harmful | Bottomless | Near towns | Snow | 5 | 5 | 0136 
 | 330 | 3a91 | MORCEMET | Very Poor (9) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 5 | 1 | 5fd6 
 | 331 | 71b6 | NIMASED | Very Poor (9) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 5 | 1 | 5fd6 
 | 332 | 28db | BILSODHAM | Very Poor (9) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 5 | 1 | 5fd6 
 | 333 | 6000 | RINGOUTOND | Very Poor (9) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 5 | 1 | 5fd6 
 | 334 | 1725 | WEAVACON | Very Poor (9) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 5 | 1 | 5fd6 
-| 335 | 4e4a | ALPUSILL | Poor (7) | Very Fast (1) | VA | ESKVF | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
-| 336 | 056f | BADDIETORY | Poor (7) | Very Fast (1) | VA | ESKVF | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
-| 337 | 3c94 | IMMQUEEND | Poor (7) | Very Fast (1) | VA | ESKVF | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
-| 338 | 73b9 | HOBUED | Poor (7) | Very Fast (1) | VA | ESKVF | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
-| 339 | 2ade | BUGDEHAM | Poor (7) | Very Fast (1) | VA | ESKVF | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
-| 340 | 6203 | SHADOZOND | Very Poor (9) | Very Fast (2) | VF | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
-| 341 | 1928 | CORWILLOW | Very Poor (9) | Very Fast (2) | VF | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
-| 342 | 504d | BININGICK | Very Poor (9) | Very Fast (2) | VF | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
-| 343 | 0772 | SADITORY | Very Poor (9) | Very Fast (2) | VF | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
-| 344 | 3e97 | LOWCEEND | Very Poor (9) | Very Fast (2) | VF | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
-| 345 | 75bc | QAZASME | Very Poor (9) | Fast (4) | KV | ESKVF | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
-| 346 | 2ce1 | VERYHIPOLD | Very Poor (9) | Fast (4) | KV | ESKVF | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
-| 347 | 6406 | MINOUTBOY | Very Poor (9) | Fast (4) | KV | ESKVF | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
-| 348 | 1b2b | HAMALOW | Very Poor (9) | Fast (4) | KV | ESKVF | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
-| 349 | 5250 | FUTUSICK | Very Poor (9) | Fast (4) | KV | ESKVF | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
-| 350 | 0975 | SUZDIEHOLE | Very Poor (9) | Fast (3) | SV | ESKVF | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
-| 351 | 409a | DOUQUELAS | Very Poor (9) | Fast (3) | SV | ESKVF | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
-| 352 | 77bf | SHIUME | Very Poor (9) | Fast (3) | SV | ESKVF | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
-| 353 | 2ee4 | HURTPEOLD | Very Poor (9) | Fast (3) | SV | ESKVF | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
-| 354 | 6609 | JOSOZBOY | Very Poor (9) | Fast (3) | SV | ESKVF | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
-| 355 | 1d2e | TIMWILDOR | Very Poor (9) | Very Fast (2) | V | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
-| 356 | 5453 | CALINGPAL | Very Poor (9) | Very Fast (2) | V | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
-| 357 | 0b78 | SCOIHOLE | Very Poor (9) | Very Fast (2) | V | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
-| 358 | 429d | SWACELAS | Very Poor (9) | Very Fast (2) | V | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
-| 359 | 79c2 | KILLMPAL | Very Poor (9) | Very Fast (2) | V | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
+| 335 | 4e4a | ALPUSILL | Poor (7) | Very Fast (1) | EK | SKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
+| 336 | 056f | BADDIETORY | Poor (7) | Very Fast (1) | EK | SKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
+| 337 | 3c94 | IMMQUEEND | Poor (7) | Very Fast (1) | EK | SKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
+| 338 | 73b9 | HOBUED | Poor (7) | Very Fast (1) | EK | SKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
+| 339 | 2ade | BUGDEHAM | Poor (7) | Very Fast (1) | EK | SKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 2 | 0154 
+| 340 | 6203 | SHADOZOND | Very Poor (9) | Very Fast (2) | SK | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
+| 341 | 1928 | CORWILLOW | Very Poor (9) | Very Fast (2) | SK | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
+| 342 | 504d | BININGICK | Very Poor (9) | Very Fast (2) | SK | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
+| 343 | 0772 | SADITORY | Very Poor (9) | Very Fast (2) | SK | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
+| 344 | 3e97 | LOWCEEND | Very Poor (9) | Very Fast (2) | SK | ESKVFA | Harmful | Shallow | Near towns | Snow | 5 | 3 | 0163 
+| 345 | 75bc | QAZASME | Very Poor (9) | Fast (4) | KV | SKVFA | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
+| 346 | 2ce1 | VERYHIPOLD | Very Poor (9) | Fast (4) | KV | SKVFA | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
+| 347 | 6406 | MINOUTBOY | Very Poor (9) | Fast (4) | KV | SKVFA | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
+| 348 | 1b2b | HAMALOW | Very Poor (9) | Fast (4) | KV | SKVFA | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
+| 349 | 5250 | FUTUSICK | Very Poor (9) | Fast (4) | KV | SKVFA | Harmful | Bottomless | Near towns | Rocky | 5 | 4 | 0172 
+| 350 | 0975 | SUZDIEHOLE | Very Poor (9) | Fast (3) | KF | SKVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
+| 351 | 409a | DOUQUELAS | Very Poor (9) | Fast (3) | KF | SKVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
+| 352 | 77bf | SHIUME | Very Poor (9) | Fast (3) | KF | SKVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
+| 353 | 2ee4 | HURTPEOLD | Very Poor (9) | Fast (3) | KF | SKVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
+| 354 | 6609 | JOSOZBOY | Very Poor (9) | Fast (3) | KF | SKVFA | Harmful | Bottomless | Near towns | Grass | 5 | 5 | 0181 
+| 355 | 1d2e | TIMWILDOR | Very Poor (9) | Very Fast (2) | K | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
+| 356 | 5453 | CALINGPAL | Very Poor (9) | Very Fast (2) | K | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
+| 357 | 0b78 | SCOIHOLE | Very Poor (9) | Very Fast (2) | K | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
+| 358 | 429d | SWACELAS | Very Poor (9) | Very Fast (2) | K | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
+| 359 | 79c2 | KILLMPAL | Very Poor (9) | Very Fast (2) | K | ESKVFA | Harmful | Bottomless | Near towns | Desert | 5 | 6 | 0190 
 | 360 | 30e7 | EOAHIPPIL | Very Poor (9) | Very Fast (1) | SF | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 7 | 019f 
 | 361 | 680c | BUROUTJOB | Very Poor (9) | Very Fast (1) | SF | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 7 | 019f 
 | 362 | 1f31 | MORADOR | Very Poor (9) | Very Fast (1) | SF | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 7 | 019f 
 | 363 | 5656 | NIMUSPAL | Very Poor (9) | Very Fast (1) | SF | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 7 | 019f 
 | 364 | 0d7b | BILDIEPERT | Very Poor (9) | Very Fast (1) | SF | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 7 | 019f 
-| 365 | 44a0 | RINGLOPOUT | Very Good (1) | Very Fast (1) | EF | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
-| 366 | 7bc5 | WEAVTAL | Very Good (1) | Very Fast (1) | EF | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
-| 367 | 32ea | ALPPEPIL | Very Good (1) | Very Fast (1) | EF | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
-| 368 | 6a0f | BADOZJOB | Very Good (1) | Very Fast (1) | EF | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
-| 369 | 2134 | IMMWILLIN | Very Good (1) | Very Fast (1) | EF | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
-| 370 | 5859 | HOBINGDON | Very Good (1) | Very Fast (1) | ESV | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
-| 371 | 0f7e | BUGIPERT | Very Good (1) | Very Fast (1) | ESV | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
-| 372 | 46a3 | SHADMEOUT | Very Good (1) | Very Fast (1) | ESV | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
-| 373 | 7dc8 | CORMPT | Very Good (1) | Very Fast (1) | ESV | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
-| 374 | 34ed | BINHIPBAR | Very Good (1) | Very Fast (1) | ESV | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
+| 365 | 44a0 | RINGLOPOUT | Very Good (1) | Very Fast (1) | SA | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
+| 366 | 7bc5 | WEAVTAL | Very Good (1) | Very Fast (1) | SA | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
+| 367 | 32ea | ALPPEPIL | Very Good (1) | Very Fast (1) | SA | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
+| 368 | 6a0f | BADOZJOB | Very Good (1) | Very Fast (1) | SA | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
+| 369 | 2134 | IMMWILLIN | Very Good (1) | Very Fast (1) | SA | EKVA | Harmful | Shallow | Near towns | Rocky | 4 | 8 | 01ae 
+| 370 | 5859 | HOBINGDON | Very Good (1) | Very Fast (1) | KFA | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
+| 371 | 0f7e | BUGIPERT | Very Good (1) | Very Fast (1) | KFA | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
+| 372 | 46a3 | SHADMEOUT | Very Good (1) | Very Fast (1) | KFA | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
+| 373 | 7dc8 | CORMPT | Very Good (1) | Very Fast (1) | KFA | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
+| 374 | 34ed | BINHIPBAR | Very Good (1) | Very Fast (1) | KFA | EKVA | Harmful | Shallow | Near towns | Snow | 4 | 9 | 01bd 
 | 375 | 6c12 | SADOUTER | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Harmful | Shallow | Near towns | Desert | 3 | 10 | 01cc 
 | 376 | 2337 | LOWALIN | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Harmful | Shallow | Near towns | Desert | 3 | 10 | 01cc 
 | 377 | 5a5c | QAZUSDON | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Harmful | Shallow | Near towns | Desert | 3 | 10 | 01cc 
@@ -407,41 +407,41 @@ and how levels are generated.
 | 392 | 1587 | EOAINCON | Very Poor (10) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 01f9 
 | 393 | 4cac | BURLOPILL | Very Poor (10) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 01f9 
 | 394 | 03d1 | MORTHILL | Very Poor (10) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Desert | 3 | 3 | 01f9 
-| 395 | 3af6 | NIMPEMET | Average (6) | Very Fast (1) | ESKVFA | EKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
-| 396 | 721b | BILOZED | Average (6) | Very Fast (1) | ESKVFA | EKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
-| 397 | 2940 | RINGIKEHAM | Average (6) | Very Fast (1) | ESKVFA | EKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
-| 398 | 6065 | WEAVOGOOND | Average (6) | Very Fast (1) | ESKVFA | EKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
-| 399 | 178a | ALPOCON | Average (6) | Very Fast (1) | ESKVFA | EKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
-| 400 | 4eaf | BADMEILL | Average (5) | Very Fast (1) | ESKVFA | SKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
-| 401 | 05d4 | IMMMPTORY | Average (5) | Very Fast (1) | ESKVFA | SKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
-| 402 | 3cf9 | HOBHIPEND | Average (5) | Very Fast (1) | ESKVFA | SKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
-| 403 | 741e | BUGOUTME | Average (5) | Very Fast (1) | ESKVFA | SKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
-| 404 | 2b43 | SHADEHAM | Average (5) | Very Fast (1) | ESKVFA | SKA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
-| 405 | 6268 | CORGBOND | Very Good (2) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
-| 406 | 198d | BININLOW | Very Good (2) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
-| 407 | 50b2 | SADLOPICK | Very Good (2) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
-| 408 | 07d7 | LOWTTORY | Very Good (2) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
-| 409 | 3efc | QAZPEEND | Very Good (2) | Very Fast (1) | ESKVFA | SKFA | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
-| 410 | 7621 | VERYEAME | Very Good (2) | Very Fast (1) | ESKVFA | EF | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
-| 411 | 2d46 | MINIKEOLD | Very Good (2) | Very Fast (1) | ESKVFA | EF | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
-| 412 | 646b | HAMOGOBOY | Very Good (2) | Very Fast (1) | ESKVFA | EF | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
-| 413 | 1b90 | FUTOLOW | Very Good (2) | Very Fast (1) | ESKVFA | EF | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
-| 414 | 52b5 | SUZMEICK | Very Good (2) | Very Fast (1) | ESKVFA | EF | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
-| 415 | 09da | DOUMPHOLE | Very Poor (10) | Very Fast (1) | ESKVFA | ESF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
-| 416 | 40ff | SHIHIPLAS | Very Poor (10) | Very Fast (1) | ESKVFA | ESF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
-| 417 | 7824 | HURTQAZAL | Very Poor (10) | Very Fast (1) | ESKVFA | ESF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
-| 418 | 2f49 | JOSEOLD | Very Poor (10) | Very Fast (1) | ESKVFA | ESF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
-| 419 | 666e | TIMGBBOY | Very Poor (10) | Very Fast (1) | ESKVFA | ESF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
+| 395 | 3af6 | NIMPEMET | Average (6) | Very Fast (1) | ESKVFA | EVA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
+| 396 | 721b | BILOZED | Average (6) | Very Fast (1) | ESKVFA | EVA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
+| 397 | 2940 | RINGIKEHAM | Average (6) | Very Fast (1) | ESKVFA | EVA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
+| 398 | 6065 | WEAVOGOOND | Average (6) | Very Fast (1) | ESKVFA | EVA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
+| 399 | 178a | ALPOCON | Average (6) | Very Fast (1) | ESKVFA | EVA | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0208 
+| 400 | 4eaf | BADMEILL | Average (5) | Very Fast (1) | ESKVFA | EVF | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
+| 401 | 05d4 | IMMMPTORY | Average (5) | Very Fast (1) | ESKVFA | EVF | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
+| 402 | 3cf9 | HOBHIPEND | Average (5) | Very Fast (1) | ESKVFA | EVF | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
+| 403 | 741e | BUGOUTME | Average (5) | Very Fast (1) | ESKVFA | EVF | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
+| 404 | 2b43 | SHADEHAM | Average (5) | Very Fast (1) | ESKVFA | EVF | Harmful | Shallow | Near towns | Grass | 2 | 3 | 0217 
+| 405 | 6268 | CORGBOND | Very Good (2) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
+| 406 | 198d | BININLOW | Very Good (2) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
+| 407 | 50b2 | SADLOPICK | Very Good (2) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
+| 408 | 07d7 | LOWTTORY | Very Good (2) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
+| 409 | 3efc | QAZPEEND | Very Good (2) | Very Fast (1) | ESKVFA | ESVF | Harmful | Shallow | Near towns | Desert | 2 | 4 | 0226 
+| 410 | 7621 | VERYEAME | Very Good (2) | Very Fast (1) | ESKVFA | SA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
+| 411 | 2d46 | MINIKEOLD | Very Good (2) | Very Fast (1) | ESKVFA | SA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
+| 412 | 646b | HAMOGOBOY | Very Good (2) | Very Fast (1) | ESKVFA | SA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
+| 413 | 1b90 | FUTOLOW | Very Good (2) | Very Fast (1) | ESKVFA | SA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
+| 414 | 52b5 | SUZMEICK | Very Good (2) | Very Fast (1) | ESKVFA | SA | Harmful | Shallow | Near towns | Desert | 1 | 3 | 0235 
+| 415 | 09da | DOUMPHOLE | Very Poor (10) | Very Fast (1) | ESKVFA | SFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
+| 416 | 40ff | SHIHIPLAS | Very Poor (10) | Very Fast (1) | ESKVFA | SFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
+| 417 | 7824 | HURTQAZAL | Very Poor (10) | Very Fast (1) | ESKVFA | SFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
+| 418 | 2f49 | JOSEOLD | Very Poor (10) | Very Fast (1) | ESKVFA | SFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
+| 419 | 666e | TIMGBBOY | Very Poor (10) | Very Fast (1) | ESKVFA | SFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0244 
 | 420 | 1d93 | CALINDOR | Very Good (1) | Very Fast (1) | ESKVFA | SF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0253 
 | 421 | 54b8 | SCOLOPPAL | Very Good (1) | Very Fast (1) | ESKVFA | SF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0253 
 | 422 | 0bdd | SWATHOLE | Very Good (1) | Very Fast (1) | ESKVFA | SF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0253 
 | 423 | 4302 | KILLOXLAS | Very Good (1) | Very Fast (1) | ESKVFA | SF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0253 
 | 424 | 7a27 | EOAEAAL | Very Good (1) | Very Fast (1) | ESKVFA | SF | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0253 
-| 425 | 314c | BURIKEPIL | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
-| 426 | 6871 | MOROGOJOB | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
-| 427 | 1f96 | NIMODOR | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
-| 428 | 56bb | BILMEPAL | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
-| 429 | 0de0 | RINGDIPERT | Average (5) | Very Fast (1) | ESKVFA | ESV | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
+| 425 | 314c | BURIKEPIL | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
+| 426 | 6871 | MOROGOJOB | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
+| 427 | 1f96 | NIMODOR | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
+| 428 | 56bb | BILMEPAL | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
+| 429 | 0de0 | RINGDIPERT | Average (5) | Very Fast (1) | ESKVFA | KFA | Harmful | Shallow | Near towns | Rocky | 1 | 3 | 0262 
 | 430 | 4505 | WEAVKOPOUT | Very Good (1) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0271 
 | 431 | 7c2a | ALPQAZT | Very Good (1) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0271 
 | 432 | 334f | BADEPIL | Very Good (1) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Snow | 1 | 3 | 0271 
@@ -457,26 +457,26 @@ and how levels are generated.
 | 442 | 5ac1 | VERYDEDON | Average (5) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 3 | 028f 
 | 443 | 11e6 | MINDIMAR | Average (5) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 3 | 028f 
 | 444 | 490b | HAMKOPLUG | Average (5) | Very Fast (1) | ESKVFA | ESKVFA | Harmful | Shallow | Near towns | Grass | 1 | 3 | 028f 
-| 445 | 0030 | FUTQAZHILL | Average (6) | Very Slow (10) | VA | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
-| 446 | 3755 | SUZEBAR | Average (6) | Very Slow (10) | VA | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
-| 447 | 6e7a | DOUGBER | Average (6) | Very Slow (10) | VA | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
-| 448 | 259f | SHIINING | Average (6) | Very Slow (10) | VA | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
-| 449 | 5cc4 | HURTSODORD | Average (6) | Very Slow (10) | VA | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
-| 450 | 13e9 | JOSYMAR | Average (6) | Very Fast (1) | EV | ESKVA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
-| 451 | 4b0e | TIMOXLUG | Average (6) | Very Fast (1) | EV | ESKVA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
-| 452 | 0233 | CALEAHILL | Average (6) | Very Fast (1) | EV | ESKVA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
-| 453 | 3958 | SCOIKEMET | Average (6) | Very Fast (1) | EV | ESKVA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
-| 454 | 707d | SWAOGOED | Average (6) | Very Fast (1) | EV | ESKVA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
-| 455 | 27a2 | KILLUING | Very Poor (10) | Very Fast (1) | EF | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
-| 456 | 5ec7 | EOADEORD | Very Poor (10) | Very Fast (1) | EF | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
-| 457 | 15ec | BURDICON | Very Poor (10) | Very Fast (1) | EF | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
-| 458 | 4d11 | MORKOPILL | Very Poor (10) | Very Fast (1) | EF | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
-| 459 | 0436 | NIMQAZTORY | Very Poor (10) | Very Fast (1) | EF | ESKFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
-| 460 | 3b5b | BILEMET | Very Poor (10) | Very Fast (1) | SF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
-| 461 | 7280 | RINGCEED | Very Poor (10) | Very Fast (1) | SF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
-| 462 | 29a5 | WEAVASHAM | Very Poor (10) | Very Fast (1) | SF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
-| 463 | 60ca | ALPSODOND | Very Poor (10) | Very Fast (1) | SF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
-| 464 | 17ef | BADYCON | Very Poor (10) | Very Fast (1) | SF | ESKVA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
+| 445 | 0030 | FUTQAZHILL | Average (6) | Very Slow (10) | EK | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
+| 446 | 3755 | SUZEBAR | Average (6) | Very Slow (10) | EK | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
+| 447 | 6e7a | DOUGBER | Average (6) | Very Slow (10) | EK | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
+| 448 | 259f | SHIINING | Average (6) | Very Slow (10) | EK | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
+| 449 | 5cc4 | HURTSODORD | Average (6) | Very Slow (10) | EK | ESKVFA | Harmful | Shallow | Near towns | Rocky | 1 | 13 | 029e 
+| 450 | 13e9 | JOSYMAR | Average (6) | Very Fast (1) | KA | EKVFA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
+| 451 | 4b0e | TIMOXLUG | Average (6) | Very Fast (1) | KA | EKVFA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
+| 452 | 0233 | CALEAHILL | Average (6) | Very Fast (1) | KA | EKVFA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
+| 453 | 3958 | SCOIKEMET | Average (6) | Very Fast (1) | KA | EKVFA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
+| 454 | 707d | SWAOGOED | Average (6) | Very Fast (1) | KA | EKVFA | Harmful | Bottomless | Near towns | Desert | 2 | 15 | 02ad 
+| 455 | 27a2 | KILLUING | Very Poor (10) | Very Fast (1) | SA | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
+| 456 | 5ec7 | EOADEORD | Very Poor (10) | Very Fast (1) | SA | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
+| 457 | 15ec | BURDICON | Very Poor (10) | Very Fast (1) | SA | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
+| 458 | 4d11 | MORKOPILL | Very Poor (10) | Very Fast (1) | SA | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
+| 459 | 0436 | NIMQAZTORY | Very Poor (10) | Very Fast (1) | SA | ESVFA | Harmful | Shallow | Near towns | Grass | 3 | 14 | 02bc 
+| 460 | 3b5b | BILEMET | Very Poor (10) | Very Fast (1) | SF | EKVFA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
+| 461 | 7280 | RINGCEED | Very Poor (10) | Very Fast (1) | SF | EKVFA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
+| 462 | 29a5 | WEAVASHAM | Very Poor (10) | Very Fast (1) | SF | EKVFA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
+| 463 | 60ca | ALPSODOND | Very Poor (10) | Very Fast (1) | SF | EKVFA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
+| 464 | 17ef | BADYCON | Very Poor (10) | Very Fast (1) | SF | EKVFA | Harmful | Bottomless | Near towns | Rocky | 1 | 11 | 02cb 
 | 465 | 4f14 | IMMOXILL | Average (5) | Very Fast (1) | ESKVFA |  | Harmful | Bottomless | Only up | Desert | 1 | 10 | 02da 
 | 466 | 0639 | HOBEATORY | Average (5) | Very Fast (1) | ESKVFA |  | Harmful | Bottomless | Only up | Desert | 1 | 10 | 02da 
 | 467 | 3d5e | BUGIKEEND | Average (5) | Very Fast (1) | ESKVFA |  | Harmful | Bottomless | Only up | Desert | 1 | 10 | 02da 
@@ -487,26 +487,26 @@ and how levels are generated.
 | 472 | 5117 | LOWKOPICK | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 118f 
 | 473 | 083c | QAZQAZHOLE | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 118f 
 | 474 | 3f61 | VERYIEND | Very Good (1) | Very Fast (1) | ESKVFA | EKVA | Fatal | Shallow | Near people | Desert | 30 | 30 | 118f 
-| 475 | 7686 | MINCEME | Average (5) | Very Fast (1) | ESKVFA | K | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
-| 476 | 2dab | HAMASOLD | Average (5) | Very Fast (1) | ESKVFA | K | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
-| 477 | 64d0 | FUTSODBOY | Average (5) | Very Fast (1) | ESKVFA | K | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
-| 478 | 1bf5 | SUZYLOW | Average (5) | Very Fast (1) | ESKVFA | K | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
-| 479 | 531a | DOUOXICK | Average (5) | Very Fast (1) | ESKVFA | K | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
-| 480 | 0a3f | SHIEAHOLE | Very Good (1) | Very Fast (1) | VF | V | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
-| 481 | 4164 | HURTDIELAS | Very Good (1) | Very Fast (1) | VF | V | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
-| 482 | 7889 | JOSQUEAL | Very Good (1) | Very Fast (1) | VF | V | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
-| 483 | 2fae | TIMUOLD | Very Good (1) | Very Fast (1) | VF | V | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
-| 484 | 66d3 | CALDEBOY | Very Good (1) | Very Fast (1) | VF | V | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
-| 485 | 1df8 | SCODIDOR | Very Good (1) | Very Fast (1) | VFA | V | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
-| 486 | 551d | SWAKOPPAL | Very Good (1) | Very Fast (1) | VFA | V | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
-| 487 | 0c42 | KILLINGPERT | Very Good (1) | Very Fast (1) | VFA | V | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
-| 488 | 4367 | EOAILAS | Very Good (1) | Very Fast (1) | VFA | V | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
-| 489 | 7a8c | BURCEAL | Very Good (1) | Very Fast (1) | VFA | V | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
-| 490 | 31b1 | MORASPIL | Average (5) | Very Fast (1) | ESKVFA | ESVFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
-| 491 | 68d6 | NIMSODJOB | Average (5) | Very Fast (1) | ESKVFA | ESVFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
-| 492 | 1ffb | BILYDOR | Average (5) | Very Fast (1) | ESKVFA | ESVFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
-| 493 | 5720 | RINGAPAL | Average (5) | Very Fast (1) | ESKVFA | ESVFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
-| 494 | 0e45 | WEAVUSPERT | Average (5) | Very Fast (1) | ESKVFA | ESVFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
+| 475 | 7686 | MINCEME | Average (5) | Very Fast (1) | ESKVFA | V | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
+| 476 | 2dab | HAMASOLD | Average (5) | Very Fast (1) | ESKVFA | V | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
+| 477 | 64d0 | FUTSODBOY | Average (5) | Very Fast (1) | ESKVFA | V | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
+| 478 | 1bf5 | SUZYLOW | Average (5) | Very Fast (1) | ESKVFA | V | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
+| 479 | 531a | DOUOXICK | Average (5) | Very Fast (1) | ESKVFA | V | Fatal | Shallow | Near people | Desert | 30 | 30 | 0db6 
+| 480 | 0a3f | SHIEAHOLE | Very Good (1) | Very Fast (1) | SK | K | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
+| 481 | 4164 | HURTDIELAS | Very Good (1) | Very Fast (1) | SK | K | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
+| 482 | 7889 | JOSQUEAL | Very Good (1) | Very Fast (1) | SK | K | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
+| 483 | 2fae | TIMUOLD | Very Good (1) | Very Fast (1) | SK | K | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
+| 484 | 66d3 | CALDEBOY | Very Good (1) | Very Fast (1) | SK | K | Harmful | Shallow | Only up | Desert | 5 | 5 | 0271 
+| 485 | 1df8 | SCODIDOR | Very Good (1) | Very Fast (1) | ESK | K | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
+| 486 | 551d | SWAKOPPAL | Very Good (1) | Very Fast (1) | ESK | K | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
+| 487 | 0c42 | KILLINGPERT | Very Good (1) | Very Fast (1) | ESK | K | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
+| 488 | 4367 | EOAILAS | Very Good (1) | Very Fast (1) | ESK | K | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
+| 489 | 7a8c | BURCEAL | Very Good (1) | Very Fast (1) | ESK | K | Harmful | Bottomless | Only up | Rocky | 5 | 3 | 0280 
+| 490 | 31b1 | MORASPIL | Average (5) | Very Fast (1) | ESKVFA | ESKFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
+| 491 | 68d6 | NIMSODJOB | Average (5) | Very Fast (1) | ESKVFA | ESKFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
+| 492 | 1ffb | BILYDOR | Average (5) | Very Fast (1) | ESKVFA | ESKFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
+| 493 | 5720 | RINGAPAL | Average (5) | Very Fast (1) | ESKVFA | ESKFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
+| 494 | 0e45 | WEAVUSPERT | Average (5) | Very Fast (1) | ESKVFA | ESKFA | Harmful | Shallow | Near towns | Desert | 1 | 13 | 0a5f 
 | 495 | 456a | ALPDIEOUT |  |  |  |  |  |  |  |  |  |  |  
 | 496 | 7c8f | BADQUET |  |  |  |  |  |  |  |  |  |  |  
 | 497 | 33b4 | IMMUPIL |  |  |  |  |  |  |  |  |  |  |  
@@ -1026,3 +1026,10 @@ and how levels are generated.
 - The letters ESKVFA stand for Earthquake, Swamp, Knight, Volcano, Flood, and
   Armageddon. Armageddon doesn't show up on the level screen, but it's in there.
 - For more information, see [Level format](../analysis/level-format.html).
+- This list presents two major corrections from Kenneth Fuchs' manually produced
+  [PopulousKeys](https://aminet.net/package/game/hint/PopulousKeys)
+  list from Fish Disk 531:
+  - Levels 325 to 329 (SCODEING, SWADIORD, KILLWILCON, EOAINGILL, BURIHILL)
+    are Snow and Ice, not Grassy Plane.
+  - Levels 335 to 339 (ALPUSILL, BADDIETORY, IMMQUEEND, HOBUED, BUGDEHAM)
+    are Desert, not Grassy Plane.

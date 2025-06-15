@@ -230,4 +230,5 @@ Additional thanks goes to Kenneth Fuchs for
 [PopulousKeys](https://aminet.net/package/game/hint/PopulousKeys),
 a list of all 495 main Populous codes from 1991, which previously appeared on
 Fish Disk 531. Although I calculated my list independently, the PopulousKeys
-data set was helpful in decoding the format of `level.dat`.
+data set was helpful in decoding the format of `level.dat` and double-checking
+my results.
